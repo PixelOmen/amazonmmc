@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.7/manifest"
+                        xmlns:md="http://www.movielabs.com/schema/md/v2.6/md"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.movielabs.com/schema/manifest/v1.7/manifest manifest-v1.7.xsd"
+                        ManifestID="md:manifestid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G"
+                        updateNum="0593803145"
+                        workflow="Episode"
+                        ExtraVersionReference="Star Wars: The Clone Wars: Season 1: Ambush"
+                        versionDescription="Broadcast:OV">
+   <manifest:Compatibility>
+      <manifest:SpecVersion>1.7</manifest:SpecVersion>
+      <manifest:Profile>MMC-1</manifest:Profile>
+   </manifest:Compatibility>
+
+<!-- INVENTORY -->
+
+   <manifest:Inventory>
+   
+	<!-- 2 ENGLISH TRACKS -->
+   
+      <manifest:Audio AudioTrackID="md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.en.51">
+         <md:Type>primary</md:Type>
+         <md:Language>en</md:Language>
+         <md:Channels>5.1</md:Channels>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_AUDIO_51_US.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">2d6e66768cfd51f4a91c55e2879c5c19</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Audio>
+      <manifest:Audio AudioTrackID="md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.en.20">
+         <md:Type>primary</md:Type>
+         <md:Language>en</md:Language>
+         <md:Channels>2.0</md:Channels>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_AUDIO_20_US.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">6b26467ffc526199d1dc11736135febf</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Audio>
+      
+	<!-- 1 FRENCH AUDIO TRACK -->
+      
+      <manifest:Audio AudioTrackID="md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.fr-ca.20">
+         <md:Type>primary</md:Type>
+         <md:Language dubbed="true">fr-CA</md:Language>
+         <md:Channels>2.0</md:Channels>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_AUDIO_20_FRCA.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">c6db268d8e348ae8671681de41dbf1b0</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Audio>
+      
+	<!-- 1 LATIN AMERICAN SPANISH AUDIO TRACK -->
+      
+      <manifest:Audio AudioTrackID="md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.es-419.20">
+         <md:Type>primary</md:Type>
+         <md:Language dubbed="true">es-419</md:Language>
+         <md:Channels>2.0</md:Channels>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_AUDIO_20_ES419.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">c0dfbb6db9cafeefea68189824b30f2d</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Audio>
+      
+      <!-- 1 VIDEO TRACK (ENGLISH) -->
+      
+      <manifest:Video VideoTrackID="md:vidtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.SDR">
+         <md:Description>SDR</md:Description>
+         <md:Type>primary</md:Type>
+         <md:Picture>
+            <md:AspectRatio>16:9</md:AspectRatio>
+            <md:PixelAspect>square</md:PixelAspect>
+            <md:WidthPixels>1920</md:WidthPixels>
+            <md:HeightPixels>1080</md:HeightPixels>
+            <md:ActiveWidthPixels>1920</md:ActiveWidthPixels>
+            <md:ActiveHeightPixels>816</md:ActiveHeightPixels>
+         </md:Picture>
+		 <md:Language>en</md:Language>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_VIDEO.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">94a171d6d82abe637af5afb0a837e04f</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Video>
+
+	<!-- 1 FRENCH DUBCARD -->
+      
+      <manifest:Video VideoTrackID="md:vidtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.dubcard.fr-ca">
+         <md:Description>SDR</md:Description>
+         <md:Type>primary</md:Type>
+         <md:Picture>
+            <md:AspectRatio>16:9</md:AspectRatio>
+            <md:PixelAspect>square</md:PixelAspect>
+            <md:WidthPixels>1920</md:WidthPixels>
+            <md:HeightPixels>1080</md:HeightPixels>
+            <md:ActiveWidthPixels>1920</md:ActiveWidthPixels>
+            <md:ActiveHeightPixels>816</md:ActiveHeightPixels>
+         </md:Picture>
+         <md:Language>fr-CA</md:Language>
+         <md:CardsetList>
+            <md:Cardset>
+               <md:Type>DubbingCredit</md:Type>
+               <md:Language>fr-CA</md:Language>
+            </md:Cardset>
+         </md:CardsetList>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_VIDEO_DUBCARD_FRCA.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">f3261bf7fed80272dde93e6c394647d2</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Video>
+      	
+      <!-- 1 LATIN AMERICAN SPANISH DUBCARD -->      
+      
+      <manifest:Video VideoTrackID="md:vidtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.dubcard.es-419">
+         <md:Description>SDR</md:Description>
+         <md:Type>primary</md:Type>
+         <md:Picture>
+            <md:AspectRatio>16:9</md:AspectRatio>
+            <md:PixelAspect>square</md:PixelAspect>
+            <md:WidthPixels>1920</md:WidthPixels>
+            <md:HeightPixels>1080</md:HeightPixels>
+            <md:ActiveWidthPixels>1920</md:ActiveWidthPixels>
+            <md:ActiveHeightPixels>816</md:ActiveHeightPixels>
+         </md:Picture>
+         <md:Language>es-419</md:Language>
+         <md:CardsetList>
+            <md:Cardset>
+               <md:Type>DubbingCredit</md:Type>
+               <md:Language>es-419</md:Language>
+            </md:Cardset>
+         </md:CardsetList>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_VIDEO_DUBCARD_ES419.mov</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">fa8fac6cdd8007b6aa4d1403cb75f3f4</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Video>
+      
+      <!-- ENGLISH SDH SUBTITLE -->
+      
+      <manifest:Subtitle SubtitleTrackID="md:subtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.sdh.Episode.en">
+         <md:Type>SDH</md:Type>
+         <md:FormatType>TTML</md:FormatType>
+         <md:Language>en</md:Language>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_CC_US.ttml</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">5603835a68a482eda75003c31883a747</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Subtitle>
+      
+      <!-- FRENCH SUBTITLE -->
+      
+      <manifest:Subtitle SubtitleTrackID="md:subtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.normal.Episode.fr-ca">
+         <md:Type>normal</md:Type>
+         <md:FormatType>TTML</md:FormatType>
+         <md:Language>fr-CA</md:Language>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_SUB_FRCA.ttml</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">de47d1063f361c1c08e977247ab50ed4</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Subtitle>
+      
+      <!-- LATIN AMERICAN SPANISH SUBTITLE -->      
+      
+      <manifest:Subtitle SubtitleTrackID="md:subtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.normal.Episode.es-419">
+         <md:Type>normal</md:Type>
+         <md:FormatType>TTML</md:FormatType>
+         <md:Language>es-419</md:Language>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_SUB_ES419.ttml</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">96d79759e6f0219b7201b2c25f9f18c1</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Subtitle>
+      
+      <!-- IMAGE ASSETS -->
+      
+      <manifest:Image ImageID="md:imageid:org:disney.com:radar:139143.clonewars-101.thumbnail-178.zxx">
+         <md:Type>thumbnail</md:Type>
+         <md:Purpose>thumbnail-178</md:Purpose>
+         <md:Width>1920</md:Width>
+         <md:Height>1080</md:Height>
+         <md:Encoding>PNG</md:Encoding>
+         <md:Language>zxx</md:Language>
+         <manifest:ContainerReference>
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_THUMBNAIL-178-ZXX.png</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">4e87d854582c27f286403fb0b1bb2e7f</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Image>
+      
+      <!-- METADATA & CONTENTID -->
+      
+      <manifest:Metadata ContentID="md:cid:org:disney.com:radar:139143">
+         <manifest:ContainerReference type="common">
+            <manifest:ContainerLocation>resources/STARWARSTHECLONEWARS_101_MEC.xml</manifest:ContainerLocation>
+            <manifest:Hash method="MD5">b8958e00057e2eaf53e34d9e54816588</manifest:Hash>
+         </manifest:ContainerReference>
+      </manifest:Metadata>
+   </manifest:Inventory>
+   
+<!-- PRESENTATIONS -->   
+   
+   <manifest:Presentations>
+   
+   <!-- FEATURE VIDEO PRESENTATION -->
+   
+      <manifest:Presentation PresentationID="md:presentationid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode">
+         <manifest:TrackMetadata>
+            <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+            <manifest:VideoTrackReference>
+               <manifest:VideoTrackID>md:vidtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.SDR</manifest:VideoTrackID>
+            </manifest:VideoTrackReference>
+            <manifest:AudioTrackReference>
+               <manifest:AudioTrackID>md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.en.51</manifest:AudioTrackID>
+            </manifest:AudioTrackReference>
+            <manifest:AudioTrackReference>
+               <manifest:AudioTrackID>md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.fr-ca.20</manifest:AudioTrackID>
+            </manifest:AudioTrackReference>
+            <manifest:AudioTrackReference>
+               <manifest:AudioTrackID>md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.es-419.20</manifest:AudioTrackID>
+            </manifest:AudioTrackReference>
+            <manifest:AudioTrackReference>
+               <manifest:AudioTrackID>md:audtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Primary.Episode.en.20</manifest:AudioTrackID>
+            </manifest:AudioTrackReference>
+            <manifest:SubtitleTrackReference>
+               <manifest:SubtitleTrackID>md:subtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.normal.Episode.fr-ca</manifest:SubtitleTrackID>
+            </manifest:SubtitleTrackReference>
+            <manifest:SubtitleTrackReference>
+               <manifest:SubtitleTrackID>md:subtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.normal.Episode.es-419</manifest:SubtitleTrackID>
+            </manifest:SubtitleTrackReference>
+            <manifest:SubtitleTrackReference>
+               <manifest:SubtitleTrackID>md:subtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.sdh.Episode.en</manifest:SubtitleTrackID>
+            </manifest:SubtitleTrackReference>
+         </manifest:TrackMetadata>
+      </manifest:Presentation>
+      
+   <!-- FRENCH DUBCARD PRESENTATION -->
+      
+      <manifest:Presentation PresentationID="md:presentationid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.DubbingCredit.fr-ca">
+         <manifest:TrackMetadata>
+            <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+            <manifest:VideoTrackReference>
+               <manifest:VideoTrackID>md:vidtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.dubcard.fr-ca</manifest:VideoTrackID>
+            </manifest:VideoTrackReference>
+         </manifest:TrackMetadata>
+      </manifest:Presentation>
+      
+   <!-- LATIN AMERICAN SPANISH PRESENTATION -->
+      
+      <manifest:Presentation PresentationID="md:presentationid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.DubbingCredit.es-419">
+         <manifest:TrackMetadata>
+            <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+            <manifest:VideoTrackReference>
+               <manifest:VideoTrackID>md:vidtrackid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.dubcard.es-419</manifest:VideoTrackID>
+            </manifest:VideoTrackReference>
+         </manifest:TrackMetadata>
+      </manifest:Presentation>
+   </manifest:Presentations>
+   
+   <!-- PLAYABLE SEQUENCES -->
+   
+   <manifest:PlayableSequences>
+      <manifest:PlayableSequence PlayableSequenceID="md:playablesequenceid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode">
+         <manifest:Clip sequence="0">
+            <manifest:PresentationID>md:presentationid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode</manifest:PresentationID>
+         </manifest:Clip>
+         <manifest:Clip sequence="1">
+            <manifest:PresentationID>md:presentationid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.DubbingCredit.fr-ca</manifest:PresentationID>
+         </manifest:Clip>
+         <manifest:Clip sequence="1">
+            <manifest:PresentationID>md:presentationid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode.DubbingCredit.es-419</manifest:PresentationID>
+         </manifest:Clip>
+      </manifest:PlayableSequence>
+   </manifest:PlayableSequences>
+   
+   <!-- EXPERIENCES -->
+   
+   <manifest:Experiences>
+      <manifest:Experience ExperienceID="md:experienceid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode"
+                           version="1.0">
+         <manifest:ContentID>md:cid:org:disney.com:radar:139143</manifest:ContentID>
+         <manifest:Audiovisual ContentID="md:cid:org:disney.com:radar:139143">
+            <manifest:Type>Main</manifest:Type>
+            <manifest:SubType>Episode</manifest:SubType>
+            <manifest:PlayableSequenceID>md:playablesequenceid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode</manifest:PlayableSequenceID>
+         </manifest:Audiovisual>
+      </manifest:Experience>
+   </manifest:Experiences>
+   
+   <!-- ALID EXPERIENCE MAPS -->   
+   
+   <manifest:ALIDExperienceMaps>
+      <manifest:ALIDExperienceMap>
+         <manifest:ALID>md:alid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G</manifest:ALID>
+         <manifest:ExperienceID>md:experienceid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G:clonewars-101.Episode</manifest:ExperienceID>
+      </manifest:ALIDExperienceMap>
+   </manifest:ALIDExperienceMaps>
+</manifest:MediaManifest>

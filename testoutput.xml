@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.7/manifest"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.movielabs.com/schema/manifest/v1.7/manifest manifest-v1.7.xsd"
+                        ManifestID="md:manifestid:eidr-x:9B4A-7FAE-31EF-F929-EB6F-G"
+                        updateNum="1634681346"
+                        workflow="Episode"
+                        ExtraVersionReference="Project Runway Allstars: Season 7: All Stars Goes Global"
+                        versionDescription="Broadcast:OV">
+  <manifest:Compatibility>
+    <manifest:SpecVersion>1.7</manifest:SpecVersion>
+    <manifest:Profile>MMC-1</manifest:Profile>
+  </manifest:Compatibility>
+</manifest:MediaManifest>
