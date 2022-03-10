@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdmec:CoreMetadata xmlns:mdmec="http://www.movielabs.com/schema/mdmec/v2.9" xmlns:md="http://www.movielabs.com/schema/md/v2.9/md" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.9 ../mdmec-v2.9.xsd">
+    <mdmec:Compatibility>
+        <md:SpecVersion>2.9</md:SpecVersion>
+        <!-- Profile CM-IMAGE-1 indicates that this file conforms to image-only profile. Amazon will not parse any title metadata from the file when this profile is provided -->
+        <md:Profile>CM-IMAGE-1</md:Profile>
+    </mdmec:Compatibility>
+    <mdmec:Basic ContentID="md:cid:org:amzn_studios_example:TEST_TITLE">
+        <md:LocalizedInfo language="en-US">
+            <md:ArtReference resolution="1600X1200" purpose="boxart">Regionless-EN_locale-boxart.png</md:ArtReference>
+            <md:ArtReference resolution="1920X1080" purpose="cover">Regionless-EN_locale-cover.png</md:ArtReference>
+        </md:LocalizedInfo>
+        <!-- MEC spec requires ReleaseYear and WorkType. When delivering with CM-IMAGE-1, Amazon will ignore these values. -->
+        <md:ReleaseYear>2018</md:ReleaseYear>
+        <md:WorkType>episode</md:WorkType>
+        <md:AltIdentifier>
+            <md:Namespace>ORG</md:Namespace>
+            <md:Identifier>TEST_TITLE</md:Identifier>
+        </md:AltIdentifier>
+        <md:AssociatedOrg organizationID="amzn_studios_example" role="licensor" />
+    </mdmec:Basic>
+</mdmec:CoreMetadata>

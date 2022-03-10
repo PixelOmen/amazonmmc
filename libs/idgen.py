@@ -6,10 +6,7 @@ def audiotrack(csvdict, index=0):
     pass
 
 def extraversionref(csvdict, index=0):
-    title = csvdict["series_title"][index]
-    seasonnum = csvdict["season_number"][index]
-    eptitle = csvdict["episode_title"][index]
-    return title+": "+"Season "+seasonnum+": "+eptitle
+    pass
 
 
 idgenswitch = {
