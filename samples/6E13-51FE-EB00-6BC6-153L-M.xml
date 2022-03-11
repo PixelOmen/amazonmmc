@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.10/manifest"
-						xmlns:md="http://www.movielabs.com/schema/md/v2.9/md"
-						xmlns:xs="http://www.w3.org/2001/XMLSchema"
-						xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.10/manifest" xmlns:md="http://www.movielabs.com/schema/md/v2.9/md" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<manifest:Compatibility>
 		<manifest:SpecVersion>1.5</manifest:SpecVersion>
 		<manifest:Profile>MMC-1</manifest:Profile>

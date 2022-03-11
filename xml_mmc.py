@@ -2,11 +2,13 @@ import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from libs import idgen
+from libs import idgen, media
 
 currentdir = Path(__file__).parent
 testxmldir = currentdir / "samples"
 testoutput = currentdir / "testoutput.xml"
+
+testresourcedir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE-EB00-6BC6-153L-M\resources")
 
 xmlnspaces = {
     "manifest": "http://www.movielabs.com/schema/manifest/v1.7/manifest",
@@ -49,6 +51,7 @@ def get_eidr(xmlpath: Path=...) -> str:
             return f.stem
     raise FileNotFoundError("Unable to locate MMC")
 
+# xmlns definitions are only added to the top once they are used
 def create_root() -> ET.Element:
     for ns in xmlnspaces:
         ET.register_namespace(ns, xmlnspaces[ns])
@@ -65,7 +68,17 @@ def testfunc():
     output_xml(root, testoutput)
     print(eidr)
 
-testfunc()
+def testfunc2():
+    eidr = get_eidr(testxmldir)
+    resources = list(testresourcedir.iterdir())
+    for f in resources:
+        if f.name[0] == ".":
+            continue
+        r = media.Resource(f,eidr)
+        print(r.id)
+
+testfunc2()
+
 
 
 # -- Creating XML
