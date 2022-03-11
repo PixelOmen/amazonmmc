@@ -15,10 +15,13 @@
 #     newpath = f.parent / newfilename
 #     os.rename(str(f), str(newpath))
 
-import re
+class Testclass:
+    def __init__(self):
+        self.mylist = []
+        self.mydict = {"test": self.mylist}
 
-teststr = "S01fd"
+test = Testclass()
 
-result = re.search(r"S\d\d$", teststr, re.IGNORECASE)
+test.mydict["test"].append("Someinfo")
 
-print(result)
+print(test.mylist)

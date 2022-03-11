@@ -1,6 +1,7 @@
 import re
 from pathlib import Path
 from typing import Generator
+from abc import ABC, abstractmethod
 
 from . import inventory
 
@@ -13,6 +14,8 @@ FACTORIES = {
 
 RE_EPISODE = re.compile(r"_S\d\dE\d\d\d_", re.IGNORECASE)
 
+ACCEPTED_FILETYPES = [".mov", ".scc", ".wav", ".xml"]
+
 ID_PREFIX = {
     "audio": "md:audtrackid",
     "video": "md:vidtrackid",
@@ -20,10 +23,10 @@ ID_PREFIX = {
     "metadata": "md:cid"
 }
 
+
 class Resource:
-    def __init__(self, srcpath: Path, eidr: str):
+    def __init__(self, srcpath: Path):
         self.srcpath = srcpath
-        self.eidr = eidr
         self.type = self._parsetype()
         self.splitname = self._splitname()
         self.studio = self.splitname[0].lower()
@@ -34,6 +37,17 @@ class Resource:
         self.aspectratio = self.splitname[4]
         self.framerate = self.splitname[5]
         self.id = self._genid()
+
+    def video_as_audio(self) -> list["Resource"]:
+        audioresources = []
+        for config in self.audioconfigs:
+            res = Resource(self.srcpath)
+            res.type = "audio"
+            res.audioconfigs = [config]
+            res.language = config[0]
+            res.id = res._genid()
+            audioresources.append(res)
+        return audioresources
 
     def _parsetype(self) -> str:
         match self.srcpath.suffix:
@@ -51,10 +65,10 @@ class Resource:
     def _splitname(self) -> list[str]:
         splitname = self.srcpath.name.split("_")
         if len(splitname) != 7:
-            raise NameError(f"Invalid naming convention: {self.srcpath.name}")
+            raise ValueError(f"Invalid naming convention: {self.srcpath.name}")
         return splitname
 
-    def _language_and_audio(self, audiostr: str) -> list[tuple[str, str, str]]:
+    def _language_and_audio(self, audiostr: str) -> list[tuple[str, str]]:
         if self.type not in ["audio", "video"] or audiostr.lower() == "mos":
             return []
         splitaudio = audiostr.split("-")
@@ -79,11 +93,11 @@ class Resource:
             case "video" | "metadata":
                 end = f"{id_descrip}.{self.type}"
             case "audio":
-                end = f"{id_descrip}.audio.{self.language[:2].lower()}"
+                end = f"{id_descrip}.audio_{self.audioconfigs[0][1]}.{self.language[:2].lower()}"
             case "subtitle":
                 end = f"{id_descrip}.caption.{self.language[:2].lower()}"
             case _:
-                raise TypeError(f"Unable to generate ID, unknown type: {self.type}")
+                raise ValueError(f"Unable to generate ID, unknown type: {self.type}")
 
         return start+end
     
@@ -96,30 +110,80 @@ class Resource:
             return f"season_{self.descriptor[1:]}"
         if re.search(r"S\d\dE\d\d\d$", self.descriptor, re.IGNORECASE) != None:
             return f"episode_{self.descriptor[4:]}"
-        raise TypeError(f"Unable to generate ID, unknown descriptor: {self.descriptor}")
+        raise ValueError(f"Unable to generate ID, unknown descriptor: {self.descriptor}")
 
-class Content:
-    def __init__(self, content_type: str, resourcedir: Path):
-        self.type = content_type
+
+
+class Content(ABC):
+    def __init__(self, title:str, descriptor: str, resourcedir: Path):
+        self.title = title
+        self.descriptor = descriptor
         self.resourcedir = resourcedir
+        self.allresources = self._gather_resources()
+        self.video: Resource
+        self.audio: list[Resource] = []
+        self.subtitles: list[Resource] = []
+        self.metadata: list[Resource] = []
+        self.resdict = {
+            "audio": self.audio,
+            "subtitle": self.subtitles,
+            "metadata": self.metadata
+        }
+        self._parse_resources()
+
+    @abstractmethod
+    def _gather_resources(self) -> list[Resource]:...
+
+    def _parse_resources(self):
+        for res in self.allresources:
+            if res.type == "video":
+                self.video = res
+                continue
+            self.resdict[res.type].append(res)
+        if not self.audio:
+            self.audio = self.video.video_as_audio()
+
+class Feature(Content):
+    def _gather_resources(self) -> list[Resource]:
+        return [Resource(f) for f in self.resourcedir.iterdir() if f.name[0] != "."]        
+
+class Episode(Content):
+    def _gather_resources(self) -> list[Resource]:
+        return [Resource(f) for f in self.resourcedir.iterdir()
+                if f.name[0] != "." and f"{self.title}_{self.descriptor}" in f.name]
+
 
 class Delivery:
     def __init__(self, rootdir: Path):
         self.rootdir: Path = rootdir
         self.resourcesdir: Path = rootdir / "resources"
-        self.mmc: Path = self._get_mmc()
-        self.eidr: str = self.mmc.stem
+        # self.mmc: Path = self._get_mmc()
+        # self.eidr: str = self.mmc.stem
+        self.allfiles: list[Path] = self._parsefiles()
+        self.title = self._parsetitle()
         self.type: str = self._parsetype()
-        self.allfiles: Generator[Path, None, None] = self.resourcesdir.iterdir()
-        self.content: list[Content] = self._get_resources()
+        self.content: list[Content] = self._get_content()
 
-    def _get_mmc(self) -> Path:
-        mmc = [m for m in self.rootdir.iterdir() if m.suffix.lower() == ".xml"]
-        if len(mmc) < 1:
-            raise FileNotFoundError("MMC not found")
-        if len(mmc) > 1:
-            raise ValueError("Multiple xmls detected in root")
-        return mmc[0]
+    # def _get_mmc(self) -> Path:
+    #     mmc = [m for m in self.rootdir.iterdir() if m.suffix.lower() == ".xml"]
+    #     if len(mmc) < 1:
+    #         raise FileNotFoundError("MMC not found")
+    #     if len(mmc) > 1:
+    #         raise ValueError("Multiple xmls detected in root")
+    #     return mmc[0]
+
+    def _parsefiles(self) -> list[Path]:
+        allfiles = [f for f in self.resourcesdir.iterdir()
+                    if f.name[0] != "." and f.suffix in ACCEPTED_FILETYPES]
+        if len(allfiles) < 1:
+            raise FileNotFoundError("No resources found")
+        return allfiles
+
+    def _parsetitle(self) -> str:
+        splitname = self.allfiles[0].name.split("_")
+        if len(splitname) != 7:
+            raise ValueError(f"Invalid naming convention: {self.allfiles[0].name}")
+        return splitname[1]
 
     def _parsetype(self) -> str:
         for f in self.allfiles:
@@ -130,15 +194,16 @@ class Delivery:
                 return "ep"
         raise LookupError("Unable to determine delivery type")
 
-    def _get_resources(self) -> list[Content]:
+    def _get_content(self) -> list[Content]:
         if self.type == "ftr":
-            return [Content("ftr", self.resourcesdir)]
+            return [Feature(self.title, "ftr", self.resourcesdir)]
         episodes = []
         for f in self.allfiles:
             if f.name[0] == ".":
                 continue
             result = RE_EPISODE.search(f.name)
             if result:
-                ep = result.group()
+                ep = result.group()[1:-1]
                 if ep not in episodes:
                     episodes.append(ep)
+        return [Episode(self.title, ep, self.resourcesdir) for ep in episodes]

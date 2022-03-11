@@ -69,15 +69,24 @@ def testfunc():
     print(eidr)
 
 def testfunc2():
-    eidr = get_eidr(testxmldir)
-    resources = list(testresourcedir.iterdir())
-    for f in resources:
-        if f.name[0] == ".":
-            continue
-        r = media.Resource(f,eidr)
-        print(r.id)
+    resources = [media.Resource(f) for f in testresourcedir.iterdir() if f.name[0] != "."]
+    testvid = resources[0]
+    for r in resources:
+        if r.type == "video":
+            testvid = r
+            break
+    newaudio = testvid.video_as_audio()
+    for config in newaudio:
+        print(config.id)
 
-testfunc2()
+def testfunc3():
+    deliv = media.Delivery(testresourcedir.parent)
+    for c in deliv.content:
+        print(c.descriptor)
+        for a in c.allresources:
+            print(a.id)
+
+testfunc3()
 
 
 
