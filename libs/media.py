@@ -136,6 +136,8 @@ class Content(ABC):
             "metadata": self.metadata
         }
         self._parse_resources()
+        id_descrip = f"episode_{self.descriptor[3:]}" if self.descriptor.lower() != "ftr" else "feature"
+        self.presid = f"md:presentationid:{self.title}:{id_descrip}"
 
     @abstractmethod
     def _gather_resources(self) -> list[Resource]:...

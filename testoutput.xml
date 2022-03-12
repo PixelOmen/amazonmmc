@@ -358,4 +358,118 @@
             </manifest:ContainerReference>
         </manifest:Metadata>
     </manifest:Inventory>
+    <manifest:Presentations>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E101">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_101.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_101.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_101.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E102">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_102.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_102.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_102.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E103">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_103.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_103.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_103.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E104">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_104.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_104.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_104.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E105">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_105.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_105.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_105.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E106">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_106.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_106.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_106.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E107">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_107.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_107.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_107.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E108">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:WarAndPeace:spyglass:episode_108.video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:WarAndPeace:spyglass:episode_108.audio_51-20.en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:WarAndPeace:spyglass:episode_108.caption.en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+    </manifest:Presentations>
 </manifest:MediaManifest>

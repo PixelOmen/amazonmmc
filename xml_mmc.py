@@ -2,7 +2,7 @@ import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from libs import inventory, media
+from libs import media, inventory, presentations
 
 currentdir = Path(__file__).parent
 testxmldir = currentdir / "samples"
@@ -55,7 +55,9 @@ def create_root() -> ET.Element:
 
 def testfunc():
     root = create_root()
-    inventory.create(root, CURLYNS, media.Delivery(ep_test_dir.parent))
+    deliv = media.Delivery(ep_test_dir.parent)
+    inventory.create(root, CURLYNS, deliv)
+    presentations.create(root, CURLYNS, deliv)
     output_xml(root, testoutput)
 
 testfunc()

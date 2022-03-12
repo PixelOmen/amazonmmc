@@ -2,7 +2,7 @@ from xml.etree import ElementTree as ET
 
 from . import media
 
-def video(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]):
+def video(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]) -> None:
     for v in resources:
         video_elem = ET.SubElement(inventory, ns["manifest"]+"Video")
         video_elem.set("VideoTrackID", v.id)
@@ -21,7 +21,7 @@ def video(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resour
         hash.set("method", "MD5")
         hash.text = "hash"
 
-def audio(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]):
+def audio(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]) -> None:
     for a in resources:
         audio_elem = ET.SubElement(inventory, ns["manifest"]+"Audio")
         audio_elem.set("AudioTrackID", a.id)
@@ -37,7 +37,7 @@ def audio(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resour
         hash.set("method", "MD5")
         hash.text = "hash"
 
-def subtitle(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]):
+def subtitle(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]) -> None:
     for s in resources:
         framerate = s.framerate[:-1]
         multiplier = "1/1" if len(framerate) == 2 else "1000/1001"
@@ -57,7 +57,7 @@ def subtitle(inventory: ET.Element, ns: dict[str,str], resources: list[media.Res
         hash.set("method", "MD5")
         hash.text = "hash"
 
-def metadata(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]):
+def metadata(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resource]) -> None:
     for m in resources:
         meta_elem = ET.SubElement(inventory, ns["manifest"]+"Metadata")
         meta_elem.set("ContentID", m.id)
@@ -72,7 +72,7 @@ FACTORIES = {
     "metadata": metadata
 }
 
-def create(root: ET.Element, ns: dict[str,str], delivery: media.Delivery):
+def create(root: ET.Element, ns: dict[str,str], delivery: media.Delivery) -> None:
     inventory = ET.SubElement(root, ns["manifest"]+"Inventory")
     for content in delivery.content:
         for key,value in content.resdict.items():
