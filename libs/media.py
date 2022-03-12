@@ -93,8 +93,8 @@ class Resource:
 
     def _genid(self) -> str:
         prefix = ID_PREFIX[self.type]
-        start = f"{prefix}:org:{self.title}:{self.studio.lower()}:"
-        id_descrip = self._id_descriptor()        
+        id_uuid, id_descrip = self._id_descriptors()
+        start = f"{prefix}:org:{self.studio.lower()}:{id_uuid}:"
         match self.type:
             case "video" | "metadata":
                 end = f"{id_descrip}.{self.type}"
@@ -105,16 +105,16 @@ class Resource:
             case _:
                 raise ValueError(f"Unable to generate ID, unknown type: {self.type}")
         return start+end
-    
-    def _id_descriptor(self) -> str:
+
+    def _id_descriptors(self) -> tuple[str,str]:
         if self.descriptor.lower() == "ftr":
-            return "feature"
+            return self.title, "feature"
         if self.descriptor.lower() == "series":
-            return "series"
+            return self.title, "series"
         if re.search(r"S\d\d$", self.descriptor, re.IGNORECASE) != None:
-            return f"season_{self.descriptor[1:]}"
+            return f"{self.title}_{self.descriptor}", "season"
         if re.search(r"S\d\dE\d\d\d$", self.descriptor, re.IGNORECASE) != None:
-            return f"episode_{self.descriptor[4:]}"
+            return f"{self.title}_{self.descriptor}", "episode"
         raise ValueError(f"Unable to generate ID, unknown descriptor: {self.descriptor}")
 
 
@@ -138,6 +138,16 @@ class Content(ABC):
         self._parse_resources()
         id_descrip = f"episode_{self.descriptor[3:]}" if self.descriptor.lower() != "ftr" else "feature"
         self.presid = f"md:presentationid:{self.title}:{id_descrip}"
+        self.expid = f"md:experienceid:{self.title}:{id_descrip}"
+
+    def is_metadata_only(self) -> bool:
+        ismeta = True
+        for key, resources in self.resdict.items():
+            if key == "metadata":
+                continue
+            if resources:
+                ismeta = False
+        return ismeta
 
     @abstractmethod
     def _gather_resources(self) -> list[Resource]:...
@@ -148,8 +158,10 @@ class Content(ABC):
                 self.video.append(res)
                 continue
             self.resdict[res.type].append(res)
-        if not self.audio:
-            self.audio += self.video[0].video_as_audio()
+        if (not self.audio and 
+            re.search(r"S\d\d$", self.descriptor, re.IGNORECASE) == None and
+            re.search(r"S\d\dE\d\d\d$", self.descriptor, re.IGNORECASE == None)):
+                self.audio += self.video[0].video_as_audio()
 
 class Feature(Content):
     def _gather_resources(self) -> list[Resource]:
@@ -158,7 +170,7 @@ class Feature(Content):
 class Episode(Content):
     def _gather_resources(self) -> list[Resource]:
         return [Resource(f) for f in self.resourcedir.iterdir()
-                if f.name[0] != "." and f"{self.title}_{self.descriptor}" in f.name]
+                if f.name[0] != "." and f"{self.title}_{self.descriptor}_" in f.name]
 
 
 class Delivery:
@@ -214,4 +226,11 @@ class Delivery:
                 ep = result.group()[1:-1]
                 if ep not in episodes:
                     episodes.append(ep)
-        return [Episode(self.title, ep, self.resourcesdir) for ep in episodes]
+        alleps: list[Content] = [Episode(self.title, ep, self.resourcesdir) for ep in episodes]
+        allused = [f.srcpath.name for e in alleps for f in e.allresources]
+        for f in self.allfiles:
+            if f.name not in allused:
+                descriptor = f.name.split("_")[2]
+                test = Episode(self.title, descriptor, self.resourcesdir)
+                alleps.append(Episode(self.title, descriptor, self.resourcesdir))
+        return alleps
