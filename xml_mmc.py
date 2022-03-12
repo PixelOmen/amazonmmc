@@ -2,24 +2,23 @@ import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from libs import idgen, media
+from libs import inventory, media
 
 currentdir = Path(__file__).parent
 testxmldir = currentdir / "samples"
 testoutput = currentdir / "testoutput.xml"
 
-testresourcedir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE-EB00-6BC6-153L-M\resources")
+ep_test_dir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE-EB00-6BC6-153L-M\resources")
+ftr_test_dir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE-EB00-6BC6-153L-M_feature\resources")
 
-xmlnspaces = {
+XMLNSPACES = {
     "manifest": "http://www.movielabs.com/schema/manifest/v1.7/manifest",
     "md": "http://www.movielabs.com/schema/md/v2.6/md",
     "xs": "http://www.w3.org/2001/XMLSchema",
     "xsi": "http://www.w3.org/2001/XMLSchema-instance"
 }
 
-curlyns = {}
-for ns in xmlnspaces:
-    curlyns[ns] = "{" + xmlnspaces[ns] + "}"
+CURLYNS = {key:"{"+value+"}" for key,value in XMLNSPACES.items()}
 
 # indent function adds newlines and tabs to xml so it's not all on 1 line
 # pass root element into function
@@ -43,50 +42,23 @@ def output_xml(root, outputpath, encodingtype="UTF-8", xmldecl=True):
     tree = ET.ElementTree(root)
     tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
 
-def get_eidr(xmlpath: Path=...) -> str:
-    if xmlpath is ...:
-        xmlpath = currentdir 
-    for f in xmlpath.iterdir():
-        if f.suffix.lower() == ".xml":
-            return f.stem
-    raise FileNotFoundError("Unable to locate MMC")
-
 # xmlns definitions are only added to the top once they are used
 def create_root() -> ET.Element:
-    for ns in xmlnspaces:
-        ET.register_namespace(ns, xmlnspaces[ns])
-    root = ET.Element(curlyns["manifest"]+"MediaManifest")
-    compatibility = ET.SubElement(root, curlyns["manifest"]+"Compatibility")
-    ET.SubElement(compatibility, curlyns["manifest"]+"SpecVersion").text = "1.5"
-    ET.SubElement(compatibility, curlyns["manifest"]+"Profile").text = "MMC-1"
+    for ns in XMLNSPACES:
+        ET.register_namespace(ns, XMLNSPACES[ns])
+    root = ET.Element(CURLYNS["manifest"]+"MediaManifest")
+    compatibility = ET.SubElement(root, CURLYNS["manifest"]+"Compatibility")
+    ET.SubElement(compatibility, CURLYNS["manifest"]+"SpecVersion").text = "1.5"
+    ET.SubElement(compatibility, CURLYNS["manifest"]+"Profile").text = "MMC-1"
     return root
 
 
 def testfunc():
-    eidr = get_eidr(testxmldir)
     root = create_root()
+    inventory.create(root, CURLYNS, media.Delivery(ep_test_dir.parent))
     output_xml(root, testoutput)
-    print(eidr)
 
-def testfunc2():
-    resources = [media.Resource(f) for f in testresourcedir.iterdir() if f.name[0] != "."]
-    testvid = resources[0]
-    for r in resources:
-        if r.type == "video":
-            testvid = r
-            break
-    newaudio = testvid.video_as_audio()
-    for config in newaudio:
-        print(config.id)
-
-def testfunc3():
-    deliv = media.Delivery(testresourcedir.parent)
-    for c in deliv.content:
-        print(c.descriptor)
-        for a in c.allresources:
-            print(a.id)
-
-testfunc3()
+testfunc()
 
 
 

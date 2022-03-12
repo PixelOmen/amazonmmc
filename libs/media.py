@@ -1,20 +1,12 @@
 import re
 from pathlib import Path
-from typing import Generator
 from abc import ABC, abstractmethod
-
-from . import inventory
-
-FACTORIES = {
-    "audio": inventory.audio,
-    "video": inventory.video,
-    "subtitle": inventory.subtitle,
-    "metadata": inventory.metadata
-}
 
 RE_EPISODE = re.compile(r"_S\d\dE\d\d\d_", re.IGNORECASE)
 
 ACCEPTED_FILETYPES = [".mov", ".scc", ".wav", ".xml"]
+
+VIDEO_FILETYPES = [".mov"]
 
 ID_PREFIX = {
     "audio": "md:audtrackid",
@@ -33,9 +25,16 @@ class Resource:
         self.title = self.splitname[1]
         self.descriptor = self.splitname[2]
         self.audioconfigs = self._language_and_audio(self.splitname[3])
-        self.language = self.splitname[3] if not self.audioconfigs and self.type != "metadata" else ""
-        self.aspectratio = self.splitname[4]
-        self.framerate = self.splitname[5]
+        if not self.audioconfigs and self.type != "metadata":
+            self.language = self.splitname[3]
+        elif self.type == "video":
+            self.language = self.audioconfigs[0][0]
+        resolution = self.splitname[4]
+        if resolution.lower() != "na":
+            resolution = resolution.replace("X", "x")
+            self.resolution = tuple(resolution.split("x"))
+        self.aspectratio = self.splitname[5]
+        self.framerate = self.splitname[6]
         self.id = self._genid()
 
     def video_as_audio(self) -> list["Resource"]:
@@ -64,31 +63,38 @@ class Resource:
 
     def _splitname(self) -> list[str]:
         splitname = self.srcpath.name.split("_")
-        if len(splitname) != 7:
+        if len(splitname) != 8:
             raise ValueError(f"Invalid naming convention: {self.srcpath.name}")
         return splitname
+
+    # ----- Multitrack/Multilanguage names -------------------------------------
+    # def _language_and_audio(self, audiostr: str) -> list[tuple[str, str]]:
+    #     if self.type not in ["audio", "video"] or audiostr.lower() == "mos":
+    #         return []
+    #     splitaudio = audiostr.split("-")
+    #     audioconfigs = []
+    #     start = 0
+    #     end = 3
+    #     for _ in range(int(len(splitaudio)/3)):
+    #         group = splitaudio[start:end]
+    #         lan = f"{group[0]}-{group[1]}"
+    #         audio = group[2]
+    #         audioconfigs.append((lan, audio))
+    #         start = end
+    #         end += 3
+    #     return audioconfigs
 
     def _language_and_audio(self, audiostr: str) -> list[tuple[str, str]]:
         if self.type not in ["audio", "video"] or audiostr.lower() == "mos":
             return []
         splitaudio = audiostr.split("-")
-        audioconfigs = []
-        start = 0
-        end = 3
-        for _ in range(int(len(splitaudio)/3)):
-            group = splitaudio[start:end]
-            lan = f"{group[0]}-{group[1]}"
-            audio = group[2]
-            audioconfigs.append((lan, audio))
-            start = end
-            end += 3
-        return audioconfigs
+        audioconfig = ("-".join(splitaudio[:2]), "-".join(splitaudio[2:]))
+        return [audioconfig]
 
     def _genid(self) -> str:
         prefix = ID_PREFIX[self.type]
         start = f"{prefix}:org:{self.title}:{self.studio.lower()}:"
-        id_descrip = self._id_descriptor()
-        
+        id_descrip = self._id_descriptor()        
         match self.type:
             case "video" | "metadata":
                 end = f"{id_descrip}.{self.type}"
@@ -98,7 +104,6 @@ class Resource:
                 end = f"{id_descrip}.caption.{self.language[:2].lower()}"
             case _:
                 raise ValueError(f"Unable to generate ID, unknown type: {self.type}")
-
         return start+end
     
     def _id_descriptor(self) -> str:
@@ -120,11 +125,12 @@ class Content(ABC):
         self.descriptor = descriptor
         self.resourcedir = resourcedir
         self.allresources = self._gather_resources()
-        self.video: Resource
+        self.video: list[Resource] = []
         self.audio: list[Resource] = []
         self.subtitles: list[Resource] = []
         self.metadata: list[Resource] = []
         self.resdict = {
+            "video": self.video,
             "audio": self.audio,
             "subtitle": self.subtitles,
             "metadata": self.metadata
@@ -137,11 +143,11 @@ class Content(ABC):
     def _parse_resources(self):
         for res in self.allresources:
             if res.type == "video":
-                self.video = res
+                self.video.append(res)
                 continue
             self.resdict[res.type].append(res)
         if not self.audio:
-            self.audio = self.video.video_as_audio()
+            self.audio += self.video[0].video_as_audio()
 
 class Feature(Content):
     def _gather_resources(self) -> list[Resource]:
@@ -181,7 +187,7 @@ class Delivery:
 
     def _parsetitle(self) -> str:
         splitname = self.allfiles[0].name.split("_")
-        if len(splitname) != 7:
+        if len(splitname) != 8:
             raise ValueError(f"Invalid naming convention: {self.allfiles[0].name}")
         return splitname[1]
 

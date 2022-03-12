@@ -1,7 +1,361 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.7/manifest">
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.7/manifest" xmlns:md="http://www.movielabs.com/schema/md/v2.6/md">
     <manifest:Compatibility>
         <manifest:SpecVersion>1.5</manifest:SpecVersion>
         <manifest:Profile>MMC-1</manifest:Profile>
     </manifest:Compatibility>
+    <manifest:Inventory>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_101.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_101.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_101.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_101.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_102.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_102.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_102.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_102.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_103.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_103.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_103.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_103.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_104.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_104.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_104.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_104.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_105.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_105.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_105.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_105.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_106.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_106.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_106.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_106.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_107.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_107.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_107.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_107.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:WarAndPeace:spyglass:episode_108.video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:WarAndPeace:spyglass:episode_108.audio_51-20.en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:WarAndPeace:spyglass:episode_108.caption.en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_EN-US_NA_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:WarAndPeace:spyglass:episode_108.metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_MOS_NA_16x9_25i_185.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+    </manifest:Inventory>
 </manifest:MediaManifest>
