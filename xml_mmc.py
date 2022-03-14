@@ -2,7 +2,15 @@ import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from libs import media, inventory, presentations
+from libs import media, inventory, presentations, experiences
+
+# Naming convention:
+# Vendor_Title_Descriptor_Audio_Resolution_AspectCanvas_Framerate_Note
+# Descriptor = FTR, S01E101, S01, SERIES
+# Audio = EN-US-51-20
+# Resolution = 1920x1080
+# AspectCanvas = 16x9, 4x3
+# Framerate = 25i, 2398p
 
 currentdir = Path(__file__).parent
 testxmldir = currentdir / "samples"
@@ -58,6 +66,7 @@ def testfunc():
     deliv = media.Delivery(ep_test_dir.parent)
     inventory.create(root, CURLYNS, deliv)
     presentations.create(root, CURLYNS, deliv)
+    experiences.create(root, CURLYNS, deliv)
     output_xml(root, testoutput)
 
 testfunc()

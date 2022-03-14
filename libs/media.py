@@ -12,7 +12,8 @@ ID_PREFIX = {
     "audio": "md:audtrackid",
     "video": "md:vidtrackid",
     "subtitle": "md:subtrackid",
-    "metadata": "md:cid"
+    "metadata": "md:cid",
+    "experience": "md:experienceid"
 }
 
 
@@ -136,9 +137,8 @@ class Content(ABC):
             "metadata": self.metadata
         }
         self._parse_resources()
-        id_descrip = f"episode_{self.descriptor[3:]}" if self.descriptor.lower() != "ftr" else "feature"
-        self.presid = f"md:presentationid:{self.title}:{id_descrip}"
-        self.expid = f"md:experienceid:{self.title}:{id_descrip}"
+        self.presid = f"md:presentationid:{self.title}_{self.descriptor}"
+        self.expid = f"md:experienceid:{self.title}_{self.descriptor}"
 
     def is_metadata_only(self) -> bool:
         ismeta = True
@@ -177,20 +177,12 @@ class Delivery:
     def __init__(self, rootdir: Path):
         self.rootdir: Path = rootdir
         self.resourcesdir: Path = rootdir / "resources"
-        # self.mmc: Path = self._get_mmc()
-        # self.eidr: str = self.mmc.stem
         self.allfiles: list[Path] = self._parsefiles()
         self.title = self._parsetitle()
         self.type: str = self._parsetype()
         self.content: list[Content] = self._get_content()
+        self.seasonmeta, self.seriesmeta = self._get_deliv_meta()
 
-    # def _get_mmc(self) -> Path:
-    #     mmc = [m for m in self.rootdir.iterdir() if m.suffix.lower() == ".xml"]
-    #     if len(mmc) < 1:
-    #         raise FileNotFoundError("MMC not found")
-    #     if len(mmc) > 1:
-    #         raise ValueError("Multiple xmls detected in root")
-    #     return mmc[0]
 
     def _parsefiles(self) -> list[Path]:
         allfiles = [f for f in self.resourcesdir.iterdir()
@@ -231,6 +223,20 @@ class Delivery:
         for f in self.allfiles:
             if f.name not in allused:
                 descriptor = f.name.split("_")[2]
-                test = Episode(self.title, descriptor, self.resourcesdir)
                 alleps.append(Episode(self.title, descriptor, self.resourcesdir))
         return alleps
+
+    def _get_deliv_meta(self) -> tuple[Content, Content]:
+        season = ""
+        series = ""
+        for c in self.content:
+            if c.is_metadata_only():
+                if c.descriptor.lower() == "series":
+                    series = c
+                else:
+                    season = c
+        if not season:
+            raise FileNotFoundError("Unable to locate season metadata")
+        if not series:
+            raise FileNotFoundError("Unable to locate series metadata")
+        return season, series

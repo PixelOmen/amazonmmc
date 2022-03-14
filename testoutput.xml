@@ -369,7 +369,7 @@
         </manifest:Metadata>
     </manifest:Inventory>
     <manifest:Presentations>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E101">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E101">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -383,7 +383,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E102">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E102">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -397,7 +397,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E103">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E103">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -411,7 +411,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E104">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E104">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -425,7 +425,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E105">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E105">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -439,7 +439,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E106">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E106">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -453,7 +453,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E107">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E107">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -467,7 +467,7 @@
                 </manifest:SubtitleTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
-        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace:episode_E108">
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_S01E108">
             <manifest:TrackMetadata>
                 <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
                 <manifest:VideoTrackReference>
@@ -482,4 +482,140 @@
             </manifest:TrackMetadata>
         </manifest:Presentation>
     </manifest:Presentations>
+    <manifest:Experiences>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E101" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E101:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E101:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E101</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E102" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E102:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E102:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E102</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E103" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E103:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E103:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E103</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E104" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E104:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E104:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E104</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E105" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E105:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E105:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E105</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E106" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E106:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E106:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E106</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E107" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E107:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E107:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E107</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01E108" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01E108:episode.metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:org:spyglass:WarAndPeace_S01E108:episode.metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_S01E108</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_S01" version="1.0">
+            <manifest:Language>EN-US</manifest:Language>
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace_S01:season.metadata</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E101</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>2</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E102</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>3</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E103</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>4</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E104</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>5</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E105</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>6</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E106</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>7</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E107</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>8</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_S01E108</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_SERIES">
+            <manifest:ContentID>md:cid:org:spyglass:WarAndPeace:series.metadata</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isseasonof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:cid:org:spyglass:WarAndPeace_S01:season.metadata</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+    </manifest:Experiences>
 </manifest:MediaManifest>
