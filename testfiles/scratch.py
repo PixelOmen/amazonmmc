@@ -14,3 +14,15 @@
 #     newfilename = f.name.replace(f"_MOS1920x1080NA_", f"_MOS_NA_")
 #     newpath = f.parent / newfilename
 #     os.rename(str(f), str(newpath))
+
+
+class Someclass:
+    def __init__(self, takeinput):
+        self.random = takeinput
+
+
+x = Someclass(10)
+
+match x:
+    case Someclass():
+        print("still yup")

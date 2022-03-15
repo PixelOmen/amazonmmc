@@ -1,9 +1,12 @@
 from pathlib import Path
 from dataclasses import dataclass
+from abc import ABC, abstractmethod
+from xml.etree import ElementTree as ET
 
 @dataclass
-class MECData:
+class MECData(ABC):
     type: str
+    title: str
     id: str
     genres: list[str]
     releaseyear: str
@@ -15,18 +18,43 @@ class MECData:
     people: list[dict[str,str]]
     companycredits: list[dict[str,str]]
 
+    @property
+    @abstractmethod
+    def descriptor(self) -> str:...
+
+@dataclass
+class FeatureData(MECData):
+    
+    @property
+    def descriptor(self) -> str:
+        return self.type
+
 @dataclass
 class SeriesData(MECData):
     seasons: list[str]
 
-@dataclass
-class SeasonData(MECData):
-    episodes: list[str]
+    @property
+    def descriptor(self) -> str:
+        return self.type
 
 @dataclass
-class EpData(MECData):
+class SeasonData(MECData):
+    season: str
+    episodes: list[str]
+
+    @property
+    def descriptor(self) -> str:
+        return self.season
+
+@dataclass
+class EpisodeData(MECData):
+    episode: str
     releasedate: str
     resources: list[dict[str,str]]
+
+    @property
+    def descriptor(self) -> str:
+        return self.episode
 
 
 def read_data(datapath: Path) -> list[str]:
@@ -81,3 +109,24 @@ def parse_multicell(keys: list[str], splitline: list[str], multiindex: int) -> d
     linedict[keys[multiindex]] = valuelist
     return linedict
 
+# indent function adds newlines and tabs to xml so it's not all on 1 line
+# pass root element into function
+def indent(elem: ET.Element, level: int=0, spaces: int=4):
+    i = "\n" + level*(" "*spaces)
+    if len(elem):
+        if not elem.text or not elem.text.strip():
+            elem.text = i + (" "*spaces)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+        for elem in elem:
+            indent(elem, level+1)
+        if not elem.tail or not elem.tail.strip():
+            elem.tail = i
+    else:
+        if level and (not elem.tail or not elem.tail.strip()):
+            elem.tail = i
+
+def output_xml(root, outputpath, encodingtype="UTF-8", xmldecl=True):
+    indent(root)
+    tree = ET.ElementTree(root)
+    tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
