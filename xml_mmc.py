@@ -2,19 +2,11 @@ import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from libs import media, inventory, presentations, experiences, dataparser
-
-# Naming convention:
-# Vendor_Title_Descriptor_Audio_Resolution_AspectCanvas_Framerate_Note
-# Descriptor = FTR, S01E101, S01, SERIES
-# Audio = EN-US-51-20
-# Resolution = 1920x1080
-# AspectCanvas = 16x9, 4x3
-# Framerate = 25i, 2398p
+from libs import media, inventory, presentations, experiences, mec
 
 currentdir = Path(__file__).parent
-testxmldir = currentdir / "samples"
-testoutput = currentdir / "testoutput.xml"
+test_mmc_output = currentdir / "testfiles" / "test_mmc_output.xml"
+test_mec_output = currentdir / "testfiles" / "test_mec_output.xml"
 
 ep_test_dir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE-EB00-6BC6-153L-M\resources")
 ftr_test_dir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE-EB00-6BC6-153L-M_feature\resources")
@@ -67,12 +59,17 @@ def testfunc():
     inventory.create(root, CURLYNS, deliv)
     presentations.create(root, CURLYNS, deliv)
     experiences.create(root, CURLYNS, deliv)
-    output_xml(root, testoutput)
+    output_xml(root, test_mmc_output)
 
 def testfunc2():
-    deliv = dataparser.Delivery(ep_test_dir.parent)
+    deliv = media.Delivery(ep_test_dir.parent)
+    print(deliv.series.ratings)
 
-testfunc2()
+def testfunc3():
+    root = mec.root()
+    output_xml(root, test_mec_output)
+
+testfunc3()
 
 
 

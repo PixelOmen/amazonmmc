@@ -14,16 +14,3 @@
 #     newfilename = f.name.replace(f"_MOS1920x1080NA_", f"_MOS_NA_")
 #     newpath = f.parent / newfilename
 #     os.rename(str(f), str(newpath))
-
-from dataclasses import dataclass
-
-class Data:
-    pass
-
-d1 = Data()
-d2 = Data()
-
-d1.__setattr__("newdata", 10)
-d2.__setattr__("newdata", 20)
-
-print(d1.newdata)
