@@ -68,23 +68,6 @@ class Resource:
             raise ValueError(f"Invalid naming convention: {self.srcpath.name}")
         return splitname
 
-    # ----- Multitrack/Multilanguage names -------------------------------------
-    # def _language_and_audio(self, audiostr: str) -> list[tuple[str, str]]:
-    #     if self.type not in ["audio", "video"] or audiostr.lower() == "mos":
-    #         return []
-    #     splitaudio = audiostr.split("-")
-    #     audioconfigs = []
-    #     start = 0
-    #     end = 3
-    #     for _ in range(int(len(splitaudio)/3)):
-    #         group = splitaudio[start:end]
-    #         lan = f"{group[0]}-{group[1]}"
-    #         audio = group[2]
-    #         audioconfigs.append((lan, audio))
-    #         start = end
-    #         end += 3
-    #     return audioconfigs
-
     def _language_and_audio(self, audiostr: str) -> list[tuple[str, str]]:
         if self.type not in ["audio", "video"] or audiostr.lower() == "mos":
             return []

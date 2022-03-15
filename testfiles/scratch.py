@@ -15,8 +15,15 @@
 #     newpath = f.parent / newfilename
 #     os.rename(str(f), str(newpath))
 
+from dataclasses import dataclass
 
-test = ""
+class Data:
+    pass
 
-if not test:
-    print("yup")
+d1 = Data()
+d2 = Data()
+
+d1.__setattr__("newdata", 10)
+d2.__setattr__("newdata", 20)
+
+print(d1.newdata)

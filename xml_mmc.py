@@ -2,7 +2,7 @@ import time
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from libs import media, inventory, presentations, experiences
+from libs import media, inventory, presentations, experiences, dataparser
 
 # Naming convention:
 # Vendor_Title_Descriptor_Audio_Resolution_AspectCanvas_Framerate_Note
@@ -69,7 +69,10 @@ def testfunc():
     experiences.create(root, CURLYNS, deliv)
     output_xml(root, testoutput)
 
-testfunc()
+def testfunc2():
+    deliv = dataparser.Delivery(ep_test_dir.parent)
+
+testfunc2()
 
 
 
