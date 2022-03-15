@@ -60,7 +60,7 @@ class EpisodeData(MECData):
 def read_data(datapath: Path) -> list[str]:
     with open(str(datapath), "r", encoding="utf-8") as fp:
         maindata_lines = fp.readlines()
-    return maindata_lines
+    return [l.strip("\r\n") for l in maindata_lines]
 
 def find_index(data: list[str], key: str) -> int:
     for index,line in enumerate(data):

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mdmec:CoreMetadata xmlns:md="http://www.movielabs.com/schema/md/v2.6/md" xmlns:mdmec="http://www.movielabs.com/schema/mdmec/v2.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.8 mdmec-v2.8.xsd">
+    <mdmec:Basic ContentID="md:cid:org:SPYGLASS:WarAndPeace_SeriesID">
+        <md:LocalizedInfo languange="en-US">
+            <md:TitleDisplayUnlimited>War And Peace</md:TitleDisplayUnlimited>
+            <md:TitleSort />
+            <md:Summary190 />
+            <md:Summary400>It's 1962, America has lost WWII, the east is the Greater Nazi Reich and the west, the Japanese Pacific States. Amidst this oppression there is new hope - films that seem to show a different world. When her sister gives her a film and is then murdered, a woman comes to believe the films hold the key to freedom and becomes obsessed with finding their mysterious guardian, The Man in the High Castle.</md:Summary400>
+            <md:Genre id="av_genre_drama" />
+            <md:Genre id="av_subgenre_drama_suspense" />
+            <md:Genre id="av_subgenre_drama_historical" />
+        </md:LocalizedInfo>
+        <md:LocalizedInfo languange="de-DE ">
+            <md:TitleDisplayUnlimited>Manhattan</md:TitleDisplayUnlimited>
+            <md:TitleSort />
+            <md:Summary190 />
+            <md:Summary400>1962. Deutschland und Japan haben den Krieg gewonnen und Amerika unter sich aufgeteilt. In den Japanischen Pazifikstaaten wird Juliana Crains Schwester Trudy auf der Straße erschossen, kurz nachdem sie ihr eine mysteriöse Filmrolle übergeben hat. Währenddessen schließt sich im Großdeutschen Reich an der Ostküste der junge Joe Blake dem Widerstand an.</md:Summary400>
+        </md:LocalizedInfo>
+        <md:ReleaseYear>2015</md:ReleaseYear>
+        <md:WorkType>series</md:WorkType>
+        <md:AltIdentifier>
+            <md:Namespace>ORG</md:Namespace>
+            <md:Identifier>WarAndPeace_SeriesID</md:Identifier>
+        </md:AltIdentifier>
+        <md:AltIdentifier>
+            <md:Namespace>IMDB</md:Namespace>
+            <md:Identifier>tt4518589</md:Identifier>
+        </md:AltIdentifier>
+        <md:RatingSet>
+            <md:Rating>
+                <md:Region>
+                    <md:country>US</md:country>
+                </md:Region>
+                <md:System>TVPG</md:System>
+                <md:Value>TV-MA</md:Value>
+            </md:Rating>
+            <md:Rating>
+                <md:Region>
+                    <md:country>DE</md:country>
+                </md:Region>
+                <md:System>FSK</md:System>
+                <md:Value>12</md:Value>
+            </md:Rating>
+        </md:RatingSet>
+        <md:OriginalLanguage>en-US</md:OriginalLanguage>
+        <md:AssociateOrg organizationID="Spyglass" role="licensor" />
+    </mdmec:Basic>
+    <mdmec:CompanyDisplayCredit>
+        <md:DisplayString language="en-US">Amazon Studios</md:DisplayString>
+    </mdmec:CompanyDisplayCredit>
+</mdmec:CoreMetadata>
