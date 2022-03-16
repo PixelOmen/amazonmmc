@@ -29,7 +29,7 @@ def audio(inventory: ET.Element, ns: dict[str,str], resources: list[media.Resour
         encoding = ET.SubElement(audio_elem, ns["md"]+"Encoding")
         ET.SubElement(encoding, ns["md"]+"Codec").text = "PCM"
         language = ET.SubElement(audio_elem, ns["md"]+"Language")
-        language.set("dubbed", "false")
+        language.set("dubbed", "true")
         language.text = a.language
         container = ET.SubElement(audio_elem, ns["manifest"]+"ContainerReference")
         ET.SubElement(container, ns["manifest"]+"ContainerLocation").text = f"file://resources/{a.srcpath.name}"

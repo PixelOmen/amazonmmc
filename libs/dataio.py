@@ -208,5 +208,42 @@ def parse_season(seasonfile: Path):
         companycredits=companycredits,
     )
 
-def parse_episode():
-    pass
+def parse_episode(episodefile: Path):
+    episode_data = read_data(episodefile)
+    parentid = episode_data[find_index(episode_data, "parentid")].split(";")[1]
+    title = episode_data[find_index(episode_data, "title")].split(";")[1]
+    id = episode_data[find_index(episode_data, "id")].split(";")[1]
+    episode = episode_data[find_index(episode_data, "episode")].split(";")[1]
+    sequence = episode_data[find_index(episode_data, "sequence")].split(";")[1]
+    genres = episode_data[find_index(episode_data, "genres")].split(";")[1:]
+    releaseyear = episode_data[find_index(episode_data, "releaseyear")].split(";")[1]
+    releasedate = episode_data[find_index(episode_data, "releasedate")].split(";")[1]
+    origlanguage = episode_data[find_index(episode_data, "originallanguage")].split(";")[1]
+    orgid = episode_data[find_index(episode_data, "organizationid")].split(";")[1]
+    releasehistory = parse_multiline(episode_data, find_index(episode_data, "releasehistory"))
+    localizedinfo = parse_multiline(episode_data, find_index(episode_data, "localizedinfo"))
+    altids = parse_multiline(episode_data, find_index(episode_data, "altids"))
+    ratings = parse_multiline(episode_data, find_index(episode_data, "ratings"))
+    people = parse_multiline(episode_data, find_index(episode_data, "people"), 2)
+    companycredits = parse_multiline(episode_data, find_index(episode_data, "companycredits"))
+    resources = parse_multiline(episode_data, find_index(episode_data, "resources"))
+    return EpisodeData(
+        type="episode",
+        title=title,
+        parentid=parentid,
+        id=id,
+        episode=episode,
+        sequence=sequence,
+        genres=genres,
+        releaseyear=releaseyear,
+        releasedate=releasedate,
+        releasehistory=releasehistory,
+        orgid=orgid,
+        origlanguage=origlanguage,
+        localizedinfo=localizedinfo,
+        altids=altids,
+        ratings=ratings,
+        people=people,
+        companycredits=companycredits,
+        resources=resources
+    )

@@ -33,9 +33,8 @@ PARSERS = {
 @dataclass
 class Resource:
     type: str
-    id: str
     srcpath: Path
-    language: str = ""
+    language: str
     codec: str = ""
     framerate: str = ""
     aspectratio: str = ""
@@ -50,8 +49,8 @@ class ResourceGroup:
         self.children = self._gather_children()
 
     def output_mec(self):
-        outputname = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
-        outputpath = testdir / outputname
+        self.mec = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
+        outputpath = testdir / self.mec
         coreroot = mec.create(self.coredata)
         dataio.output_xml(coreroot, outputpath)
         for child in self.children:
@@ -61,14 +60,19 @@ class ResourceGroup:
         if self.coredata.type == "feature" or self.coredata.type == "episode":
             return []
         if self.coredata.type == "series":
-            seriesdata = cast(dataio.SeriesData, self.coredata)
-            seasons = [s for s in seriesdata.seasons if s != ""]
-            seasondatafiles = [s for s in self.datadir.iterdir() if s.stem.split("_")[0].lower() == "season" and s.stem.split("_")[1] in seasons]
+            seasondata = cast(dataio.SeriesData, self.coredata)
+            seasons = [s.lower() for s in seasondata.seasons if s != ""]
+            seasondatafiles = [s for s in self.datadir.iterdir() if s.stem.split("_")[0].lower() == "season" and s.stem.split("_")[1].lower() in seasons]
             if len(seasons) != len(seasondatafiles):
                 raise FileNotFoundError("Number of Season data files does not match seasons listed in Series data")
             return [ResourceGroup(PARSERS["season"](s), self.rootdir) for s in seasondatafiles]
         if self.coredata.type == "season":
-            return []
+            seasondata = cast(dataio.SeasonData, self.coredata)
+            episodes = [e.lower() for e in seasondata.episodes if e != ""]
+            episodedatafiles = [e for e in self.datadir.iterdir() if e.stem.split("_")[0].lower() == "episode" and e.stem.split("_")[1].lower() in episodes]
+            if len(episodes) != len(episodedatafiles):
+                raise FileNotFoundError("Number of Episode data files does not match episodes listed in Season data")
+            return [ResourceGroup(PARSERS["episode"](e), self.rootdir) for e in episodedatafiles]
         raise FileNotFoundError("Bad coredata type")
         
 

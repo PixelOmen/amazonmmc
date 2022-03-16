@@ -43,6 +43,12 @@ def create(data: dataio.MECData) -> ET.Element:
     if data.type == "episode":
         epdata = cast(dataio.EpisodeData, data)
         ET.SubElement(basic_elem, NS["md"]+"ReleaseDate").text = epdata.releasedate
+        for history in epdata.releasehistory:
+            history_elem = ET.SubElement(basic_elem, NS["md"]+"ReleaseHistory")
+            ET.SubElement(history_elem, NS["md"]+"ReleaseType").text = history["type"]
+            territory_elem = ET.SubElement(history_elem, NS["md"]+"DistrTerritory")
+            ET.SubElement(territory_elem, NS["md"]+"country").text = history["territory"]
+            ET.SubElement(history_elem, NS["md"]+"Date").text = history["date"]
 
     ET.SubElement(basic_elem, NS["md"]+"WorkType").text = data.type.lower()
     for alt in data.altids:

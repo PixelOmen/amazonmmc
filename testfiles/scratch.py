@@ -15,14 +15,6 @@
 #     newpath = f.parent / newfilename
 #     os.rename(str(f), str(newpath))
 
+testinfo = "25DF"
 
-class Someclass:
-    def __init__(self, takeinput):
-        self.random = takeinput
-
-
-x = Someclass(10)
-
-match x:
-    case Someclass():
-        print("still yup")
+print("df" in testinfo.lower())
