@@ -63,12 +63,13 @@ class ResourceGroup:
         if self.coredata.type == "series":
             seriesdata = cast(dataio.SeriesData, self.coredata)
             seasons = [s for s in seriesdata.seasons if s != ""]
-            test = [s for s in self.datadir.iterdir()]
-            seasondatafiles = [s for s in self.datadir.iterdir() if s.name.split("_")[0].lower() == "season"]
+            seasondatafiles = [s for s in self.datadir.iterdir() if s.stem.split("_")[0].lower() == "season" and s.stem.split("_")[1] in seasons]
             if len(seasons) != len(seasondatafiles):
                 raise FileNotFoundError("Number of Season data files does not match seasons listed in Series data")
             return [ResourceGroup(PARSERS["season"](s), self.rootdir) for s in seasondatafiles]
-        return []
+        if self.coredata.type == "season":
+            return []
+        raise FileNotFoundError("Bad coredata type")
         
 
 class Delivery:
