@@ -1,5 +1,6 @@
-from xml.etree import ElementTree as ET
+from re import M
 from typing import cast
+from xml.etree import ElementTree as ET
 
 from . import dataio
 
@@ -56,16 +57,44 @@ def create(data: dataio.MECData) -> ET.Element:
         ET.SubElement(region_elem, NS["md"]+"country").text = rat["country"]
         ET.SubElement(subrat_elem, NS["md"]+"System").text = rat["system"]
         ET.SubElement(subrat_elem, NS["md"]+"Value").text = rat["value"]
+
+    if data.type != "series":
+        peopledata = cast(dataio.FeatureData, data)
+        for person in peopledata.people:
+            people_elem = ET.SubElement(basic_elem, NS["md"]+"People")
+            job_elem = ET.SubElement(people_elem, NS["md"]+"Job")
+            ET.SubElement(job_elem, NS["md"]+"JobFunction").text = person["job"]
+            ET.SubElement(job_elem, NS["md"]+"BillingBlockOrder").text = person["billingorder"]
+            name_elem = ET.SubElement(people_elem, NS["md"]+"Name")
+            for regionnames in person["names"]:
+                if regionnames == "":
+                    continue
+                splitname = regionnames.split(",")
+                region = splitname[0]
+                name = splitname[1]
+                displayname_elem = ET.SubElement(name_elem, NS["md"]+"DisplayName")
+                displayname_elem.set("language", region)
+                displayname_elem.text = name
+
     
     ET.SubElement(basic_elem, NS["md"]+"OriginalLanguage").text = data.origlanguage
     assorg_elem = ET.SubElement(basic_elem, NS["md"]+"AssociateOrg")
     assorg_elem.set("organizationID", data.orgid)
     assorg_elem.set("role", "licensor")
 
+    if data.type == "episode" or data.type == "season":
+        seqdata = cast(dataio.EpisodeData, data) if data.type == "episode" else cast(dataio.SeasonData, data)
+        relationship = "isepisodeof" if data.type == "episode" else "isseasonof"
+        seq_elem = ET.SubElement(basic_elem, NS["md"]+"SequenceInfo")
+        ET.SubElement(seq_elem, NS["md"]+"Number").text = seqdata.sequence
+        parent_elem = ET.SubElement(seq_elem, NS["md"]+"Parent")
+        parent_elem.set("relationshipType", relationship)
+        ET.SubElement(parent_elem, NS["md"]+"ParentContentID").text = seqdata.parentid
+
     compcredit_elem = ET.SubElement(root, NS["mdmec"]+"CompanyDisplayCredit")
     for comp in data.companycredits:
         display_elem = ET.SubElement(compcredit_elem, NS["md"]+"DisplayString")
         display_elem.set("language", comp["language"])
         display_elem.text = comp["credit"]
-        
+
     return root

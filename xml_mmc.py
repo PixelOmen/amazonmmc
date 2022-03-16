@@ -1,8 +1,6 @@
-import time
 from pathlib import Path
-from xml.etree import ElementTree as ET
 
-from libs import media, dataio
+from libs import media
 
 currentdir = Path(__file__).parent
 test_mmc_output = currentdir / "testfiles" / "test_mmc_output.xml"
@@ -14,11 +12,11 @@ ftr_test_dir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE
 
 def testfunc2():
     deliv = media.Delivery(ep_test_dir.parent)
-    print(deliv.coregroup.coredata.localizedinfo)
+    print(deliv.resources.coredata.localizedinfo)
 
 def testfunc3():
     deliv = media.Delivery(ep_test_dir.parent)
-    deliv.coregroup.output_mec()
+    deliv.resources.output_mec()
 
 testfunc3()
 
