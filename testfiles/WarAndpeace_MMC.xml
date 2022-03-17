@@ -1,0 +1,646 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.7/manifest" xmlns:md="http://www.movielabs.com/schema/md/v2.6/md">
+    <manifest:Compatibility>
+        <manifest:SpecVersion>1.5</manifest:SpecVersion>
+        <manifest:Profile>MMC-1</manifest:Profile>
+    </manifest:Compatibility>
+    <manifest:Inventory>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E101_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E102_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E103_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E103_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E104_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E104_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E105_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E105_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E106_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E106_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E107_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:WarAndPeace_EpisodeID:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:WarAndPeace_EpisodeID:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
+            <md:Format>SDH</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E108_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E108_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_SeasonID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Metadata ContentID="md:cid:WarAndPeace_SeriesID:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndpeace_SERIES_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+    </manifest:Inventory>
+    <manifest:Presentations>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:WarAndPeace_EpisodeID">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:WarAndPeace_EpisodeID:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:WarAndPeace_EpisodeID:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:WarAndPeace_EpisodeID:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+    </manifest:Presentations>
+    <manifest:Experiences>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_EpisodeID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_EpisodeID:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:WarAndPeace_EpisodeID:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:WarAndPeace_EpisodeID</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_SeasonID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_SeasonID:metadata</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>2</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>3</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>4</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>5</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>6</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>7</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>8</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_EpisodeID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:WarAndPeace_SeriesID" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:WarAndPeace_SeriesID:metadata</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isseasonof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:WarAndPeace_SeasonID</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+    </manifest:Experiences>
+</manifest:MediaManifest>

@@ -24,6 +24,7 @@ class MECData(ABC):
 @dataclass
 class FeatureData(MECData):
     people: list[dict[str,str]]
+    resources: list[dict[str,str]]
 
     @property
     def descriptor(self) -> str:
@@ -72,7 +73,7 @@ def read_data(datapath: Path) -> list[str]:
 
 # indent function adds newlines and tabs to xml so it's not all on 1 line
 # pass root element into function
-def indent(elem: ET.Element, level: int=0, spaces: int=4):
+def indent(elem: ET.Element, level: int=0, spaces: int=4) -> None:
     i = "\n" + level*(" "*spaces)
     if len(elem):
         if not elem.text or not elem.text.strip():
@@ -172,7 +173,7 @@ def parse_series(seriesfile: Path) -> MECData:
         seasons=seasons
     )
 
-def parse_season(seasonfile: Path):
+def parse_season(seasonfile: Path) -> MECData:
     series_data = read_data(seasonfile)
     parentid = series_data[find_index(series_data, "parentid")].split(";")[1]
     title = series_data[find_index(series_data, "title")].split(";")[1]
@@ -208,7 +209,7 @@ def parse_season(seasonfile: Path):
         companycredits=companycredits,
     )
 
-def parse_episode(episodefile: Path):
+def parse_episode(episodefile: Path) -> MECData:
     episode_data = read_data(episodefile)
     parentid = episode_data[find_index(episode_data, "parentid")].split(";")[1]
     title = episode_data[find_index(episode_data, "title")].split(";")[1]

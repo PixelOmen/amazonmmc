@@ -3,25 +3,16 @@ from typing import cast
 from pathlib import Path
 from dataclasses import dataclass
 
-from . import dataio, mec
+from . import dataio, mec, mmc
 
 currentdir = Path(__file__).parent.parent
 testdir = currentdir / "testfiles"
-test_mec_output = testdir / "test_mec_output.xml"
 
 RE_EPISODE = re.compile(r"_S\d\dE\d\d\d_", re.IGNORECASE)
 
 ACCEPTED_FILETYPES = [".mov", ".scc", ".wav", ".xml"]
 
 VIDEO_FILETYPES = [".mov"]
-
-ID_PREFIX = {
-    "audio": "md:audtrackid",
-    "video": "md:vidtrackid",
-    "subtitle": "md:subtrackid",
-    "metadata": "md:cid",
-    "experience": "md:experienceid"
-}
 
 PARSERS = {
     "feature": dataio.parse_feature,
@@ -34,11 +25,15 @@ PARSERS = {
 class Resource:
     type: str
     srcpath: Path
-    language: str
+    language: str = ""
     codec: str = ""
     framerate: str = ""
-    aspectratio: str = ""
-    resolution: tuple[str, str] | None = None
+    aspectstr: str = ""
+    resolutionstr: str = ""
+    resourceid: str = ""
+    def __post_init__(self):
+        self.resolution = self.resolutionstr.replace("X", "x").split("x")
+        self.aspect = self.aspectstr.replace("X", "x").replace("x", ":")
 
 class ResourceGroup:
     def __init__(self, coredata: dataio.MECData, rootdir: Path):
@@ -47,14 +42,27 @@ class ResourceGroup:
         self.datadir = rootdir / "data"
         self.resourcedir = rootdir / "resources"
         self.children = self._gather_children()
+        self.resources = self._gather_resources()
+        self.presid = ""
+        self.expid = ""
 
     def output_mec(self):
-        self.mec = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
-        outputpath = testdir / self.mec
+        mec_name = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
+        outputpath = testdir / mec_name
+        self.mec = Resource(type="metadata", srcpath=outputpath)
+        self.resources.append(self.mec)
         coreroot = mec.create(self.coredata)
         dataio.output_xml(coreroot, outputpath)
         for child in self.children:
             child.output_mec()
+
+    def allresources(self) -> list[Resource]:
+        allresources = []
+        for child in self.children:
+            for resource in child.resources:
+                allresources.append(resource)
+            allresources += child.allresources()
+        return allresources
 
     def _gather_children(self) -> list["ResourceGroup"]:
         if self.coredata.type == "feature" or self.coredata.type == "episode":
@@ -74,6 +82,26 @@ class ResourceGroup:
                 raise FileNotFoundError("Number of Episode data files does not match episodes listed in Season data")
             return [ResourceGroup(PARSERS["episode"](e), self.rootdir) for e in episodedatafiles]
         raise FileNotFoundError("Bad coredata type")
+
+    def _gather_resources(self) -> list[Resource]:
+        if self.coredata.type != "feature" and self.coredata.type != "episode":
+            return []
+        resources = []
+        resdata = cast(dataio.EpisodeData, self.coredata)
+        for res in resdata.resources:
+            filepath = self.resourcedir / res["filename"]
+            if not filepath.is_file():
+                raise FileNotFoundError(f"Unable to locate resource: {res}")
+            resources.append(Resource(
+                type=res["type"],
+                srcpath=filepath,
+                language=res["language"],
+                codec=res["codec"],
+                framerate=res["framerate"],
+                aspectstr=res["aspect"],
+                resolutionstr=res["resolution"]
+            ))
+        return resources
         
 
 class Delivery:
@@ -82,7 +110,14 @@ class Delivery:
         self.datadir = rootdir / "data"
         self.type = self._delivery_type()
         self.coredata = self._gather_data()
-        self.resources = ResourceGroup(self.coredata, self.rootdir)
+        self.toplevelgroup = ResourceGroup(self.coredata, self.rootdir)
+
+    def output_mec(self) -> None:
+        self.toplevelgroup.output_mec()
+
+    def output_mmc(self) -> None:
+        mmc_tree = mmc.create(self.toplevelgroup)
+        dataio.output_xml(mmc_tree, testdir / f"{self.coredata.title}_MMC.xml")
 
     def _delivery_type(self) -> str:
         for file in self.datadir.iterdir():

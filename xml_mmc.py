@@ -12,11 +12,12 @@ ftr_test_dir = Path(r"\\10.0.20.175\rex07\Packaging\_Packaging\AMZN_WP\6E13-51FE
 
 def testfunc2():
     deliv = media.Delivery(ep_test_dir.parent)
-    print(deliv.resources.coredata.localizedinfo)
+    print(deliv.toplevelgroup.coredata.localizedinfo)
 
 def testfunc3():
     deliv = media.Delivery(ep_test_dir.parent)
-    deliv.resources.output_mec()
+    deliv.output_mec()
+    deliv.output_mmc()
 
 testfunc3()
 
