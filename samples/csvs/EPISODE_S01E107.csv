@@ -1,8 +1,8 @@
 Title;WarAndPeace;;;;;;
 ParentID;WarAndPeace_SeasonID;;;;;;
 ID;WarAndPeace_EpisodeID;;;;;;
-Episode;S01E101;;;;;;
-Sequence;1;;;;;;
+Episode;S01E107;;;;;;
+Sequence;7;;;;;;
 Genres;av_genre_drama;av_subgenre_history;;;;;
 ReleaseYear;2015;;;;;;
 ReleaseDate;2016-01-18;;;;;;
@@ -33,6 +33,6 @@ CompanyCredits;Language;Credit;;;;;
 ;en-US;Amazon Studios;;;;;
 ;;;;;;;
 Resources;Type;Language;Filename;Codec;Resolution;Framerate;Aspect
-;video;en-US;SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.mov;PRORESHQ;1920x1080;25;16x9
-;audio;en-US;SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.mov;PCM;NA;NA;NA
-;subtitle;en-US;SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.scc;SDH;NA;25;NA
+;video;en-US;SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.mov;PRORESHQ;1920x1080;25;16x9
+;audio;en-US;SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.mov;PCM;NA;NA;NA
+;subtitle;en-US;SPYGLASS_WarAndPeace_S01E107_EN-US-51-20_1920x1080_16x9_25i_185.scc;SDH;NA;25;NA

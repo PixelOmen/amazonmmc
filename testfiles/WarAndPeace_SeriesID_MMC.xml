@@ -33,7 +33,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -77,7 +77,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -121,7 +121,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -165,7 +165,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -209,7 +209,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -253,7 +253,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -297,7 +297,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>
@@ -341,7 +341,7 @@
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:WarAndPeace_EpisodeID:subtitle_en">
-            <md:Format>SDH</md:Format>
+            <md:Format>SCC</md:Format>
             <md:Type>SDH</md:Type>
             <md:Language>en-US</md:Language>
             <md:Encoding>

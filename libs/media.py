@@ -5,6 +5,8 @@ from dataclasses import dataclass
 
 from . import dataio, mec, mmc
 
+TEST = True
+
 currentdir = Path(__file__).parent.parent
 testdir = currentdir / "testfiles"
 
@@ -48,7 +50,8 @@ class ResourceGroup:
 
     def output_mec(self):
         mec_name = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
-        outputpath = testdir / mec_name
+        outputdir = testdir if TEST else self.resourcedir
+        outputpath = outputdir / mec_name
         self.mec = Resource(type="metadata", srcpath=outputpath)
         self.resources.append(self.mec)
         coreroot = mec.create(self.coredata)
@@ -117,7 +120,8 @@ class Delivery:
 
     def output_mmc(self) -> None:
         mmc_tree = mmc.create(self.toplevelgroup)
-        dataio.output_xml(mmc_tree, testdir / f"{self.coredata.title}_MMC.xml")
+        outputdir = testdir if TEST else self.rootdir
+        dataio.output_xml(mmc_tree, outputdir / f"{self.coredata.id}_MMC.xml")
 
     def _delivery_type(self) -> str:
         for file in self.datadir.iterdir():

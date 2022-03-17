@@ -60,8 +60,8 @@ def subtitle(inventory: ET.Element, ns: dict[str,str], resource: "Resource", par
     multiplier = "1000/1001" if "9" in resource.framerate else "1/1"
     sub_elem = ET.SubElement(inventory, ns["manifest"]+"Subtitle")
     sub_elem.set("SubtitleTrackID", resourceid)
-    ET.SubElement(sub_elem, ns["md"]+"Format").text = resource.codec
-    ET.SubElement(sub_elem, ns["md"]+"Type").text = "SDH"
+    ET.SubElement(sub_elem, ns["md"]+"Format").text = "SCC"
+    ET.SubElement(sub_elem, ns["md"]+"Type").text = resource.codec
     ET.SubElement(sub_elem, ns["md"]+"Language").text = resource.language
     encoding = ET.SubElement(sub_elem, ns["md"]+"Encoding")
     fps_elem = ET.SubElement(encoding, ns["md"]+"FrameRate")
