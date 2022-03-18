@@ -58,13 +58,13 @@ def main():
     if not allfiles:
         print("No files selected")
         exit()
-    rootdir = allfiles[0].parent
     print("Running checksums on the following files:")
     for f in allfiles:
         print(f.name)
     print("")
     processes = startmd5(allfiles)
     output = wait_for_output(processes)
+    rootdir = allfiles[0].parent.parent
     output_md5(output, rootdir)
 
 if __name__ == "__main__":

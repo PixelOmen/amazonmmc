@@ -8,7 +8,7 @@ from . import dataio, mec, mmc
 if TYPE_CHECKING:
     from xml.etree import ElementTree as ET
 
-TEST = True
+TEST = False
 
 CURRENTDIR = Path(__file__).parent.parent
 TESTDIR = CURRENTDIR / "testfiles"

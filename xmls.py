@@ -38,7 +38,7 @@ def main():
     rootdir = Path(rootdir)
     deliv = media.Delivery(rootdir)
     deliv.output_mec()
-    input("Press enter to generate MMC once checksums are ready...")
+    input("MECs generated. Press enter to generate MMC once checksums are ready...")
     deliv.output_mmc()
 
 def test():
