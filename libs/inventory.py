@@ -28,7 +28,7 @@ def video(inventory: ET.Element, ns: dict[str,str], resource: "Resource", parent
     ET.SubElement(container, ns["manifest"]+"ContainerLocation").text = f"file://resources/{resource.srcpath.name}"
     hash = ET.SubElement(container, ns["manifest"]+"Hash")
     hash.set("method", "MD5")
-    hash.text = "hash"
+    hash.text = resource.hash
     return resourceid
 
 def audio(inventory: ET.Element, ns: dict[str,str], resource: "Resource", parentid: str) -> str:
@@ -45,7 +45,7 @@ def audio(inventory: ET.Element, ns: dict[str,str], resource: "Resource", parent
     ET.SubElement(container, ns["manifest"]+"ContainerLocation").text = f"file://resources/{resource.srcpath.name}"
     hash = ET.SubElement(container, ns["manifest"]+"Hash")
     hash.set("method", "MD5")
-    hash.text = "hash"
+    hash.text = resource.hash
     return resourceid
 
 def subtitle(inventory: ET.Element, ns: dict[str,str], resource: "Resource", parentid: str) -> str:
@@ -72,7 +72,7 @@ def subtitle(inventory: ET.Element, ns: dict[str,str], resource: "Resource", par
     ET.SubElement(container, ns["manifest"]+"ContainerLocation").text = f"file://resources/{resource.srcpath.name}"
     hash = ET.SubElement(container, ns["manifest"]+"Hash")
     hash.set("method", "MD5")
-    hash.text = "hash"
+    hash.text = resource.hash
     return resourceid
 
 def metadata(inventory: ET.Element, ns: dict[str,str], resource: "Resource", parentid: str) -> str:
@@ -82,6 +82,9 @@ def metadata(inventory: ET.Element, ns: dict[str,str], resource: "Resource", par
     container = ET.SubElement(meta_elem, ns["manifest"]+"ContainerReference")
     container.set("type", "common")
     ET.SubElement(container, ns["manifest"]+"ContainerLocation").text = f"file://resources/{resource.srcpath.name}"
+    hash = ET.SubElement(container, ns["manifest"]+"Hash")
+    hash.set("method", "MD5")
+    hash.text = resource.hash
     return resourceid
 
 FACTORIES = {

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<mdmec:CoreMetadata xmlns:md="http://www.movielabs.com/schema/md/v2.6/md" xmlns:mdmec="http://www.movielabs.com/schema/mdmec/v2.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.8 mdmec-v2.8.xsd">
+<mdmec:CoreMetadata xmlns:md="http://www.movielabs.com/schema/md/v2.9/md" xmlns:mdmec="http://www.movielabs.com/schema/mdmec/v2.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd">
     <mdmec:Basic ContentID="md:cid:org:SPYGLASS:eidr-x:313E-72BB-45B7-2BD2-5274-Z">
-        <md:LocalizedInfo languange="en-US">
+        <md:LocalizedInfo language="en-US">
             <md:TitleDisplayUnlimited>Episode 2</md:TitleDisplayUnlimited>
             <md:TitleSort />
             <md:Summary190 />
@@ -222,13 +222,13 @@
             </md:Name>
         </md:People>
         <md:OriginalLanguage>en-US</md:OriginalLanguage>
-        <md:AssociateOrg organizationID="Spyglass" role="licensor" />
+        <md:AssociatedOrg organizationID="Spyglass" role="licensor" />
         <md:SequenceInfo>
             <md:Number>2</md:Number>
-            <md:Parent relationshipType="isepisodeof">
-                <md:ParentContentID>eidr-x:8AF8-5C54-BDE5-116E-C071-B</md:ParentContentID>
-            </md:Parent>
         </md:SequenceInfo>
+        <md:Parent relationshipType="isepisodeof">
+            <md:ParentContentID>eidr-x:8AF8-5C54-BDE5-116E-C071-B</md:ParentContentID>
+        </md:Parent>
     </mdmec:Basic>
     <mdmec:CompanyDisplayCredit>
         <md:DisplayString language="en-US">Spyglass</md:DisplayString>

@@ -1,22 +1,21 @@
 import re
-from typing import cast, TYPE_CHECKING
 from pathlib import Path
 from dataclasses import dataclass
+from typing import cast, TYPE_CHECKING
 
 from . import dataio, mec, mmc
 
 if TYPE_CHECKING:
     from xml.etree import ElementTree as ET
 
-TEST = False
+TEST = True
 
-currentdir = Path(__file__).parent.parent
-testdir = currentdir / "testfiles"
+CURRENTDIR = Path(__file__).parent.parent
+TESTDIR = CURRENTDIR / "testfiles"
 
 RE_EPISODE = re.compile(r"_S\d\dE\d\d\d_", re.IGNORECASE)
 
 ACCEPTED_FILETYPES = [".mov", ".scc", ".wav", ".xml"]
-
 VIDEO_FILETYPES = [".mov"]
 
 PARSERS = {
@@ -36,6 +35,7 @@ class Resource:
     aspectstr: str = ""
     resolutionstr: str = ""
     resourceid: str = ""
+    hash: str = ""
     def __post_init__(self):
         self.resolution = self.resolutionstr.replace("X", "x").split("x")
         self.aspect = self.aspectstr.replace("X", "x").replace("x", ":")
@@ -54,7 +54,7 @@ class ResourceGroup:
     def get_mec(self) -> list[tuple["ET.Element", Path]]:
         all_mecs = []
         mec_name = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
-        outputdir = testdir if TEST else self.resourcedir
+        outputdir = TESTDIR if TEST else self.resourcedir
         outputpath = outputdir / mec_name
         self.mec = Resource(type="metadata", srcpath=outputpath)
         self.resources.append(self.mec)
@@ -99,7 +99,7 @@ class ResourceGroup:
         for res in resdata.resources:
             filepath = self.resourcedir / res["filename"]
             if not filepath.is_file():
-                raise FileNotFoundError(f"Unable to locate resource: {res}")
+                raise FileNotFoundError(f"Unable to locate resource: {res['filename']}")
             resources.append(Resource(
                 type=res["type"],
                 srcpath=filepath,
@@ -107,7 +107,7 @@ class ResourceGroup:
                 codec=res["codec"],
                 framerate=res["framerate"],
                 aspectstr=res["aspect"],
-                resolutionstr=res["resolution"]
+                resolutionstr=res["resolution"],
             ))
         return resources
         
@@ -118,6 +118,7 @@ class Delivery:
         self.datadir = rootdir / "data"
         self.type = self._delivery_type()
         self.coredata = self._gather_data()
+        self.checksums = self._get_checksums()
         self.toplevelgroup = ResourceGroup(self.coredata, self.rootdir)
 
     def output_mec(self) -> None:
@@ -126,8 +127,15 @@ class Delivery:
             dataio.output_xml(root, outputpath)
 
     def output_mmc(self) -> None:
+        allresources = self.toplevelgroup.allresources()
+        checksums = self._get_checksums()
+        for res in allresources:
+            hash = checksums[res.srcpath.name]
+            if not hash:
+                raise LookupError(f"Unable to locate hash value: {res.srcpath.name}")
+            res.hash = hash
         mmc_tree = mmc.create(self.toplevelgroup)
-        outputdir = testdir if TEST else self.rootdir
+        outputdir = TESTDIR if TEST else self.rootdir
         dataio.output_xml(mmc_tree, outputdir / f"{self.coredata.title}_MMC.xml")
 
     def _delivery_type(self) -> str:
@@ -148,3 +156,14 @@ class Delivery:
         if not datafile:
             raise FileNotFoundError("Unable to locate top level data")
         return PARSERS[self.type](datafile)
+
+    def _get_checksums(self) -> dict[str, str]:
+        checksumpath = self.datadir / "checksums.txt"
+        if not checksumpath.is_file():
+            raise FileNotFoundError("Unable to locate checksum data")
+        alldata = dataio.read_data(self.datadir / "checksums.txt")
+        checksumdata = {}
+        for line in alldata:
+            splitdata = line.split("=")
+            checksumdata[splitdata[0]] = splitdata[1]
+        return checksumdata
