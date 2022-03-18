@@ -1,11 +1,14 @@
 import re
-from typing import cast
+from typing import cast, TYPE_CHECKING
 from pathlib import Path
 from dataclasses import dataclass
 
 from . import dataio, mec, mmc
 
-TEST = True
+if TYPE_CHECKING:
+    from xml.etree import ElementTree as ET
+
+TEST = False
 
 currentdir = Path(__file__).parent.parent
 testdir = currentdir / "testfiles"
@@ -48,16 +51,18 @@ class ResourceGroup:
         self.presid = ""
         self.expid = ""
 
-    def output_mec(self):
+    def get_mec(self) -> list[tuple["ET.Element", Path]]:
+        all_mecs = []
         mec_name = f"{self.coredata.title}_{self.coredata.descriptor.upper()}_metadata.xml"
         outputdir = testdir if TEST else self.resourcedir
         outputpath = outputdir / mec_name
         self.mec = Resource(type="metadata", srcpath=outputpath)
         self.resources.append(self.mec)
         coreroot = mec.create(self.coredata)
-        dataio.output_xml(coreroot, outputpath)
+        all_mecs.append((coreroot, outputpath))
         for child in self.children:
-            child.output_mec()
+            all_mecs += child.get_mec()
+        return all_mecs            
 
     def allresources(self) -> list[Resource]:
         allresources = []
@@ -116,7 +121,9 @@ class Delivery:
         self.toplevelgroup = ResourceGroup(self.coredata, self.rootdir)
 
     def output_mec(self) -> None:
-        self.toplevelgroup.output_mec()
+        mecdata = self.toplevelgroup.get_mec()
+        for root, outputpath in mecdata:
+            dataio.output_xml(root, outputpath)
 
     def output_mmc(self) -> None:
         mmc_tree = mmc.create(self.toplevelgroup)

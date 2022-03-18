@@ -6,7 +6,7 @@ from . import dataio
 
 XMLNSPACES = {
     "xsi": "http://www.w3.org/2001/XMLSchema-instance",
-    "md": "http://www.movielabs.com/schema/md/v2.6/md",
+    "md": "http://www.movielabs.com/schema/md/v2.9/md",
     "mdmec": "http://www.movielabs.com/schema/mdmec/v2.9",
 }
 
@@ -16,7 +16,7 @@ def newroot() -> ET.Element:
     for ns in XMLNSPACES:
         ET.register_namespace(ns, XMLNSPACES[ns])
     root = ET.Element(NS["mdmec"]+"CoreMetadata")
-    root.set(NS["xsi"]+"schemaLocation", "http://www.movielabs.com/schema/mdmec/v2.8 mdmec-v2.8.xsd")
+    root.set(NS["xsi"]+"schemaLocation", "http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd")
     return root
 
 def create(data: dataio.MECData) -> ET.Element:
@@ -26,7 +26,7 @@ def create(data: dataio.MECData) -> ET.Element:
     localinfo_elements = []
     for region in data.localizedinfo:
         localinfo_elem = ET.SubElement(basic_elem, NS["md"]+"LocalizedInfo")
-        localinfo_elem.set("languange", region["language"])
+        localinfo_elem.set("language", region["language"])
         ET.SubElement(localinfo_elem, NS["md"]+"TitleDisplayUnlimited").text = region["titledisplay"]
         ET.SubElement(localinfo_elem, NS["md"]+"TitleSort")
         ET.SubElement(localinfo_elem, NS["md"]+"Summary190")
@@ -84,7 +84,7 @@ def create(data: dataio.MECData) -> ET.Element:
 
     
     ET.SubElement(basic_elem, NS["md"]+"OriginalLanguage").text = data.origlanguage
-    assorg_elem = ET.SubElement(basic_elem, NS["md"]+"AssociateOrg")
+    assorg_elem = ET.SubElement(basic_elem, NS["md"]+"AssociatedOrg")
     assorg_elem.set("organizationID", data.orgid)
     assorg_elem.set("role", "licensor")
 
@@ -93,7 +93,7 @@ def create(data: dataio.MECData) -> ET.Element:
         relationship = "isepisodeof" if data.type == "episode" else "isseasonof"
         seq_elem = ET.SubElement(basic_elem, NS["md"]+"SequenceInfo")
         ET.SubElement(seq_elem, NS["md"]+"Number").text = seqdata.sequence
-        parent_elem = ET.SubElement(seq_elem, NS["md"]+"Parent")
+        parent_elem = ET.SubElement(basic_elem, NS["md"]+"Parent")
         parent_elem.set("relationshipType", relationship)
         ET.SubElement(parent_elem, NS["md"]+"ParentContentID").text = seqdata.parentid
 
