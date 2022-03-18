@@ -5,7 +5,6 @@ import tkinter
 import subprocess as sub
 from pathlib import Path
 from tkinter import filedialog
-from tracemalloc import start
 
 def clear() -> None:
     if sys.platform == "darwin":
