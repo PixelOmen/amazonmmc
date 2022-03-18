@@ -121,7 +121,7 @@ class Delivery:
     def output_mmc(self) -> None:
         mmc_tree = mmc.create(self.toplevelgroup)
         outputdir = testdir if TEST else self.rootdir
-        dataio.output_xml(mmc_tree, outputdir / f"{self.coredata.id}_MMC.xml")
+        dataio.output_xml(mmc_tree, outputdir / f"{self.coredata.title}_MMC.xml")
 
     def _delivery_type(self) -> str:
         for file in self.datadir.iterdir():

@@ -1,24 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <mdmec:CoreMetadata xmlns:md="http://www.movielabs.com/schema/md/v2.6/md" xmlns:mdmec="http://www.movielabs.com/schema/mdmec/v2.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.8 mdmec-v2.8.xsd">
-    <mdmec:Basic ContentID="md:cid:org:SPYGLASS:WarAndPeace_EpisodeID">
+    <mdmec:Basic ContentID="md:cid:org:SPYGLASS:eidr-x:313E-72BB-45B7-2BD2-5274-Z">
         <md:LocalizedInfo languange="en-US">
-            <md:TitleDisplayUnlimited>War And Peace Season 1</md:TitleDisplayUnlimited>
+            <md:TitleDisplayUnlimited>Episode 2</md:TitleDisplayUnlimited>
             <md:TitleSort />
             <md:Summary190 />
-            <md:Summary400>It's 1962, America has lost WWII, the east is the Greater Nazi Reich and the west, the Japanese Pacific States. Amidst this oppression there is new hope - films that seem to show a different world. When her sister gives her a film and is then murdered, a woman comes to believe the films hold the key to freedom and becomes obsessed with finding their mysterious guardian, The Man in the High Castle.</md:Summary400>
+            <md:Summary400>Andrei and Nikolai prepare for battle with the French, but are they stepping into a trap? In Russia, Pierre struggles to settle into married life with Helene.</md:Summary400>
             <md:Genre id="av_genre_drama" />
-            <md:Genre id="av_subgenre_history" />
+            <md:Genre id="av_subgenre_drama_historical" />
         </md:LocalizedInfo>
-        <md:LocalizedInfo languange="de-DE ">
-            <md:TitleDisplayUnlimited>Manhattan Staffel 1</md:TitleDisplayUnlimited>
-            <md:TitleSort />
-            <md:Summary190 />
-            <md:Summary400>1962. Deutschland und Japan haben den Krieg gewonnen und Amerika unter sich aufgeteilt. In den Japanischen Pazifikstaaten wird Juliana Crains Schwester Trudy auf der Straße erschossen, kurz nachdem sie ihr eine mysteriöse Filmrolle übergeben hat. Währenddessen schließt sich im Großdeutschen Reich an der Ostküste der junge Joe Blake dem Widerstand an.</md:Summary400>
-        </md:LocalizedInfo>
-        <md:ReleaseYear>2015</md:ReleaseYear>
+        <md:ReleaseYear>2016</md:ReleaseYear>
         <md:ReleaseDate>2016-01-18</md:ReleaseDate>
         <md:ReleaseHistory>
-            <md:ReleaseType>SVOD</md:ReleaseType>
+            <md:ReleaseType>Broadcast</md:ReleaseType>
             <md:DistrTerritory>
                 <md:country>US</md:country>
             </md:DistrTerritory>
@@ -26,12 +20,8 @@
         </md:ReleaseHistory>
         <md:WorkType>episode</md:WorkType>
         <md:AltIdentifier>
-            <md:Namespace>ORG</md:Namespace>
-            <md:Identifier>WarAndPeace_SeasonID</md:Identifier>
-        </md:AltIdentifier>
-        <md:AltIdentifier>
-            <md:Namespace>IMDB</md:Namespace>
-            <md:Identifier>tt4518589</md:Identifier>
+            <md:Namespace>EIDR</md:Namespace>
+            <md:Identifier>313E-72BB-45B7-2BD2-5274-Z</md:Identifier>
         </md:AltIdentifier>
         <md:RatingSet>
             <md:Rating>
@@ -39,14 +29,7 @@
                     <md:country>US</md:country>
                 </md:Region>
                 <md:System>TVPG</md:System>
-                <md:Value>TV-MA</md:Value>
-            </md:Rating>
-            <md:Rating>
-                <md:Region>
-                    <md:country>DE</md:country>
-                </md:Region>
-                <md:System>FSK</md:System>
-                <md:Value>12</md:Value>
+                <md:Value>TV-14</md:Value>
             </md:Rating>
         </md:RatingSet>
         <md:People>
@@ -55,8 +38,7 @@
                 <md:BillingBlockOrder>1</md:BillingBlockOrder>
             </md:Job>
             <md:Name>
-                <md:DisplayName language="en-US">Alexa Davalos</md:DisplayName>
-                <md:DisplayName language="ja-JP">アレクサ･ダヴァロス</md:DisplayName>
+                <md:DisplayName language="en-US">Paul Dano</md:DisplayName>
             </md:Name>
         </md:People>
         <md:People>
@@ -65,8 +47,97 @@
                 <md:BillingBlockOrder>2</md:BillingBlockOrder>
             </md:Job>
             <md:Name>
-                <md:DisplayName language="en-US">Rupert Evans</md:DisplayName>
-                <md:DisplayName language="ja-JP">ルパート･エヴァンス</md:DisplayName>
+                <md:DisplayName language="en-US">Lily James</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>3</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">James Norton</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>4</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Jim Broadbent</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>5</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Gillian Anderson</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>6</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Stephen Rea</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>7</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Brian Cox</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>8</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Ade Edmondson</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>9</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Rebecca Front</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>10</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Greta Scacchi</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>11</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Tom Burke</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>12</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Tuppence Middleton</md:DisplayName>
             </md:Name>
         </md:People>
         <md:People>
@@ -76,7 +147,78 @@
             </md:Job>
             <md:Name>
                 <md:DisplayName language="en-US">Ridley Scott</md:DisplayName>
-                <md:DisplayName language="ja-JP">フランク･スポトニッツ</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Director</md:JobFunction>
+                <md:BillingBlockOrder>1</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Ridley Scott</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>1</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Julia Stannard</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>2</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Faith Penhale</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>3</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Bethan Jones</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>4</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Andrew Davies</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>5</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Harvey Weinstein</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>6</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Robert Walak</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>7</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Simon Vaughan</md:DisplayName>
             </md:Name>
         </md:People>
         <md:OriginalLanguage>en-US</md:OriginalLanguage>
@@ -84,11 +226,11 @@
         <md:SequenceInfo>
             <md:Number>2</md:Number>
             <md:Parent relationshipType="isepisodeof">
-                <md:ParentContentID>WarAndPeace_SeasonID</md:ParentContentID>
+                <md:ParentContentID>eidr-x:8AF8-5C54-BDE5-116E-C071-B</md:ParentContentID>
             </md:Parent>
         </md:SequenceInfo>
     </mdmec:Basic>
     <mdmec:CompanyDisplayCredit>
-        <md:DisplayString language="en-US">Amazon Studios</md:DisplayString>
+        <md:DisplayString language="en-US">Spyglass</md:DisplayString>
     </mdmec:CompanyDisplayCredit>
 </mdmec:CoreMetadata>

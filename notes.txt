@@ -1,0 +1,10 @@
+-- Creating XML --
+ET.register_namespace("testinfo", "http://www.movielabs.com/schema/manifest/v1.10/manifest")
+ET.register_namespace("anotherns", "This is the third ns")
+root = ET.Element("{http://www.movielabs.com/schema/manifest/v1.10/manifest}MediaManifest")
+subtag = ET.SubElement(root, "TagWithDefaultNS")
+subsubtag = ET.SubElement(subtag, "{This is the third ns}thirdsubtag")
+subsubtag.text = "More Text"
+indent(root)
+tree = ET.ElementTree(root)
+tree.write(testoutput, encoding='UTF-8', xml_declaration=True)

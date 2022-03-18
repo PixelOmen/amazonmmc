@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.7/manifest" xmlns:md="http://www.movielabs.com/schema/md/v2.6/md">
+    <manifest:Compatibility>
+        <manifest:SpecVersion>1.5</manifest:SpecVersion>
+        <manifest:Profile>MMC-1</manifest:Profile>
+    </manifest:Compatibility>
+    <manifest:Inventory>
+        <manifest:Video VideoTrackID="md:vidtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:subtitle_en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E101_EN-US-51-20_1920x1080_16x9_25i_185_R1.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:eidr-x:0617-1D06-4A28-34A7-8970-J:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E101_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Video VideoTrackID="md:vidtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:video">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
+        <manifest:Audio AudioTrackID="md:audtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:audio_en">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="true">en-US</md:Language>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:subtitle_en">
+            <md:Format>SCC</md:Format>
+            <md:Type>SDH</md:Type>
+            <md:Language>en-US</md:Language>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1" timecode="Non-Drop">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/SPYGLASS_WarAndPeace_S01E102_EN-US-51-20_1920x1080_16x9_25i_185.scc</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">hash</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01E102_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Metadata ContentID="md:cid:eidr-x:90BE-FB4F-5CBE-50E1-ED58-E:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_S01_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Metadata ContentID="md:cid:eidr-x:8AF8-5C54-BDE5-116E-C071-B:metadata">
+            <manifest:ContainerReference type="common">
+                <manifest:ContainerLocation>file://resources/WarAndPeace_SERIES_metadata.xml</manifest:ContainerLocation>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+    </manifest:Inventory>
+    <manifest:Presentations>
+        <manifest:Presentation PresentationID="md:presentationid:eidr-x:0617-1D06-4A28-34A7-8970-J">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:eidr-x:0617-1D06-4A28-34A7-8970-J:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:eidr-x:313E-72BB-45B7-2BD2-5274-Z">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:video</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:audio_en</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:subtitle_en</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+                <manifest:MetadataTrackReference>
+                    <manifest:MetadataTrackID>md:cid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:metadata</manifest:MetadataTrackID>
+                </manifest:MetadataTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+    </manifest:Presentations>
+    <manifest:Experiences>
+        <manifest:Experience ExperienceID="md:experienceid:eidr-x:0617-1D06-4A28-34A7-8970-J" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:eidr-x:0617-1D06-4A28-34A7-8970-J:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:eidr-x:0617-1D06-4A28-34A7-8970-J:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:eidr-x:0617-1D06-4A28-34A7-8970-J</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:eidr-x:313E-72BB-45B7-2BD2-5274-Z" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:metadata</manifest:ContentID>
+            <manifest:AudioVisual ContentID="md:cid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:metadata">
+                <manifest:Type>Main</manifest:Type>
+                <manifest:PresentationID>md:presentationid:eidr-x:313E-72BB-45B7-2BD2-5274-Z</manifest:PresentationID>
+            </manifest:AudioVisual>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:eidr-x:90BE-FB4F-5CBE-50E1-ED58-E" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:eidr-x:90BE-FB4F-5CBE-50E1-ED58-E:metadata</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:eidr-x:0617-1D06-4A28-34A7-8970-J</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>2</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:eidr-x:313E-72BB-45B7-2BD2-5274-Z</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:eidr-x:8AF8-5C54-BDE5-116E-C071-B" version="1.0">
+            <manifest:Language>en-US</manifest:Language>
+            <manifest:ContentID>md:cid:eidr-x:8AF8-5C54-BDE5-116E-C071-B:metadata</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isseasonof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:eidr-x:90BE-FB4F-5CBE-50E1-ED58-E</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+    </manifest:Experiences>
+</manifest:MediaManifest>
