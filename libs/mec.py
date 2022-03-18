@@ -1,4 +1,3 @@
-from re import M
 from typing import cast
 from xml.etree import ElementTree as ET
 
