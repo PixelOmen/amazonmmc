@@ -8,7 +8,7 @@ from . import dataio, mec, mmc
 if TYPE_CHECKING:
     from xml.etree import ElementTree as ET
 
-TEST = False
+TEST = True
 
 CURRENTDIR = Path(__file__).parent.parent
 TESTDIR = CURRENTDIR / "testfiles"
@@ -66,9 +66,9 @@ class ResourceGroup:
 
     def allresources(self) -> list[Resource]:
         allresources = []
+        for res in self.resources:
+            allresources.append(res)
         for child in self.children:
-            for resource in child.resources:
-                allresources.append(resource)
             allresources += child.allresources()
         return allresources
 
@@ -130,7 +130,7 @@ class Delivery:
         allresources = self.toplevelgroup.allresources()
         checksums = self._get_checksums()
         for res in allresources:
-            hash = checksums[res.srcpath.name]
+            hash = checksums.get(res.srcpath.name, None)
             if not hash:
                 raise LookupError(f"Unable to locate hash value: {res.srcpath.name}")
             res.hash = hash
@@ -158,10 +158,13 @@ class Delivery:
         return PARSERS[self.type](datafile)
 
     def _get_checksums(self) -> dict[str, str]:
-        checksumpath = self.datadir / "checksums.txt"
+        if TEST:
+            checksumpath = Path(__file__).parent.parent / "samples" / "csvs" / "checksums.txt"
+        else:
+            checksumpath = self.datadir / "checksums.txt"
         if not checksumpath.is_file():
             raise FileNotFoundError("Unable to locate checksum data")
-        alldata = dataio.read_data(self.datadir / "checksums.txt")
+        alldata = dataio.read_data(checksumpath)
         checksumdata = {}
         for line in alldata:
             splitdata = line.split("=")

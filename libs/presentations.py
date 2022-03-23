@@ -11,6 +11,8 @@ def presentation(presentations_root: ET.Element, ns: dict[str,str], group: "Reso
     track_elem = ET.SubElement(pres_elem, ns["manifest"]+"TrackMetadata")
     ET.SubElement(track_elem, ns["manifest"]+"TrackSelectionNumber").text = "0"
     for res in group.resources:
+        if res.type == "metadata":
+            continue
         trackref = res.type.capitalize()+"TrackReference"
         trackid = res.type.capitalize()+"TrackID"
         trackref_elem = ET.SubElement(track_elem, ns["manifest"]+trackref)

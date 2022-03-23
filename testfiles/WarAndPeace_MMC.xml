@@ -374,7 +374,7 @@
         <manifest:Metadata ContentID="md:cid:eidr-x:8AF8-5C54-BDE5-116E-C071-B:metadata">
             <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/WarAndPeace_SERIES_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5" />
+                <manifest:Hash method="MD5">d83b3c3105fb02ac8cd0d05bbd46f499</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
     </manifest:Inventory>
@@ -391,9 +391,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:0617-1D06-4A28-34A7-8970-J:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:0617-1D06-4A28-34A7-8970-J:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:eidr-x:313E-72BB-45B7-2BD2-5274-Z">
@@ -408,9 +405,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:313E-72BB-45B7-2BD2-5274-Z:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:eidr-x:24DB-21F9-FB03-9CB9-075B-Y">
@@ -425,9 +419,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:24DB-21F9-FB03-9CB9-075B-Y:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:24DB-21F9-FB03-9CB9-075B-Y:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:eidr-x:4B09-E506-76E5-DBB8-7F3C-M">
@@ -442,9 +433,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:4B09-E506-76E5-DBB8-7F3C-M:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:4B09-E506-76E5-DBB8-7F3C-M:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:eidr-x:29FF-3664-87AE-AE66-ED1A-4">
@@ -459,9 +447,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:29FF-3664-87AE-AE66-ED1A-4:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:29FF-3664-87AE-AE66-ED1A-4:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:eidr-x:6C70-C3BF-2F0D-068A-4D18-R">
@@ -476,9 +461,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:6C70-C3BF-2F0D-068A-4D18-R:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:6C70-C3BF-2F0D-068A-4D18-R:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:Eidr-x:41C3-A846-000C-824E-C2FE-U">
@@ -493,9 +475,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:Eidr-x:41C3-A846-000C-824E-C2FE-U:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:Eidr-x:41C3-A846-000C-824E-C2FE-U:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
         <manifest:Presentation PresentationID="md:presentationid:eidr-x:93C0-252F-5310-2868-55AB-4">
@@ -510,9 +489,6 @@
                 <manifest:SubtitleTrackReference>
                     <manifest:SubtitleTrackID>md:subtrackid:eidr-x:93C0-252F-5310-2868-55AB-4:subtitle_en</manifest:SubtitleTrackID>
                 </manifest:SubtitleTrackReference>
-                <manifest:MetadataTrackReference>
-                    <manifest:MetadataTrackID>md:cid:eidr-x:93C0-252F-5310-2868-55AB-4:metadata</manifest:MetadataTrackID>
-                </manifest:MetadataTrackReference>
             </manifest:TrackMetadata>
         </manifest:Presentation>
     </manifest:Presentations>
@@ -653,4 +629,46 @@
             </manifest:ExperienceChild>
         </manifest:Experience>
     </manifest:Experiences>
+    <manifest:ALIDExperienceMaps>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:0617-1D06-4A28-34A7-8970-J</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:0617-1D06-4A28-34A7-8970-J</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:313E-72BB-45B7-2BD2-5274-Z</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:313E-72BB-45B7-2BD2-5274-Z</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:24DB-21F9-FB03-9CB9-075B-Y</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:24DB-21F9-FB03-9CB9-075B-Y</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:4B09-E506-76E5-DBB8-7F3C-M</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:4B09-E506-76E5-DBB8-7F3C-M</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:29FF-3664-87AE-AE66-ED1A-4</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:29FF-3664-87AE-AE66-ED1A-4</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:6C70-C3BF-2F0D-068A-4D18-R</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:6C70-C3BF-2F0D-068A-4D18-R</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:Eidr-x:41C3-A846-000C-824E-C2FE-U</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:Eidr-x:41C3-A846-000C-824E-C2FE-U</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:93C0-252F-5310-2868-55AB-4</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:93C0-252F-5310-2868-55AB-4</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:90BE-FB4F-5CBE-50E1-ED58-E</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:90BE-FB4F-5CBE-50E1-ED58-E</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:eidr-x:8AF8-5C54-BDE5-116E-C071-B</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:eidr-x:8AF8-5C54-BDE5-116E-C071-B</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+    </manifest:ALIDExperienceMaps>
 </manifest:MediaManifest>

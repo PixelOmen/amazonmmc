@@ -4,10 +4,14 @@
         <md:LocalizedInfo language="en-US">
             <md:TitleDisplayUnlimited>Episode 3</md:TitleDisplayUnlimited>
             <md:TitleSort />
+            <md:ArtReference resolution="1600x1200" purpose="boxart">SPYGLASS_WarAndPeace_1600x1200_BOX,jpg</md:ArtReference>
+            <md:ArtReference resolution="1920x1080" purpose="cover">SPYGLASS_WarAndPeace_1920x1080_COVER.jpg</md:ArtReference>
+            <md:ArtReference resolution="1920x1080" purpose="hero">SPYGLASS_WarAndPeace_1920x1080_HERO.jpg</md:ArtReference>
             <md:Summary190 />
             <md:Summary400>Pierre fights a duel that sends his life in a new direction. Natasha and Sonya receive marriage proposals and Nikolai makes a mistake with disastrous consequences for his family.</md:Summary400>
             <md:Genre id="av_genre_drama" />
             <md:Genre id="av_subgenre_drama_historical" />
+            <md:CopyrightLine>BBC MMXV</md:CopyrightLine>
         </md:LocalizedInfo>
         <md:ReleaseYear>2016</md:ReleaseYear>
         <md:ReleaseDate>2016-01-25</md:ReleaseDate>
@@ -30,6 +34,7 @@
                 </md:Region>
                 <md:System>TVPG</md:System>
                 <md:Value>TV-14</md:Value>
+                <md:Reason>V</md:Reason>
             </md:Rating>
         </md:RatingSet>
         <md:People>
@@ -227,7 +232,7 @@
             <md:Number>3</md:Number>
         </md:SequenceInfo>
         <md:Parent relationshipType="isepisodeof">
-            <md:ParentContentID>eidr-x:8AF8-5C54-BDE5-116E-C071-B</md:ParentContentID>
+            <md:ParentContentID>eidr-x:90BE-FB4F-5CBE-50E1-ED58-E</md:ParentContentID>
         </md:Parent>
     </mdmec:Basic>
     <mdmec:CompanyDisplayCredit>

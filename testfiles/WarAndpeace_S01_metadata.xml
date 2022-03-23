@@ -4,10 +4,12 @@
         <md:LocalizedInfo language="en-US">
             <md:TitleDisplayUnlimited>War And Peace Season 1</md:TitleDisplayUnlimited>
             <md:TitleSort />
+            <md:ArtReference resolution="1600x1200" purpose="boxart">SPYGLASS_WarAndPeace_1600x1200_BOX,jpg</md:ArtReference>
             <md:Summary190 />
             <md:Summary400>In a new adaptation of Leo Tolstoy’s timeless novel, three young people experience life, love and loss against the epic backdrop of Russia’s wars with Napoleon.</md:Summary400>
             <md:Genre id="av_genre_drama" />
             <md:Genre id="av_subgenre_drama_historical" />
+            <md:CopyrightLine>MMXV</md:CopyrightLine>
         </md:LocalizedInfo>
         <md:ReleaseYear>2016</md:ReleaseYear>
         <md:WorkType>season</md:WorkType>
@@ -22,6 +24,7 @@
                 </md:Region>
                 <md:System>TVPG</md:System>
                 <md:Value>TV-14</md:Value>
+                <md:Reason>V</md:Reason>
             </md:Rating>
         </md:RatingSet>
         <md:People>
