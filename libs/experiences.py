@@ -35,22 +35,33 @@ def exp_children(exp_root: ET.Element, ns: dict[str,str], group: "ResourceGroup"
         ET.SubElement(expchild_elem, ns["manifest"]+"ExperienceID").text = child.expid
     return expid
 
+def alidexpmaps(maps_root: ET.Element, ns: dict[str,str], group: "ResourceGroup") -> None:
+    map_elem = ET.SubElement(maps_root, ns["manifest"]+"ALIDExperienceMap")
+    ET.SubElement(map_elem, ns["manifest"]+"ALID").text = f"md:alid:{group.expid[16:]}"
+    expid_elem = ET.SubElement(map_elem, ns["manifest"]+"ExperienceID")
+    expid_elem.set("condition", "For-sale")
+    expid_elem.text = group.expid
+
 def create(root: ET.Element, ns: dict[str,str], toplevel: "ResourceGroup") -> None:
     exp_root = ET.SubElement(root, ns["manifest"]+"Experiences")
+    maps_root = ET.SubElement(root, ns["manifest"]+"ALIDExperienceMaps")
     if toplevel.coredata.type == "feature" or toplevel.coredata.type == "episode":
         toplevel.expid = exp_single(exp_root, ns, toplevel)
+        alidexpmaps(maps_root, ns, toplevel)
     else:
         if toplevel.coredata.type == "series":
             for season in toplevel.children:
                 for ep in season.children:
                     ep.expid = exp_single(exp_root, ns, ep)
+                    alidexpmaps(maps_root, ns, ep)
                 season.expid = exp_children(exp_root, ns, season)
+                alidexpmaps(maps_root, ns, season)
         else:
             for ep in toplevel.children:
                 ep.expid = exp_single(exp_root, ns, ep)
+                alidexpmaps(maps_root, ns, ep)
         toplevel.expid = exp_children(exp_root, ns, toplevel)
+        alidexpmaps(maps_root, ns, toplevel)
 
 
 
-# def create_maps(root: ET.Element, ns: dict[str,str], delivery: media.Delivery) -> None:
-#     pass

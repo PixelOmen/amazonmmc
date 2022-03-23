@@ -22,21 +22,26 @@ def create(data: dataio.MECData) -> ET.Element:
     root = newroot()
     basic_elem = ET.SubElement(root, NS["mdmec"]+"Basic")
     basic_elem.set("ContentID", f"md:cid:org:{data.orgid.upper()}:{data.id}")
-    localinfo_elements = []
     for region in data.localizedinfo:
         localinfo_elem = ET.SubElement(basic_elem, NS["md"]+"LocalizedInfo")
         localinfo_elem.set("language", region["language"])
         ET.SubElement(localinfo_elem, NS["md"]+"TitleDisplayUnlimited").text = region["titledisplay"]
         ET.SubElement(localinfo_elem, NS["md"]+"TitleSort")
+        if data.type != "series":
+            seasondata = cast(dataio.SeasonData, data)
+            for a in seasondata.artref:
+                artref_elem = ET.SubElement(localinfo_elem, NS["md"]+"ArtReference")
+                artref_elem.set("resolution", a["resolution"])
+                artref_elem.set("purpose", a["purpose"])
+                artref_elem.text = a["filename"]
         ET.SubElement(localinfo_elem, NS["md"]+"Summary190")
         ET.SubElement(localinfo_elem, NS["md"]+"Summary400").text = region["summary"]
-        localinfo_elements.append(localinfo_elem)
-
-    for g in data.genres:
-        if g == "":
-            continue
-        genre_elem = ET.SubElement(localinfo_elements[0], NS["md"]+"Genre")
-        genre_elem.set("id", g)
+        for g in data.genres:
+            if g == "":
+                continue
+            genre_elem = ET.SubElement(localinfo_elem, NS["md"]+"Genre")
+            genre_elem.set("id", g)
+        ET.SubElement(localinfo_elem, NS["md"]+"CopyrightLine").text = data.copyright
 
     ET.SubElement(basic_elem, NS["md"]+"ReleaseYear").text = data.releaseyear
     if data.type == "episode":
@@ -62,6 +67,7 @@ def create(data: dataio.MECData) -> ET.Element:
         ET.SubElement(region_elem, NS["md"]+"country").text = rat["country"]
         ET.SubElement(subrat_elem, NS["md"]+"System").text = rat["system"]
         ET.SubElement(subrat_elem, NS["md"]+"Value").text = rat["value"]
+        ET.SubElement(subrat_elem, NS["md"]+"Reason").text = rat["reason"]
 
     if data.type != "series":
         peopledata = cast(dataio.FeatureData, data)

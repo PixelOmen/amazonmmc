@@ -12,6 +12,7 @@ class MECData(ABC):
     releaseyear: str
     orgid: str
     origlanguage: str
+    copyright: str
     localizedinfo: list[dict[str,str]]
     altids: list[dict[str,str]]
     ratings: list[dict[str,str]]
@@ -25,6 +26,7 @@ class MECData(ABC):
 class FeatureData(MECData):
     people: list[dict[str,str]]
     resources: list[dict[str,str]]
+    artref: list[dict[str, str]]
 
     @property
     def descriptor(self) -> str:
@@ -45,6 +47,7 @@ class SeasonData(MECData):
     sequence: str
     episodes: list[str]
     people: list[dict[str,str]]
+    artref: list[dict[str, str]]
 
     @property
     def descriptor(self) -> str:
@@ -59,6 +62,7 @@ class EpisodeData(MECData):
     releasehistory: list[dict[str, str]]
     people: list[dict[str,str]]
     resources: list[dict[str,str]]
+    artref: list[dict[str, str]]
 
     @property
     def descriptor(self) -> str:
@@ -154,6 +158,7 @@ def parse_series(seriesfile: Path) -> MECData:
     releaseyear = series_data[find_index(series_data, "releaseyear")].split(";")[1]
     origlanguage = series_data[find_index(series_data, "originallanguage")].split(";")[1]
     orgid = series_data[find_index(series_data, "organizationid")].split(";")[1]
+    copyright = series_data[find_index(series_data, "copyright")].split(";")[1]
     localizedinfo = parse_multiline(series_data, find_index(series_data, "localizedinfo"))
     altids = parse_multiline(series_data, find_index(series_data, "altids"))
     ratings = parse_multiline(series_data, find_index(series_data, "ratings"))
@@ -166,6 +171,7 @@ def parse_series(seriesfile: Path) -> MECData:
         releaseyear=releaseyear,
         orgid=orgid,
         origlanguage=origlanguage,
+        copyright=copyright,
         localizedinfo=localizedinfo,
         altids=altids,
         ratings=ratings,
@@ -174,22 +180,24 @@ def parse_series(seriesfile: Path) -> MECData:
     )
 
 def parse_season(seasonfile: Path) -> MECData:
-    series_data = read_data(seasonfile)
-    parentid = series_data[find_index(series_data, "parentid")].split(";")[1]
-    title = series_data[find_index(series_data, "title")].split(";")[1]
-    id = series_data[find_index(series_data, "id")].split(";")[1]
-    season = series_data[find_index(series_data, "season")].split(";")[1]
-    sequence = series_data[find_index(series_data, "sequence")].split(";")[1]
-    episodes = series_data[find_index(series_data, "episodes")].split(";")[1:]
-    genres = series_data[find_index(series_data, "genres")].split(";")[1:]
-    releaseyear = series_data[find_index(series_data, "releaseyear")].split(";")[1]
-    origlanguage = series_data[find_index(series_data, "originallanguage")].split(";")[1]
-    orgid = series_data[find_index(series_data, "organizationid")].split(";")[1]
-    localizedinfo = parse_multiline(series_data, find_index(series_data, "localizedinfo"))
-    altids = parse_multiline(series_data, find_index(series_data, "altids"))
-    ratings = parse_multiline(series_data, find_index(series_data, "ratings"))
-    people = parse_multiline(series_data, find_index(series_data, "people"), 2)
-    companycredits = parse_multiline(series_data, find_index(series_data, "companycredits"))
+    season_data = read_data(seasonfile)
+    parentid = season_data[find_index(season_data, "parentid")].split(";")[1]
+    title = season_data[find_index(season_data, "title")].split(";")[1]
+    id = season_data[find_index(season_data, "id")].split(";")[1]
+    season = season_data[find_index(season_data, "season")].split(";")[1]
+    sequence = season_data[find_index(season_data, "sequence")].split(";")[1]
+    episodes = season_data[find_index(season_data, "episodes")].split(";")[1:]
+    genres = season_data[find_index(season_data, "genres")].split(";")[1:]
+    releaseyear = season_data[find_index(season_data, "releaseyear")].split(";")[1]
+    origlanguage = season_data[find_index(season_data, "originallanguage")].split(";")[1]
+    orgid = season_data[find_index(season_data, "organizationid")].split(";")[1]
+    copyright = season_data[find_index(season_data, "copyright")].split(";")[1]
+    localizedinfo = parse_multiline(season_data, find_index(season_data, "localizedinfo"))
+    altids = parse_multiline(season_data, find_index(season_data, "altids"))
+    ratings = parse_multiline(season_data, find_index(season_data, "ratings"))
+    people = parse_multiline(season_data, find_index(season_data, "people"), 2)
+    companycredits = parse_multiline(season_data, find_index(season_data, "companycredits"))
+    artref = parse_multiline(season_data, find_index(season_data, "artreference"))
     return SeasonData(
         type="season",
         title=title,
@@ -202,11 +210,13 @@ def parse_season(seasonfile: Path) -> MECData:
         releaseyear=releaseyear,
         orgid=orgid,
         origlanguage=origlanguage,
+        copyright=copyright,
         localizedinfo=localizedinfo,
         altids=altids,
         ratings=ratings,
         people=people,
         companycredits=companycredits,
+        artref=artref
     )
 
 def parse_episode(episodefile: Path) -> MECData:
@@ -221,6 +231,7 @@ def parse_episode(episodefile: Path) -> MECData:
     releasedate = episode_data[find_index(episode_data, "releasedate")].split(";")[1]
     origlanguage = episode_data[find_index(episode_data, "originallanguage")].split(";")[1]
     orgid = episode_data[find_index(episode_data, "organizationid")].split(";")[1]
+    copyright = episode_data[find_index(episode_data, "copyright")].split(";")[1]
     releasehistory = parse_multiline(episode_data, find_index(episode_data, "releasehistory"))
     localizedinfo = parse_multiline(episode_data, find_index(episode_data, "localizedinfo"))
     altids = parse_multiline(episode_data, find_index(episode_data, "altids"))
@@ -228,6 +239,7 @@ def parse_episode(episodefile: Path) -> MECData:
     people = parse_multiline(episode_data, find_index(episode_data, "people"), 2)
     companycredits = parse_multiline(episode_data, find_index(episode_data, "companycredits"))
     resources = parse_multiline(episode_data, find_index(episode_data, "resources"))
+    artref = parse_multiline(episode_data, find_index(episode_data, "artreference"))
     return EpisodeData(
         type="episode",
         title=title,
@@ -241,10 +253,12 @@ def parse_episode(episodefile: Path) -> MECData:
         releasehistory=releasehistory,
         orgid=orgid,
         origlanguage=origlanguage,
+        copyright=copyright,
         localizedinfo=localizedinfo,
         altids=altids,
         ratings=ratings,
         people=people,
         companycredits=companycredits,
-        resources=resources
+        resources=resources,
+        artref=artref
     )
