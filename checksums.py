@@ -48,7 +48,7 @@ def wait_for_output(processes: list[tuple[str, sub.Popen]], printcomplete: bool=
     return outputs
 
 def output_md5(md5info: list[tuple[str, str]], rootdir: Path) -> None:
-    outputpath = rootdir.parent / "data" / "checksums.txt"
+    outputpath = rootdir / "data" / "checksums.txt"
     with open(str(outputpath), "w") as fp:
         for filename, md5 in md5info:
             fp.write(f"{filename}={md5}\n")
