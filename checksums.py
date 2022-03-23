@@ -20,7 +20,10 @@ def getfiles() -> list[Path]:
     root.update()
     if not rootdir:
         return []
-    return [f for f in Path(rootdir).iterdir() if f.is_file() and f.name[0] != "."]
+    resourcedir = Path(rootdir) / "resources"
+    if not resourcedir.is_dir():
+        raise FileNotFoundError("Unable to locate resource directory")
+    return [f for f in resourcedir.iterdir() if f.is_file() and f.name[0] != "."]
 
 def startmd5(filelist: list[Path]) -> list[tuple[str,sub.Popen]]:
     checksum_subs: list[tuple[str,sub.Popen]] = []
