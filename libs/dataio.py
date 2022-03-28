@@ -75,9 +75,11 @@ def read_data(datapath: Path) -> list[str]:
         maindata_lines = fp.readlines()
     return [l.strip("\r\n") for l in maindata_lines]
 
-# indent function adds newlines and tabs to xml so it's not all on 1 line
-# pass root element into function
 def indent(elem: ET.Element, level: int=0, spaces: int=4) -> None:
+    '''
+    Adds newlines and tabs to xml so it's not all on 1 line.
+    Pass the root element into 'elem'
+    '''
     i = "\n" + level*(" "*spaces)
     if len(elem):
         if not elem.text or not elem.text.strip():
@@ -146,8 +148,25 @@ def parse_multicell(keys: list[str], splitline: list[str], multiindex: int) -> d
 
 
 
-def parse_feature():
-    pass
+def parse_feature(featurefile: Path):
+    feature_data = read_data(featurefile)
+    return FeatureData(
+        type="feature",
+        title=feature_data[find_index(feature_data, "title")].split(";")[1],
+        id=feature_data[find_index(feature_data, "id")].split(";")[1],
+        genres=feature_data[find_index(feature_data, "genres")].split(";")[1:],
+        releaseyear=feature_data[find_index(feature_data, "releaseyear")].split(";")[1],
+        orgid=feature_data[find_index(feature_data, "organizationid")].split(";")[1],
+        origlanguage=feature_data[find_index(feature_data, "originallanguage")].split(";")[1],
+        copyright=feature_data[find_index(feature_data, "copyright")].split(";")[1],
+        localizedinfo=parse_multiline(feature_data, find_index(feature_data, "localizedinfo")),
+        altids=parse_multiline(feature_data, find_index(feature_data, "altids")),
+        ratings=parse_multiline(feature_data, find_index(feature_data, "ratings")),
+        companycredits=parse_multiline(feature_data, find_index(feature_data, "companycredits")),
+        people=parse_multiline(feature_data, find_index(feature_data, "people"), 2),
+        resources= parse_multiline(feature_data, find_index(feature_data, "resources")),
+        artref=parse_multiline(feature_data, find_index(feature_data, "artreference"))
+    )
 
 def parse_series(seriesfile: Path) -> MECData:
     series_data = read_data(seriesfile)
