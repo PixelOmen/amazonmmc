@@ -1,0 +1,251 @@
+{
+    "general": {
+        "worktype": "episodic",
+        "orgprefix": "md:cid:org:",
+        "orgid": {
+            "id": "amazonkids",
+            "role": "licensor"
+        }
+    },
+    "series": {
+        "worktype": "series",
+        "title": "HELLOKITTY",
+        "id": "HELLO_KITTY_INTL",
+        "releaseyear": "2022",
+        "releasedate": "2022-12-30",
+        "countryorigin": "FR",
+        "originallanguage": "en-US",
+        "localizedinfo": [
+            {
+                "language": "ja-JP",
+                "titleunlimited": "Hello Kitty: Super Style! (英語) [Amazon Kids+に含まれています]",
+                "summary190": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。",
+                "summary400": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。魔法のリボンの力を使って、シェフやスポーツ選手、探偵などに変身。困っているお友達を助けながら問題を解決、危機を乗り越えていきます。",
+                "copyright": "2022 Watch Next Media",
+                "genres": [
+                    "av_genre_kids",
+                    "av_subgenre_animation_adventure"
+                ],
+                "art": [
+                    {
+                        "resolution": "1600x1200",
+                        "purpose": "boxart",
+                        "Filename": "AMAZONKIDS_HELLOKITTY_SEASON1_BOX_4x3.png"
+                    },
+                    {
+                        "resolution": "1920x1080",
+                        "purpose": "cover",
+                        "Filename": "AMAZONKIDS_HELLOKITTY_SEASON1_COVER_16x9.png"
+                    }
+                ]
+            }
+        ],
+        "releasehistory": {
+            "type": "original",
+            "territory": "US"
+        },
+        "altids": [
+            {
+                "namespace": "ORG",
+                "identifier": "HELLO_KITTY_INTL"
+            }
+        ],
+        "ratings" : [
+            {
+                "country": "JP",
+                "system": "EIRIN",
+                "value": "G",
+                "reason": ""
+            }
+        ],
+        "companycredits": [
+            {
+                "language": "en-US",
+                "credit": "Watch Next Media"
+            }
+        ],
+        "people": [
+            [
+                {
+                    "job": "Director",
+                    "billingorder": "1",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Jérémy Guiter"
+                        }
+                    ]
+                },
+                {
+                    "job": "Director",
+                    "billingorder": "2",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Sylvain Rohart"
+                        }
+                    ]
+                },
+                {
+                    "job": "Producer",
+                    "billingorder": "3",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Philippe Alessandri"
+                        }
+                    ]
+                },
+                {
+                    "job": "Producer",
+                    "billingorder": "4",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Massimo Carrier Ragazzi"
+                        }
+                    ]
+                },
+                {
+                    "job": "Producer",
+                    "billingorder": "5",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Giorgio Welter"
+                        }
+                    ]
+                },
+                {
+                    "job": "Writer",
+                    "billingorder": "6",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Myles McLeod"
+                        }
+                    ]
+                }
+            ],
+            [
+                {
+                    "job": "Actor",
+                    "billingorder": "1",
+                    "character": "Hello Kitty",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Sarah Williams"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "2",
+                    "character": "DinoBoss",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Gary Mack"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "3",
+                    "character": "Frido",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Lindsay Sheppard"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "4",
+                    "character": "Badtz-Maru",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Billy Bob Thompson"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "5",
+                    "character": "Pinky",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Kara Edwards"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "6",
+                    "character": "Zonty",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Nicholas Andrew Louie"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "7",
+                    "character": "Beaver Triplets",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Kaylin Clinton"
+                        }
+                    ]
+                },
+                {
+                    "job": "Actor",
+                    "billingorder": "8",
+                    "character": "Keroppi",
+                    "names": [
+                        {
+                            "language": "en-US",
+                            "name": "Nophi Mitchell"
+                        }
+                    ]
+                }
+            ]
+        ],
+        "seasons": [
+            {
+                "worktype": "season",
+                "sequence": "1",
+                "id": "HELLO_KITTY_INTL_S1",
+                "altids": [
+                    {
+                        "namespace": "ORG",
+                        "identifier": "HELLO_KITTY_INTL_S1"
+                    }
+                ],
+                "episodes": [
+                    {
+                        "worktype": "episode",
+                        "sequence": "1",
+                        "id": "HELLO_KITTY_INTL_S1_101",
+                        "localizedinfo": [
+                            {
+                                "language": "ja-JP",
+                                "titleunlimited": "ローラースケート",
+                                "summary190": "",
+                                "summary400": "チェリータウンは、ブギウギローラースケートパーティーで大盛り上がり！しかしゾンティは、ローラースケートが怖いのでパーティに行くことを嫌がっています。ハローキティの助けを借りて、ゾンティは自信を持ってパーティを楽しむことができるようになるでしょうか？",
+                                "art": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

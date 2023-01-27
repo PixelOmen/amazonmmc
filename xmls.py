@@ -2,10 +2,14 @@ import os
 import sys
 import time
 import tkinter
-from tkinter import filedialog
+import logging
 from pathlib import Path
+from tkinter import filedialog
 
 from libs import media
+
+logging.basicConfig(level=logging.INFO, filename="log.txt",
+    format='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 
 def clear() -> None:
     if sys.platform == "darwin":
@@ -24,15 +28,21 @@ def getroot() -> str:
     return rootdir
 
 def main():
-    rootdir = getroot()
-    if not rootdir:
-        print("No directory selected")
+    try:
+        rootdir = getroot()
+        if not rootdir:
+            print("No directory selected")
+            exit()
+        deliv = media.Delivery(Path(rootdir))
+        deliv.output_mec()
+        input("MECs generated. Press enter to generate MMC once checksums are ready...")
+        deliv.output_mmc()
+    except Exception as e:
+        clear()
+        name = type(e).__name__
+        print(f"{name}: {e}")
+        logging.exception(e)
         exit()
-    rootdir = Path(rootdir)
-    deliv = media.Delivery(rootdir)
-    deliv.output_mec()
-    input("MECs generated. Press enter to generate MMC once checksums are ready...")
-    deliv.output_mmc()
 
 if __name__ == "__main__":
     main()
