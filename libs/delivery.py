@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Any
 
 from .mec import MEC
 from .mmc import MMC
+from .media import Media
 from .enums import WorkTypes
 from xml.etree import ElementTree as ET
 
@@ -17,7 +18,7 @@ class Delivery:
     @property
     def mecs(self) -> list[MEC]:
         if not self._mecs:
-            raise RuntimeError("MECs must be built before read")
+            self.build_mecs()
         return self._mecs
 
     @property
@@ -27,15 +28,14 @@ class Delivery:
         return self._mmc
 
     def build_mecs(self) -> list[MEC]:
-        general: dict = self._shouldexist(self.data, "general")
-        worktype_str: str = self._shouldexist(general, "worktype")
+        general: dict = self._assertexists(self.data, "general")
+        worktype_str: str = self._assertexists(general, "worktype")
         worktype = WorkTypes.get_int(worktype_str)
         if worktype != WorkTypes.EPISODIC:
             raise NotImplementedError("Only episodic workflows are currently supported")
-        series: dict = self._shouldexist(self.data, "series")
-        mec = MEC(series)
-        self._mecs = [mec]
-        return [mec]
+
+        self._mecs = self._episodic()
+        return self._mecs
 
     # def build_mmc(self) -> MMC:
     #     pass
@@ -71,6 +71,28 @@ class Delivery:
         tree = ET.ElementTree(root)
         tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
 
+    def _episodic(self) -> list[MEC]:
+        series: dict = self._assertexists(self.data, "series")
+        series_media = Media(series)
+        series_mec = MEC(series_media)
+        series_mec.episodic()
+        allmec: list[MEC] = [series_mec]
+
+        seasons: list[dict] = self._assertexists(series, "seasons")
+        for season in seasons:
+            season_media = Media(season, series_media)
+            season_mec = MEC(season_media)
+            season_mec.episodic()
+            allmec.append(season_mec)
+
+            episodes = self._assertexists(season, "episodes")
+            for ep in episodes:
+                ep_media = Media(ep, season_media)
+                ep_mec = MEC(ep_media)
+                ep_mec.episodic()
+                allmec.append(ep_mec)
+        return allmec
+
     def _scandir(self) -> dict:
         datadir = self.rootpath / "data"
         if not datadir.is_dir():
@@ -81,11 +103,11 @@ class Delivery:
         resourcepath = self.rootpath / "resources"
         if not resourcepath.is_dir():
             raise FileNotFoundError("Unable to locate resources folder")
-        with open(datapath, "r", encoding="UTF-8") as fp:
-            data = json.loads(fp.read())
+        with open(datapath, "rb") as fp:
+            data = json.load(fp)
         return data
 
-    def _shouldexist(self, somedict: dict, key: str, context: str=...) -> Any:
+    def _assertexists(self, somedict: dict, key: str, context: str=...) -> Any:
         value = somedict.get(key)
         if value is None:
             msg = f"Missing key '{key}'"

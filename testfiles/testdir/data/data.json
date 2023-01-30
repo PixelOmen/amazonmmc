@@ -8,7 +8,7 @@
         }
     },
     "series": {
-        "worktype": "series",
+        "mediatype": "series",
         "title": "HELLOKITTY",
         "id": "HELLO_KITTY_INTL",
         "releaseyear": "2022",
@@ -220,7 +220,7 @@
         ],
         "seasons": [
             {
-                "worktype": "season",
+                "mediatype": "season",
                 "sequence": "1",
                 "id": "HELLO_KITTY_INTL_S1",
                 "altids": [
@@ -231,7 +231,7 @@
                 ],
                 "episodes": [
                     {
-                        "worktype": "episode",
+                        "mediatype": "episode",
                         "sequence": "1",
                         "id": "HELLO_KITTY_INTL_S1_101",
                         "localizedinfo": [
@@ -240,6 +240,76 @@
                                 "titleunlimited": "ローラースケート",
                                 "summary190": "",
                                 "summary400": "チェリータウンは、ブギウギローラースケートパーティーで大盛り上がり！しかしゾンティは、ローラースケートが怖いのでパーティに行くことを嫌がっています。ハローキティの助けを借りて、ゾンティは自信を持ってパーティを楽しむことができるようになるでしょうか？",
+                                "art": []
+                            }
+                        ]
+                    },
+                    {
+                        "mediatype": "episode",
+                        "sequence": "2",
+                        "id": "HELLO_KITTY_INTL_S1_102",
+                        "localizedinfo": [
+                            {
+                                "language": "ja-JP",
+                                "titleunlimited": "友情の日",
+                                "summary190": "",
+                                "summary400": "今日は、チェリータウンの「友情の日」です。でもフリードは彼女の大親友であるゾンティに贈るプレゼントを用意していませんでした。ゾンティはがっかりしてしまいます。そんなフリードを芸術家に扮したキティがお手伝い。フリードは大親友に彼女の気持ちをプレゼントで伝えることができるでしょうか、、。",
+                                "art": []
+                            }
+                        ]
+                    },
+                    {
+                        "mediatype": "episode",
+                        "sequence": "3",
+                        "id": "HELLO_KITTY_INTL_S1_103",
+                        "localizedinfo": [
+                            {
+                                "language": "ja-JP",
+                                "titleunlimited": "負けても大丈夫！",
+                                "summary190": "",
+                                "summary400": "ジンはチェリータウンで人気のスポーツ選手。何よりも勝つことが大好きです。ある日、大物有名スポーツ選手のバスタスが金メダルをかけて彼女に挑戦を挑んできました。でもジンは怖くなってしまって挑戦を受けることができません。スポーツ選手に扮したキティは、ジンを助けながらもスポーツは勝つことだけが大事なことではないことを伝えようとします。",
+                                "art": []
+                            }
+                        ]
+                    },
+                    {
+                        "mediatype": "episode",
+                        "sequence": "4",
+                        "id": "HELLO_KITTY_INTL_S1_104",
+                        "localizedinfo": [
+                            {
+                                "language": "ja-JP",
+                                "titleunlimited": "本当のたからもの",
+                                "summary190": "",
+                                "summary400": "ピーアイは古代とべない国王の王冠の場所が記された地図を見つけました。ばつ丸は早く宝物を手に入れたくて仕方ありません。しかしばつ丸は仲間を危険な目にあわせてしまいます。探検家のキティは、ばつ丸を助けながら、友情よりも価値のあるものはないことをおしえようとします。",
+                                "art": []
+                            }
+                        ]
+                    },
+                    {
+                        "mediatype": "episode",
+                        "sequence": "5",
+                        "id": "HELLO_KITTY_INTL_S1_105",
+                        "localizedinfo": [
+                            {
+                                "language": "ja-JP",
+                                "titleunlimited": "三つ子の架け橋",
+                                "summary190": "",
+                                "summary400": "チェリータウンの橋が壊れてしまった。ビーバーの三つ子たちはどうやって橋を元通りにすればいいのかわかりません。そこで三人はキティの助けを借りることに。",
+                                "art": []
+                            }
+                        ]
+                    },
+                    {
+                        "mediatype": "episode",
+                        "sequence": "6",
+                        "id": "HELLO_KITTY_INTL_S1_106",
+                        "localizedinfo": [
+                            {
+                                "language": "ja-JP",
+                                "titleunlimited": "消えたけろっぴ",
+                                "summary190": "手品でけろっぴが消えてしまった。探偵に変身したキティは疑いを晴らすため、けろっぴを探し出すことに。",
+                                "summary400": "手品でけろっぴが消えてしまった。探偵に変身したキティは疑いを晴らすため、けろっぴを探し出すことに。",
                                 "art": []
                             }
                         ]
