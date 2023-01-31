@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mdmec:CoreMetadata xmlns:md="http://www.movielabs.com/schema/md/v2.9/md" xmlns:mdmec="http://www.movielabs.com/schema/mdmec/v2.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd">
+    <mdmec:Basic>
+        <md:LocalizedInfo language="ja-JP">
+            <md:TitleDisplayUnlimited>友情の日</md:TitleDisplayUnlimited>
+            <md:TitleSort />
+            <md:Summary190 />
+            <md:Summary400>今日は、チェリータウンの「友情の日」です。でもフリードは彼女の大親友であるゾンティに贈るプレゼントを用意していませんでした。ゾンティはがっかりしてしまいます。そんなフリードを芸術家に扮したキティがお手伝い。フリードは大親友に彼女の気持ちをプレゼントで伝えることができるでしょうか、、。</md:Summary400>
+            <md:Genre id="av_genre_kids" />
+            <md:Genre id="av_subgenre_animation_adventure" />
+            <md:CopyrightLine>2022 Watch Next Media</md:CopyrightLine>
+        </md:LocalizedInfo>
+    </mdmec:Basic>
+</mdmec:CoreMetadata>

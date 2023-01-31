@@ -12,10 +12,10 @@ class Media:
         if self.mediatype in NOT_IMPLEMENTED:
             raise NotImplementedError(MediaTypes.get_str(self.mediatype))
 
-    def find(self, key: str, assertexists: bool=False) -> Any:
+    def find(self, key: str, assertcurrent: bool=False) -> Any:
         value = self.data.get(key)
         if value is None:
-            if assertexists:
+            if assertcurrent:
                 mediatype = MediaTypes.get_str(self.mediatype)
                 raise KeyError(f"Unable to locate '{key}' in {mediatype}")
             if self.parent is not None:

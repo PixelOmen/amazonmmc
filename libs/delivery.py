@@ -11,6 +11,7 @@ from xml.etree import ElementTree as ET
 class Delivery:
     def __init__(self, rootpath: str|Path) -> None:
         self.rootpath = Path(rootpath)
+        self.resourcepath = self.rootpath / "resources"
         self.data: dict = self._scandir()
         self._mecs: list[MEC] = []
         self._mmc: MMC | None = None
@@ -42,7 +43,8 @@ class Delivery:
 
     def write_mecs(self) -> None:
         for m in self.mecs:
-            self.output_xml(m.root, "test.xml")
+            fulloutput = self.resourcepath / m.outputname
+            self.output_xml(m.root, fulloutput)
 
     # def write_mmc(self) -> None:
     #     pass
@@ -66,7 +68,7 @@ class Delivery:
             if level and (not elem.tail or not elem.tail.strip()):
                 elem.tail = i
 
-    def output_xml(self, root, outputpath, encodingtype="UTF-8", xmldecl=True) -> None:
+    def output_xml(self, root: ET.Element, outputpath, encodingtype="UTF-8", xmldecl=True) -> None:
         self.indent(root)
         tree = ET.ElementTree(root)
         tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
