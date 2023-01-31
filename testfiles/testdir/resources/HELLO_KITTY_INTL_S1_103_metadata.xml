@@ -24,5 +24,148 @@
             <md:Namespace>ORG</md:Namespace>
             <md:Identifier>HELLO_KITTY_INTL_S1_103</md:Identifier>
         </md:AltIdentifier>
+        <md:RatingSet>
+            <md:Rating>
+                <md:Region>
+                    <md:country>JP</md:country>
+                </md:Region>
+                <md:System>EIRIN</md:System>
+                <md:Value>G</md:Value>
+            </md:Rating>
+        </md:RatingSet>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Director</md:JobFunction>
+                <md:BillingBlockOrder>1</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Jérémy Guiter</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Director</md:JobFunction>
+                <md:BillingBlockOrder>2</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Sylvain Rohart</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>3</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Philippe Alessandri</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>4</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Massimo Carrier Ragazzi</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Producer</md:JobFunction>
+                <md:BillingBlockOrder>5</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Giorgio Welter</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Writer</md:JobFunction>
+                <md:BillingBlockOrder>6</md:BillingBlockOrder>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Myles McLeod</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>1</md:BillingBlockOrder>
+                <md:Character>Hello Kitty</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Sarah Williams</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>2</md:BillingBlockOrder>
+                <md:Character>DinoBoss</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Gary Mack</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>3</md:BillingBlockOrder>
+                <md:Character>Frido</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Lindsay Sheppard</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>4</md:BillingBlockOrder>
+                <md:Character>Badtz-Maru</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Billy Bob Thompson</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>5</md:BillingBlockOrder>
+                <md:Character>Pinky</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Kara Edwards</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>6</md:BillingBlockOrder>
+                <md:Character>Zonty</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Nicholas Andrew Louie</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>7</md:BillingBlockOrder>
+                <md:Character>Beaver Triplets</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Kaylin Clinton</md:DisplayName>
+            </md:Name>
+        </md:People>
+        <md:People>
+            <md:Job>
+                <md:JobFunction>Actor</md:JobFunction>
+                <md:BillingBlockOrder>8</md:BillingBlockOrder>
+                <md:Character>Keroppi</md:Character>
+            </md:Job>
+            <md:Name>
+                <md:DisplayName language="en-US">Nophi Mitchell</md:DisplayName>
+            </md:Name>
+        </md:People>
     </mdmec:Basic>
 </mdmec:CoreMetadata>

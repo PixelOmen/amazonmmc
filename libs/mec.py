@@ -71,9 +71,14 @@ class MEC:
         worktype_root.text = worktype
         basicroot.append(worktype_root)
 
-        altids = self._altid()
+        altids = self._altids()
         for altid in altids:
             basicroot.append(altid)
+
+        basicroot.append(self._ratings())
+        people = self._people()
+        for person in people:
+            basicroot.append(person)
         return basicroot
 
     def _localized(self) -> list[ET.Element]:
@@ -126,7 +131,7 @@ class MEC:
             allelem.append(history_root)
         return allelem
 
-    def _altid(self) -> list[ET.Element]:
+    def _altids(self) -> list[ET.Element]:
         allelem: list[ET.Element] = []
         altids = self._search_media("AltIdentifier")
         for altid in altids:
@@ -134,4 +139,44 @@ class MEC:
             root.append(self._simple_element("md", "Namespace", altid))
             root.append(self._simple_element("md", "Identifier", altid))
             allelem.append(root)
+        return allelem
+
+    def _ratings(self) -> ET.Element:
+        ratings: list[dict] = self._search_media("RatingSet")
+        ratingset_root = ET.Element(NS["md"]+"RatingSet")
+        for rating in ratings:
+            rating_root = ET.Element(NS["md"]+"Rating")
+            region_root = ET.Element(NS["md"]+"Region")
+            country_root = self._simple_element("md", "country", rating)
+            region_root.append(country_root)
+            rating_root.append(region_root)
+            rating_root.append(self._simple_element("md", "System", rating))
+            rating_root.append(self._simple_element("md", "Value", rating))
+            reason = rating.get("Reason")
+            if reason:
+                rating_root.append(self._simple_element("md", "Reason", rating))
+            ratingset_root.append(rating_root)
+        return ratingset_root
+
+    def _people(self) -> list[ET.Element]:
+        allelem: list[ET.Element] = []
+        people_groups: list[list[dict]] = self._search_media("People")
+        for group in people_groups:
+            for person in group:
+                person_root = ET.Element(NS["md"]+"People")
+                job_root = ET.Element(NS["md"]+"Job")
+                job_root.append(self._simple_element("md", "JobFunction", person))
+                job_root.append(self._simple_element("md", "BillingBlockOrder", person))
+                person_root.append(job_root)
+                name_root = ET.Element(NS["md"]+"Name")
+                person_root.append(name_root)
+                character = person.get("Character")
+                if character:
+                    job_root.append(self._simple_element("md", "Character", person))
+                for name in self._get_value("names", person):
+                    displayname = self._simple_element("md", "DisplayName", name)
+                    displayname.set("language", self._get_value("language", name))
+                    displayname.text = self._get_value("name", name)
+                    name_root.append(displayname)
+                allelem.append(person_root)
         return allelem
