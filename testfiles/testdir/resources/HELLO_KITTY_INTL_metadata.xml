@@ -169,5 +169,10 @@
                 <md:DisplayName language="en-US">Nophi Mitchell</md:DisplayName>
             </md:Name>
         </md:People>
+        <md:CountryOfOrigin>
+            <md:country>FR</md:country>
+        </md:CountryOfOrigin>
+        <md:OriginalLanguage>en-US</md:OriginalLanguage>
+        <md:AssociatedOrg organizationID="amazonkids" role="licensor" />
     </mdmec:Basic>
 </mdmec:CoreMetadata>

@@ -1,9 +1,10 @@
 {
     "general": {
+        "mediatype": "general",
         "worktype": "episodic",
         "orgprefix": "md:cid:org:",
-        "orgid": {
-            "id": "amazonkids",
+        "AssociatedOrg": {
+            "organizationID": "amazonkids",
             "role": "licensor"
         }
     },
@@ -13,8 +14,8 @@
         "id": "HELLO_KITTY_INTL",
         "ReleaseYear": "2022",
         "ReleaseDate": "2022-12-30",
-        "countryorigin": "FR",
-        "originallanguage": "en-US",
+        "CountryOfOrigin": "FR",
+        "OriginalLanguage": "en-US",
         "LocalizedInfo": [
             {
                 "language": "ja-JP",
@@ -224,7 +225,7 @@
         "seasons": [
             {
                 "mediatype": "season",
-                "sequence": "1",
+                "SequenceInfo": "1",
                 "id": "HELLO_KITTY_INTL_S1",
                 "AltIdentifier": [
                     {
@@ -260,7 +261,7 @@
                 "episodes": [
                     {
                         "mediatype": "episode",
-                        "sequence": "1",
+                        "SequenceInfo": "1",
                         "id": "HELLO_KITTY_INTL_S1_101",
                         "LocalizedInfo": [
                             {
@@ -285,7 +286,7 @@
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "2",
+                        "SequenceInfo": "2",
                         "id": "HELLO_KITTY_INTL_S1_102",
                         "LocalizedInfo": [
                             {
@@ -310,7 +311,7 @@
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "3",
+                        "SequenceInfo": "3",
                         "id": "HELLO_KITTY_INTL_S1_103",
                         "LocalizedInfo": [
                             {
@@ -335,7 +336,7 @@
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "4",
+                        "SequenceInfo": "4",
                         "id": "HELLO_KITTY_INTL_S1_104",
                         "LocalizedInfo": [
                             {
@@ -360,7 +361,7 @@
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "5",
+                        "SequenceInfo": "5",
                         "id": "HELLO_KITTY_INTL_S1_105",
                         "LocalizedInfo": [
                             {
@@ -385,7 +386,7 @@
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "6",
+                        "SequenceInfo": "6",
                         "id": "HELLO_KITTY_INTL_S1_106",
                         "LocalizedInfo": [
                             {

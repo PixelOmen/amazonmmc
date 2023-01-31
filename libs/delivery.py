@@ -74,8 +74,10 @@ class Delivery:
         tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
 
     def _episodic(self) -> list[MEC]:
+        general: dict = self._assertexists(self.data, "general")
+        general_media = Media(general)
         series: dict = self._assertexists(self.data, "series")
-        series_media = Media(series)
+        series_media = Media(series, general_media)
         series_mec = MEC(series_media)
         series_mec.episodic()
         allmec: list[MEC] = [series_mec]

@@ -24,10 +24,11 @@ class WorkTypes:
 
 class MediaTypes:
     UNKNOWN = 0
-    FEATURE = 1
-    SERIES = 2
-    SEASON = 3
-    EPISODE = 4
+    GENERAL = 1
+    FEATURE = 2
+    SERIES = 3
+    SEASON = 4
+    EPISODE = 5
 
     def __init__(self):
         raise NotImplementedError("Can't instantiate MediaTypes Enum")

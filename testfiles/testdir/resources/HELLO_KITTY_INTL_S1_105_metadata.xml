@@ -167,5 +167,16 @@
                 <md:DisplayName language="en-US">Nophi Mitchell</md:DisplayName>
             </md:Name>
         </md:People>
+        <md:CountryOfOrigin>
+            <md:country>FR</md:country>
+        </md:CountryOfOrigin>
+        <md:OriginalLanguage>en-US</md:OriginalLanguage>
+        <md:AssociatedOrg organizationID="amazonkids" role="licensor" />
+        <md:SequenceInfo>
+            <md:Number>5</md:Number>
+        </md:SequenceInfo>
+        <md:Parent relationshipType="isepisodeof">
+            <md:ParentContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1</md:ParentContentID>
+        </md:Parent>
     </mdmec:Basic>
 </mdmec:CoreMetadata>
