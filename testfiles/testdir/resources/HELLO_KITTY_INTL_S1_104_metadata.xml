@@ -10,5 +10,14 @@
             <md:Genre id="av_subgenre_animation_adventure" />
             <md:CopyrightLine>2022 Watch Next Media</md:CopyrightLine>
         </md:LocalizedInfo>
+        <md:ReleaseYear>2022</md:ReleaseYear>
+        <md:ReleaseDate>2022-12-30</md:ReleaseDate>
+        <md:ReleaseHistory>
+            <md:ReleaseType>original</md:ReleaseType>
+            <md:DistrTerritory>
+                <md:country>US</md:country>
+            </md:DistrTerritory>
+            <md:Date>2022-12-30</md:Date>
+        </md:ReleaseHistory>
     </mdmec:Basic>
 </mdmec:CoreMetadata>

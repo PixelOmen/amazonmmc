@@ -11,8 +11,8 @@
         "mediatype": "series",
         "title": "HELLOKITTY",
         "id": "HELLO_KITTY_INTL",
-        "releaseyear": "2022",
-        "releasedate": "2022-12-30",
+        "ReleaseYear": "2022",
+        "ReleaseDate": "2022-12-30",
         "countryorigin": "FR",
         "originallanguage": "en-US",
         "LocalizedInfo": [
@@ -40,10 +40,13 @@
                 ]
             }
         ],
-        "releasehistory": {
-            "type": "original",
-            "territory": "US"
-        },
+        "ReleaseHistory": [
+            {
+                "ReleaseType": "original",
+                "country": "US",
+                "Date": "2022-12-30"
+            }   
+        ],
         "altids": [
             {
                 "namespace": "ORG",

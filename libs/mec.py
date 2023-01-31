@@ -56,11 +56,15 @@ class MEC:
     def _basic(self) -> ET.Element:
         basicroot = ET.Element(NS["mdmec"]+"Basic")
         localizedinfo = self._localized()
-        basicroot.append(*localizedinfo)
+        releaseinfo = self._releaseinfo()
+        for info in localizedinfo:
+            basicroot.append(info)
+        for info in releaseinfo:
+            basicroot.append(info)
         return basicroot
 
     def _localized(self) -> list[ET.Element]:
-        allloc: list[ET.Element] = []
+        all: list[ET.Element] = []
         allinfo: list[dict] = self._search_media("LocalizedInfo")
         for group in allinfo:
             locroot = ET.Element(NS["md"]+"LocalizedInfo")
@@ -80,5 +84,31 @@ class MEC:
                 genreroot.set("id", genre)
                 locroot.append(genreroot)
             locroot.append(self._simple_element(NS["md"]+"CopyrightLine", "CopyrightLine", group))       
-            allloc.append(locroot)
-        return allloc
+            all.append(locroot)
+        return all
+
+    def _releaseinfo(self) -> list[ET.Element]:
+        all: list[ET.Element] = []
+        relyear: str = self._search_media("ReleaseYear")
+        relyear_root = ET.Element(NS["md"]+"ReleaseYear")
+        relyear_root.text = relyear
+        all.append(relyear_root)
+
+        reldate: str = self._search_media("ReleaseDate")
+        reldate_root = ET.Element(NS["md"]+"ReleaseDate")
+        reldate_root.text = reldate
+        all.append(reldate_root)
+
+        history: list[dict] = self._search_media("ReleaseHistory")
+        for hist in history:
+            history_root = ET.Element(NS["md"]+"ReleaseHistory")
+            reltype = self._simple_element(NS["md"]+"ReleaseType", "ReleaseType", hist)
+            history_root.append(reltype)
+            territory_root = ET.Element(NS["md"]+"DistrTerritory")
+            country = self._simple_element(NS["md"]+"country", "country", hist)
+            territory_root.append(country)
+            history_root.append(territory_root)
+            date = self._simple_element(NS["md"]+"Date", "Date", hist)
+            history_root.append(date)
+            all.append(history_root)
+        return all
