@@ -21,5 +21,10 @@
             </md:DistrTerritory>
             <md:Date>2022-12-30</md:Date>
         </md:ReleaseHistory>
+        <md:WorkType>season</md:WorkType>
+        <md:AltIdentifier>
+            <md:Namespace>ORG</md:Namespace>
+            <md:Identifier>HELLO_KITTY_INTL_S1</md:Identifier>
+        </md:AltIdentifier>
     </mdmec:Basic>
 </mdmec:CoreMetadata>

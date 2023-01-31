@@ -19,5 +19,10 @@
             </md:DistrTerritory>
             <md:Date>2022-12-30</md:Date>
         </md:ReleaseHistory>
+        <md:WorkType>episode</md:WorkType>
+        <md:AltIdentifier>
+            <md:Namespace>ORG</md:Namespace>
+            <md:Identifier>HELLO_KITTY_INTL_S1_103</md:Identifier>
+        </md:AltIdentifier>
     </mdmec:Basic>
 </mdmec:CoreMetadata>

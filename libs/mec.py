@@ -36,7 +36,11 @@ class MEC:
             raise KeyError(f"Unable to locate '{key}' in {self.media.mediatype}")
         return value
 
-    def _simple_element(self, ns: str, key: str, datadict: dict, assertexists: bool=False) -> ET.Element:
+    def _simple_element(self, nsprefix: str, key: str, datadict: dict, assertexists: bool=False, nonkeyns: str=...) -> ET.Element:
+        if nonkeyns is ...:
+            ns = NS[nsprefix]+key
+        else:
+            ns = NS[nsprefix]+nonkeyns
         root = ET.Element(ns)
         if assertexists:
             value = self._get_value(key, datadict)
@@ -61,54 +65,73 @@ class MEC:
             basicroot.append(info)
         for info in releaseinfo:
             basicroot.append(info)
+
+        worktype = self._search_media("mediatype", assertcurrent=True)
+        worktype_root = ET.Element(NS["md"]+"WorkType")
+        worktype_root.text = worktype
+        basicroot.append(worktype_root)
+
+        altids = self._altid()
+        for altid in altids:
+            basicroot.append(altid)
         return basicroot
 
     def _localized(self) -> list[ET.Element]:
-        all: list[ET.Element] = []
+        allelem: list[ET.Element] = []
         allinfo: list[dict] = self._search_media("LocalizedInfo")
         for group in allinfo:
             locroot = ET.Element(NS["md"]+"LocalizedInfo")
             locroot.set("language", self._get_value("language", group))
-            locroot.append(self._simple_element(NS["md"]+"TitleDisplayUnlimited", "TitleDisplayUnlimited", group, True))
-            locroot.append(self._simple_element(NS["md"]+"TitleSort", "TitleSort", group))
+            locroot.append(self._simple_element("md", "TitleDisplayUnlimited", group, True))
+            locroot.append(self._simple_element("md", "TitleSort", group))
             for artref in self._get_value("ArtReference", group):
                 art = ET.Element(NS["md"]+"ArtReference")
                 art.set("resolution", self._get_value("resolution", artref))
                 art.set("purpose", self._get_value("purpose", artref))
                 art.text = self._get_value("filename", artref)
                 locroot.append(art)
-            locroot.append(self._simple_element(NS["md"]+"Summary190", "Summary190", group))
-            locroot.append(self._simple_element(NS["md"]+"Summary400", "Summary400", group))
+            locroot.append(self._simple_element("md", "Summary190", group))
+            locroot.append(self._simple_element("md", "Summary400", group))
             for genre in self._get_value("Genres", group):
                 genreroot = ET.Element(NS["md"]+"Genre")
                 genreroot.set("id", genre)
                 locroot.append(genreroot)
-            locroot.append(self._simple_element(NS["md"]+"CopyrightLine", "CopyrightLine", group))       
-            all.append(locroot)
-        return all
+            locroot.append(self._simple_element("md", "CopyrightLine", group))       
+            allelem.append(locroot)
+        return allelem
 
     def _releaseinfo(self) -> list[ET.Element]:
-        all: list[ET.Element] = []
+        allelem: list[ET.Element] = []
         relyear: str = self._search_media("ReleaseYear")
         relyear_root = ET.Element(NS["md"]+"ReleaseYear")
         relyear_root.text = relyear
-        all.append(relyear_root)
+        allelem.append(relyear_root)
 
         reldate: str = self._search_media("ReleaseDate")
         reldate_root = ET.Element(NS["md"]+"ReleaseDate")
         reldate_root.text = reldate
-        all.append(reldate_root)
+        allelem.append(reldate_root)
 
         history: list[dict] = self._search_media("ReleaseHistory")
         for hist in history:
             history_root = ET.Element(NS["md"]+"ReleaseHistory")
-            reltype = self._simple_element(NS["md"]+"ReleaseType", "ReleaseType", hist)
+            reltype = self._simple_element("md", "ReleaseType", hist)
             history_root.append(reltype)
             territory_root = ET.Element(NS["md"]+"DistrTerritory")
-            country = self._simple_element(NS["md"]+"country", "country", hist)
+            country = self._simple_element("md", "country", hist)
             territory_root.append(country)
             history_root.append(territory_root)
-            date = self._simple_element(NS["md"]+"Date", "Date", hist)
+            date = self._simple_element("md", "Date", hist)
             history_root.append(date)
-            all.append(history_root)
-        return all
+            allelem.append(history_root)
+        return allelem
+
+    def _altid(self) -> list[ET.Element]:
+        allelem: list[ET.Element] = []
+        altids = self._search_media("AltIdentifier")
+        for altid in altids:
+            root = ET.Element(NS["md"]+"AltIdentifier")
+            root.append(self._simple_element("md", "Namespace", altid))
+            root.append(self._simple_element("md", "Identifier", altid))
+            allelem.append(root)
+        return allelem

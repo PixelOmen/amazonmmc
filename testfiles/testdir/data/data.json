@@ -47,10 +47,10 @@
                 "Date": "2022-12-30"
             }   
         ],
-        "altids": [
+        "AltIdentifier": [
             {
-                "namespace": "ORG",
-                "identifier": "HELLO_KITTY_INTL"
+                "Namespace": "ORG",
+                "Identifier": "HELLO_KITTY_INTL"
             }
         ],
         "ratings" : [
@@ -226,10 +226,10 @@
                 "mediatype": "season",
                 "sequence": "1",
                 "id": "HELLO_KITTY_INTL_S1",
-                "altids": [
+                "AltIdentifier": [
                     {
-                        "namespace": "ORG",
-                        "identifier": "HELLO_KITTY_INTL_S1"
+                        "Namespace": "ORG",
+                        "Identifier": "HELLO_KITTY_INTL_S1"
                     }
                 ],
                 "LocalizedInfo": [
@@ -275,6 +275,12 @@
                                 ],
                                 "ArtReference": []
                             }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_101"
+                            }
                         ]
                     },
                     {
@@ -293,6 +299,12 @@
                                     "av_subgenre_animation_adventure"
                                 ],
                                 "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_102"
                             }
                         ]
                     },
@@ -313,6 +325,12 @@
                                 ],
                                 "ArtReference": []
                             }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_103"
+                            }
                         ]
                     },
                     {
@@ -331,6 +349,12 @@
                                     "av_subgenre_animation_adventure"
                                 ],
                                 "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_104"
                             }
                         ]
                     },
@@ -351,6 +375,12 @@
                                 ],
                                 "ArtReference": []
                             }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_105"
+                            }
                         ]
                     },
                     {
@@ -369,6 +399,12 @@
                                     "av_subgenre_animation_adventure"
                                 ],
                                 "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_106"
                             }
                         ]
                     }

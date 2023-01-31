@@ -1,6 +1,9 @@
+from pathlib import Path
+
 from libs.delivery import Delivery
 
-TESTDIR = r"C:\Users\eacosta\Projects\python\amazonmmc\testfiles\testdir"
+HERE = Path(__file__).parent
+TESTDIR = HERE / "testfiles" / "testdir"
 
 test = Delivery(TESTDIR)
 test.write_mecs()
