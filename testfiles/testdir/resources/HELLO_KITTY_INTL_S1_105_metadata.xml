@@ -179,4 +179,7 @@
             <md:ParentContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1</md:ParentContentID>
         </md:Parent>
     </mdmec:Basic>
+    <mdmec:CompanyDisplayCredit>
+        <mdmec:DisplayString language="en-US">Watch Next Media</mdmec:DisplayString>
+    </mdmec:CompanyDisplayCredit>
 </mdmec:CoreMetadata>

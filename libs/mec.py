@@ -22,8 +22,10 @@ class MEC:
         self.outputname = f'{self._search_media("id", assertcurrent=True)}_metadata.xml'
 
     def episodic(self) -> ET.Element:
-        basic_elem = self._basic()
-        self.root.append(basic_elem)
+        self.root.append(self._basic())
+        companycredits = self._companycredits()
+        for credit in companycredits:
+            self.root.append(credit)
         return self.root
 
     def _search_media(self, key: str, assertcurrent: bool=False, assertexists: bool=True) -> Any:
@@ -113,6 +115,19 @@ class MEC:
                 basicroot.append(elem)
 
         return basicroot
+
+    def _companycredits(self) -> list[ET.Element]:
+        allelem: list[ET.Element] = []
+        companycreds = self._search_media("CompanyDisplayCredit")
+        for cred in companycreds:
+            lang = self._get_value("language", cred)
+            credit = self._get_value("DisplayString", cred)
+            root = ET.Element(NS["mdmec"]+"CompanyDisplayCredit")
+            displaystr_root = self._simple_element_str("mdmec", "DisplayString", credit)
+            displaystr_root.set("language", lang)
+            root.append(displaystr_root)
+            allelem.append(root)
+        return allelem
 
     def _localized(self) -> list[ET.Element]:
         allelem: list[ET.Element] = []

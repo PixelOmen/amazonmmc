@@ -62,10 +62,10 @@
                 "Reason": ""
             }
         ],
-        "companycredits": [
+        "CompanyDisplayCredit": [
             {
                 "language": "en-US",
-                "credit": "Watch Next Media"
+                "DisplayString": "Watch Next Media"
             }
         ],
         "People": [

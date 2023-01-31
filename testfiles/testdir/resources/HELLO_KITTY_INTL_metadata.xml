@@ -175,4 +175,7 @@
         <md:OriginalLanguage>en-US</md:OriginalLanguage>
         <md:AssociatedOrg organizationID="amazonkids" role="licensor" />
     </mdmec:Basic>
+    <mdmec:CompanyDisplayCredit>
+        <mdmec:DisplayString language="en-US">Watch Next Media</mdmec:DisplayString>
+    </mdmec:CompanyDisplayCredit>
 </mdmec:CoreMetadata>
