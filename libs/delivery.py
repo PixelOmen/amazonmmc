@@ -21,40 +21,23 @@ class Delivery:
     @property
     def mecs(self) -> list[MEC]:
         if self._mecs is None:
-            self._mecs = self.build_mecs()
+            self._mecs = self._build_mecs()
         return self._mecs.all
 
     @property
     def mmc(self) -> MMC:
         if self._mmc is None:
-            self._mmc = self.build_mmc()
+            self._mmc = self._build_mmc()
         return self._mmc
-
-    def build_mecs(self) -> MECGroup:
-        general: dict = self._assertexists(self.data, "general")
-        worktype_str: str = self._assertexists(general, "worktype")
-        worktype = WorkTypes.get_int(worktype_str)
-        if worktype != WorkTypes.EPISODIC:
-            raise NotImplementedError("Only episodic workflows are currently supported")
-        self.worktype = WorkTypes.EPISODIC
-        return self._episodic()
-
-    def build_mmc(self) -> MMC:
-        if self._mecs is None:
-            self._mecs = self.build_mecs()
-        mmc = MMC(self._mecs)
-        if self.worktype != WorkTypes.EPISODIC:
-            raise NotImplementedError("Only episodic workflows are currently supported")
-        mmc.episodic()
-        return mmc
 
     def write_mecs(self) -> None:
         for m in self.mecs:
-            fulloutput = self.resourcepath / m.outputname
-            self.output_xml(m.root, fulloutput)
+            fullpath = self.resourcepath / m.outputname
+            self.write_xml(m.root, fullpath)
 
-    # def write_mmc(self) -> None:
-    #     pass
+    def write_mmc(self) -> None:
+        fullpath = self.rootpath / self.mmc.outputname
+        self.write_xml(self.mmc.root, fullpath)
 
     def indent(self, elem: ET.Element, level: int=0, spaces: int=4) -> None:
         '''
@@ -75,10 +58,28 @@ class Delivery:
             if level and (not elem.tail or not elem.tail.strip()):
                 elem.tail = i
 
-    def output_xml(self, root: ET.Element, outputpath, encodingtype="UTF-8", xmldecl=True) -> None:
+    def write_xml(self, root: ET.Element, outputpath, encodingtype="UTF-8", xmldecl=True) -> None:
         self.indent(root)
         tree = ET.ElementTree(root)
         tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
+
+    def _build_mecs(self) -> MECGroup:
+        general: dict = self._assertexists(self.data, "general")
+        worktype_str: str = self._assertexists(general, "worktype")
+        worktype = WorkTypes.get_int(worktype_str)
+        if worktype != WorkTypes.EPISODIC:
+            raise NotImplementedError("Only episodic workflows are currently supported")
+        self.worktype = WorkTypes.EPISODIC
+        return self._episodic()
+
+    def _build_mmc(self) -> MMC:
+        if self._mecs is None:
+            self._mecs = self._build_mecs()
+        mmc = MMC(self._mecs)
+        if self.worktype != WorkTypes.EPISODIC:
+            raise NotImplementedError("Only episodic workflows are currently supported")
+        mmc.episodic()
+        return mmc
 
     def _episodic(self) -> MECEpisodic:
         general_data: dict = self._assertexists(self.data, "general")

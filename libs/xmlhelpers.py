@@ -1,6 +1,7 @@
 from xml.etree import ElementTree as ET
 
 NS_RESIGESTER = {
+    "manifest": "http://www.movielabs.com/schema/manifest/v1.10/manifest",
     "xsi": "http://www.w3.org/2001/XMLSchema-instance",
     "md": "http://www.movielabs.com/schema/md/v2.9/md",
     "mdmec": "http://www.movielabs.com/schema/mdmec/v2.9",
