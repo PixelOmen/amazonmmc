@@ -1,7 +1,8 @@
 from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
 
-from libs.enums import MediaTypes
+from .enums import MediaTypes
+from .xmlhelpers import key_to_element, str_to_element, newelement
 
 if TYPE_CHECKING:
     from .media import Media
@@ -40,35 +41,15 @@ class MEC:
             raise KeyError(f"Unable to locate '{key}' in {self.media.mediatype}")
         return value
 
-    def _simple_element_dict(self, nsprefix: str, key: str, datadict: dict, assertexists: bool=False, otherns: str=...) -> ET.Element:
-        if otherns is ...:
-            ns = NS[nsprefix]+key
-        else:
-            ns = NS[nsprefix]+otherns
-        root = ET.Element(ns)
-        if assertexists:
-            value = self._get_value(key, datadict)
-        else:
-            value = datadict.get(key)
-        if value is not None:
-            root.text = value
-        return root
-
-    def _simple_element_str(self, nskey: str, nsname: str, text: str) -> ET.Element:
-        ns = NS[nskey]+nsname
-        root = ET.Element(ns)
-        root.text = text
-        return root
-
     def _newroot(self) -> ET.Element:
         for ns in NS_RESIGESTER:
             ET.register_namespace(ns, NS_RESIGESTER[ns])
-        root = ET.Element(NS["mdmec"]+"CoreMetadata")
+        root = newelement("mdmec", "CoreMetadata")
         root.set(NS["xsi"]+"schemaLocation", "http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd")
         return root
 
     def _basic(self) -> ET.Element:
-        basicroot = ET.Element(NS["mdmec"]+"Basic")
+        basicroot = newelement("mdmec", "Basic")
 
         localizedinfo = self._localized()
         for info in localizedinfo:
@@ -79,7 +60,7 @@ class MEC:
             basicroot.append(info)
 
         worktype = self._search_media("mediatype", assertcurrent=True)
-        worktype_root = self._simple_element_str("md", "WorkType", worktype)
+        worktype_root = str_to_element("md", "WorkType", worktype)
         basicroot.append(worktype_root)
 
         altids = self._altids()
@@ -92,17 +73,17 @@ class MEC:
         for person in people:
             basicroot.append(person)
 
-        countryorigin_root = ET.Element(NS["md"]+"CountryOfOrigin")
+        countryorigin_root = newelement("md", "CountryOfOrigin")
         country: str = self._search_media("CountryOfOrigin")
-        countryorigin_root.append(self._simple_element_str("md", "country", country))
+        countryorigin_root.append(str_to_element("md", "country", country))
         basicroot.append(countryorigin_root)
 
         og_lang = self._search_media("OriginalLanguage")
-        og_lang_root = self._simple_element_str("md", "OriginalLanguage", og_lang)
+        og_lang_root = str_to_element("md", "OriginalLanguage", og_lang)
         basicroot.append(og_lang_root)
 
         associatedorg = self._search_media("AssociatedOrg")
-        associatedorg_root = ET.Element(NS["md"]+"AssociatedOrg")
+        associatedorg_root = newelement("md", "AssociatedOrg")
         associatedorg_root.set("organizationID", self._get_value("organizationID", associatedorg))
         associatedorg_root.set("role", self._get_value("role", associatedorg))
         basicroot.append(associatedorg_root)
@@ -122,8 +103,8 @@ class MEC:
         for cred in companycreds:
             lang = self._get_value("language", cred)
             credit = self._get_value("DisplayString", cred)
-            root = ET.Element(NS["mdmec"]+"CompanyDisplayCredit")
-            displaystr_root = self._simple_element_str("mdmec", "DisplayString", credit)
+            root = newelement("mdmec", "CompanyDisplayCredit")
+            displaystr_root = str_to_element("mdmec", "DisplayString", credit)
             displaystr_root.set("language", lang)
             root.append(displaystr_root)
             allelem.append(root)
@@ -133,48 +114,48 @@ class MEC:
         allelem: list[ET.Element] = []
         allinfo: list[dict] = self._search_media("LocalizedInfo")
         for group in allinfo:
-            locroot = ET.Element(NS["md"]+"LocalizedInfo")
+            locroot = newelement("md", "LocalizedInfo")
             locroot.set("language", self._get_value("language", group))
-            locroot.append(self._simple_element_dict("md", "TitleDisplayUnlimited", group, True))
-            locroot.append(self._simple_element_dict("md", "TitleSort", group))
+            locroot.append(key_to_element("md", "TitleDisplayUnlimited", group, True))
+            locroot.append(key_to_element("md", "TitleSort", group))
             for artref in self._get_value("ArtReference", group):
-                art = ET.Element(NS["md"]+"ArtReference")
+                art = newelement("md", "ArtReference")
                 art.set("resolution", self._get_value("resolution", artref))
                 art.set("purpose", self._get_value("purpose", artref))
                 art.text = self._get_value("filename", artref)
                 locroot.append(art)
-            locroot.append(self._simple_element_dict("md", "Summary190", group))
-            locroot.append(self._simple_element_dict("md", "Summary400", group))
+            locroot.append(key_to_element("md", "Summary190", group))
+            locroot.append(key_to_element("md", "Summary400", group))
             for genre in self._get_value("Genres", group):
-                genreroot = ET.Element(NS["md"]+"Genre")
+                genreroot = newelement("md", "Genre")
                 genreroot.set("id", genre)
                 locroot.append(genreroot)
-            locroot.append(self._simple_element_dict("md", "CopyrightLine", group))       
+            locroot.append(key_to_element("md", "CopyrightLine", group))       
             allelem.append(locroot)
         return allelem
 
     def _releaseinfo(self) -> list[ET.Element]:
         allelem: list[ET.Element] = []
         relyear: str = self._search_media("ReleaseYear")
-        relyear_root = ET.Element(NS["md"]+"ReleaseYear")
+        relyear_root = newelement("md", "ReleaseYear")
         relyear_root.text = relyear
         allelem.append(relyear_root)
 
         reldate: str = self._search_media("ReleaseDate")
-        reldate_root = ET.Element(NS["md"]+"ReleaseDate")
+        reldate_root = newelement("md", "ReleaseDate")
         reldate_root.text = reldate
         allelem.append(reldate_root)
 
         history: list[dict] = self._search_media("ReleaseHistory")
         for hist in history:
-            history_root = ET.Element(NS["md"]+"ReleaseHistory")
-            reltype = self._simple_element_dict("md", "ReleaseType", hist)
+            history_root = newelement("md", "ReleaseHistory")
+            reltype = key_to_element("md", "ReleaseType", hist)
             history_root.append(reltype)
-            territory_root = ET.Element(NS["md"]+"DistrTerritory")
-            country = self._simple_element_dict("md", "country", hist)
+            territory_root = newelement("md", "DistrTerritory")
+            country = key_to_element("md", "country", hist)
             territory_root.append(country)
             history_root.append(territory_root)
-            date = self._simple_element_dict("md", "Date", hist)
+            date = key_to_element("md", "Date", hist)
             history_root.append(date)
             allelem.append(history_root)
         return allelem
@@ -183,26 +164,27 @@ class MEC:
         allelem: list[ET.Element] = []
         altids = self._search_media("AltIdentifier")
         for altid in altids:
-            root = ET.Element(NS["md"]+"AltIdentifier")
-            root.append(self._simple_element_dict("md", "Namespace", altid))
-            root.append(self._simple_element_dict("md", "Identifier", altid))
+            root = newelement("md", "AltIdentifier")
+            # root = newelement("md", "AltIdentifier")
+            root.append(key_to_element("md", "Namespace", altid))
+            root.append(key_to_element("md", "Identifier", altid))
             allelem.append(root)
         return allelem
 
     def _ratingset(self) -> ET.Element:
         ratings: list[dict] = self._search_media("RatingSet")
-        ratingset_root = ET.Element(NS["md"]+"RatingSet")
+        ratingset_root = newelement("md", "RatingSet")
         for rating in ratings:
-            rating_root = ET.Element(NS["md"]+"Rating")
-            region_root = ET.Element(NS["md"]+"Region")
-            country_root = self._simple_element_dict("md", "country", rating)
+            rating_root = newelement("md", "Rating")
+            region_root = newelement("md", "Region")
+            country_root = key_to_element("md", "country", rating)
             region_root.append(country_root)
             rating_root.append(region_root)
-            rating_root.append(self._simple_element_dict("md", "System", rating))
-            rating_root.append(self._simple_element_dict("md", "Value", rating))
+            rating_root.append(key_to_element("md", "System", rating))
+            rating_root.append(key_to_element("md", "Value", rating))
             reason = rating.get("Reason")
             if reason:
-                rating_root.append(self._simple_element_dict("md", "Reason", rating))
+                rating_root.append(key_to_element("md", "Reason", rating))
             ratingset_root.append(rating_root)
         return ratingset_root
 
@@ -211,18 +193,18 @@ class MEC:
         people_groups: list[list[dict]] = self._search_media("People")
         for group in people_groups:
             for person in group:
-                person_root = ET.Element(NS["md"]+"People")
-                job_root = ET.Element(NS["md"]+"Job")
-                job_root.append(self._simple_element_dict("md", "JobFunction", person))
-                job_root.append(self._simple_element_dict("md", "BillingBlockOrder", person))
+                person_root = newelement("md", "People")
+                job_root = newelement("md", "Job")
+                job_root.append(key_to_element("md", "JobFunction", person))
+                job_root.append(key_to_element("md", "BillingBlockOrder", person))
                 person_root.append(job_root)
-                name_root = ET.Element(NS["md"]+"Name")
+                name_root = newelement("md", "Name")
                 person_root.append(name_root)
                 character = person.get("Character")
                 if character:
-                    job_root.append(self._simple_element_dict("md", "Character", person))
+                    job_root.append(key_to_element("md", "Character", person))
                 for name in self._get_value("names", person):
-                    displayname = self._simple_element_dict("md", "DisplayName", name)
+                    displayname = key_to_element("md", "DisplayName", name)
                     displayname.set("language", self._get_value("language", name))
                     displayname.text = self._get_value("name", name)
                     name_root.append(displayname)
@@ -231,8 +213,8 @@ class MEC:
 
     def _seqinfo(self) -> list[ET.Element]:
         seq_num = self._search_media("SequenceInfo", assertcurrent=True)
-        seq_root = ET.Element(NS["md"]+"SequenceInfo")
-        seq_root.append(self._simple_element_str("md", "Number", seq_num))
+        seq_root = newelement("md", "SequenceInfo")
+        seq_root.append(str_to_element("md", "Number", seq_num))
 
         mediatype = self._search_media("mediatype", assertcurrent=True)
         mediatype_enum = MediaTypes.get_int(mediatype)
@@ -242,7 +224,7 @@ class MEC:
             relationship = "isseasonof"
         else:
             raise RuntimeError(f"MEC._seqinfo called on mediatype '{mediatype}'")
-        parent_root = ET.Element(NS["md"]+"Parent")
+        parent_root = newelement("md", "Parent")
         parent_root.set("relationshipType", relationship)
 
         prefix = self._search_media("orgprefix")
@@ -253,7 +235,6 @@ class MEC:
             raise RuntimeError(f"MEC._eqinfo called with no parent media: {currentid}")
         parentid = self.media.parent.find("id", assertcurrent=True)
         fullid = f"{prefix}{orgid}:{parentid}"
-        parent_root.append(self._simple_element_str("md", "ParentContentID", fullid))
+        parent_root.append(str_to_element("md", "ParentContentID", fullid))
 
         return [seq_root, parent_root]
-        

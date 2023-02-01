@@ -1,12 +1,13 @@
 import json
+from typing import Any
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from xml.etree import ElementTree as ET
 
 from .mec import MEC
 from .mmc import MMC
 from .media import Media
 from .enums import WorkTypes
-from xml.etree import ElementTree as ET
+
 
 class Delivery:
     def __init__(self, rootpath: str|Path) -> None:
