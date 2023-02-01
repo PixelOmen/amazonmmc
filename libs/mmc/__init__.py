@@ -1,1 +1,1 @@
-from .core import MMC
+from .mmc_core import MMC

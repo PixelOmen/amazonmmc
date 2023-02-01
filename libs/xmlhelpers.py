@@ -8,6 +8,12 @@ NS_RESIGESTER = {
 
 NS = {key:"{"+value+"}" for key,value in NS_RESIGESTER.items()}
 
+
+def newroot(nskey: str, tag: str) -> ET.Element:
+    for ns in NS_RESIGESTER:
+        ET.register_namespace(ns, NS_RESIGESTER[ns])
+    return newelement(nskey, tag, {NS["xsi"]+"schemaLocation": "http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd"})
+
 def newelement(nskey: str, tag: str, attr: dict[str, str]=...) -> ET.Element:
     root = ET.Element(NS[nskey]+tag)
     if attr is not ...:
@@ -33,4 +39,3 @@ def str_to_element(nskey: str, tag: str, text: str) -> ET.Element:
     root = ET.Element(ns)
     root.text = text
     return root
-

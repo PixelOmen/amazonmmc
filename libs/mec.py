@@ -1,25 +1,27 @@
+from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
 
 from .enums import MediaTypes
-from .xmlhelpers import key_to_element, str_to_element, newelement
+from .xmlhelpers import newroot, newelement, key_to_element, str_to_element
 
 if TYPE_CHECKING:
     from .media import Media
 
-NS_RESIGESTER = {
-    "xsi": "http://www.w3.org/2001/XMLSchema-instance",
-    "md": "http://www.movielabs.com/schema/md/v2.9/md",
-    "mdmec": "http://www.movielabs.com/schema/mdmec/v2.9",
-}
+@dataclass
+class MECGroup:
+    all: list["MEC"]
 
-NS = {key:"{"+value+"}" for key,value in NS_RESIGESTER.items()}
-
+@dataclass
+class MECEpisodic(MECGroup):
+    series: "MEC"
+    seasons: list["MEC"]
+    episodes: list["MEC"]
 
 class MEC:
     def __init__(self, media: "Media") -> None:
         self.media = media
-        self.root = self._newroot()
+        self.root = newroot("mdmec", "CoreMetadata")
         self.outputname = f'{self._search_media("id", assertcurrent=True)}_metadata.xml'
 
     def episodic(self) -> ET.Element:
@@ -40,13 +42,6 @@ class MEC:
         if value is None:
             raise KeyError(f"Unable to locate '{key}' in {self.media.mediatype}")
         return value
-
-    def _newroot(self) -> ET.Element:
-        for ns in NS_RESIGESTER:
-            ET.register_namespace(ns, NS_RESIGESTER[ns])
-        root = newelement("mdmec", "CoreMetadata")
-        root.set(NS["xsi"]+"schemaLocation", "http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd")
-        return root
 
     def _basic(self) -> ET.Element:
         basicroot = newelement("mdmec", "Basic")
@@ -165,7 +160,6 @@ class MEC:
         altids = self._search_media("AltIdentifier")
         for altid in altids:
             root = newelement("md", "AltIdentifier")
-            # root = newelement("md", "AltIdentifier")
             root.append(key_to_element("md", "Namespace", altid))
             root.append(key_to_element("md", "Identifier", altid))
             allelem.append(root)
