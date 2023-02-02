@@ -1,21 +1,23 @@
 import json
-from typing import Any
 from pathlib import Path
+from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
 
 from .mmc import MMC
 from .media import Media
 from .enums import WorkTypes
-from .mec import MEC, MECGroup, MECEpisodic
+from .mec import MEC, MECEpisodic
 
+if TYPE_CHECKING:
+    from .mec import MECGroup
 
 class Delivery:
     def __init__(self, rootpath: str|Path) -> None:
-        self.rootpath = Path(rootpath)
-        self.resourcepath = self.rootpath / "resources"
+        self.rootdir = Path(rootpath)
+        self.resourcepath = self.rootdir / "resources"
         self.data: dict = self._scandir()
         self.worktype = WorkTypes.UNKNOWN
-        self._mecs: MECGroup | None = None
+        self._mecs: "MECGroup" | None = None
         self._mmc: MMC | None = None
 
     @property
@@ -36,7 +38,7 @@ class Delivery:
             self.write_xml(m.root, fullpath)
 
     def write_mmc(self) -> None:
-        fullpath = self.rootpath / self.mmc.outputname
+        fullpath = self.rootdir / self.mmc.outputname
         self.write_xml(self.mmc.root, fullpath)
 
     def indent(self, elem: ET.Element, level: int=0, spaces: int=4) -> None:
@@ -63,7 +65,7 @@ class Delivery:
         tree = ET.ElementTree(root)
         tree.write(outputpath, encoding=encodingtype, xml_declaration=xmldecl)
 
-    def _build_mecs(self) -> MECGroup:
+    def _build_mecs(self) -> "MECGroup":
         general: dict = self._assertexists(self.data, "general")
         worktype_str: str = self._assertexists(general, "worktype")
         worktype = WorkTypes.get_int(worktype_str)
@@ -83,9 +85,9 @@ class Delivery:
 
     def _episodic(self) -> MECEpisodic:
         general_data: dict = self._assertexists(self.data, "general")
-        general_media = Media(general_data)
         series_data: dict = self._assertexists(self.data, "series")
-        series_media = Media(series_data, general_media)
+        general_media = Media(self.resourcepath, general_data)
+        series_media = Media(self.resourcepath, series_data, general_media)
         series_mec = MEC(series_media)
         series_mec.episodic()
 
@@ -95,7 +97,7 @@ class Delivery:
 
         season_data: list[dict] = self._assertexists(series_data, "seasons")
         for season in season_data:
-            season_media = Media(season, series_media)
+            season_media = Media(self.resourcepath, season, series_media)
             season_mec = MEC(season_media)
             season_mec.episodic()
             allmec.append(season_mec)
@@ -103,7 +105,7 @@ class Delivery:
 
             episode_data = self._assertexists(season, "episodes")
             for ep in episode_data:
-                ep_media = Media(ep, season_media)
+                ep_media = Media(self.resourcepath, ep, season_media)
                 ep_mec = MEC(ep_media)
                 ep_mec.episodic()
                 allmec.append(ep_mec)
@@ -112,7 +114,7 @@ class Delivery:
         return MECEpisodic(allmec, series_mec, allseasons_mec, allepisodes_mec)
 
     def _scandir(self) -> dict:
-        datadir = self.rootpath / "data"
+        datadir = self.rootdir / "data"
         if not datadir.is_dir():
             raise FileNotFoundError("Unable to locate data folder")
         datapath = datadir / "data.json"
