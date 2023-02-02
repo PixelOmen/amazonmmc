@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 class Delivery:
     def __init__(self, rootpath: str|Path) -> None:
         self.rootdir = Path(rootpath)
-        self.resourcepath = self.rootdir / "resources"
+        self.resourcedir = self.rootdir / "resources"
         self.data: dict = self._scandir()
         self.worktype = WorkTypes.UNKNOWN
         self._mecs: "MECGroup" | None = None
@@ -34,7 +34,7 @@ class Delivery:
 
     def write_mecs(self) -> None:
         for m in self.mecs:
-            fullpath = self.resourcepath / m.outputname
+            fullpath = self.resourcedir / m.outputname
             self.write_xml(m.root, fullpath)
 
     def write_mmc(self) -> None:
@@ -77,7 +77,7 @@ class Delivery:
     def _build_mmc(self) -> MMC:
         if self._mecs is None:
             self._mecs = self._build_mecs()
-        mmc = MMC(self._mecs)
+        mmc = MMC(self._mecs, self.resourcedir)
         if self.worktype != WorkTypes.EPISODIC:
             raise NotImplementedError("Only episodic workflows are currently supported")
         mmc.episodic()
@@ -86,8 +86,8 @@ class Delivery:
     def _episodic(self) -> MECEpisodic:
         general_data: dict = self._assertexists(self.data, "general")
         series_data: dict = self._assertexists(self.data, "series")
-        general_media = Media(self.resourcepath, general_data)
-        series_media = Media(self.resourcepath, series_data, general_media)
+        general_media = Media(self.resourcedir, general_data)
+        series_media = Media(self.resourcedir, series_data, general_media)
         series_mec = MEC(series_media)
         series_mec.episodic()
 
@@ -97,7 +97,7 @@ class Delivery:
 
         season_data: list[dict] = self._assertexists(series_data, "seasons")
         for season in season_data:
-            season_media = Media(self.resourcepath, season, series_media)
+            season_media = Media(self.resourcedir, season, series_media)
             season_mec = MEC(season_media)
             season_mec.episodic()
             allmec.append(season_mec)
@@ -105,7 +105,7 @@ class Delivery:
 
             episode_data = self._assertexists(season, "episodes")
             for ep in episode_data:
-                ep_media = Media(self.resourcepath, ep, season_media)
+                ep_media = Media(self.resourcedir, ep, season_media)
                 ep_mec = MEC(ep_media)
                 ep_mec.episodic()
                 allmec.append(ep_mec)
@@ -120,7 +120,7 @@ class Delivery:
         datapath = datadir / "data.json"
         if not datapath.is_file():
             raise FileNotFoundError("Unable to locate data.json")
-        if not self.resourcepath.is_dir():
+        if not self.resourcedir.is_dir():
             raise FileNotFoundError("Unable to locate resources folder")
         with open(datapath, "rb") as fp:
             data = json.load(fp)

@@ -2,7 +2,7 @@ from . import errors
 from pathlib import Path
 from .enums import MediaTypes
 from typing import Any, Union
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 IMPLEMENTED = [
     MediaTypes.GENERAL,
@@ -13,8 +13,13 @@ IMPLEMENTED = [
 
 @dataclass
 class Resource:
-    dir: Path
-    filename: str
+    fullpath: Path
+    dir: Path=field(init=False)
+    name: str=field(init=False)
+
+    def __post_init__(self) -> None:
+        self.dir = self.fullpath.parent
+        self.name = self.fullpath.name
 
 class Media:
     def __init__(self, resourcedir: str|Path, data: dict, parent: Union["Media", None]=None) -> None:
@@ -51,20 +56,26 @@ class Media:
             return self.find("id", assertcurrent=True)
 
     def _resources(self) -> list[Resource]:
-        if self.mediatype != MediaTypes.EPISODE:
+        if self.mediatype == MediaTypes.EPISODE:
+            ep_seq = self.find("SequenceInfo", assertcurrent=True)
+            if self.parent is None:
+                raise RuntimeError(f"Unable to locate parent Media in episode {ep_seq}")
+            if len(ep_seq) < 2:
+                ep_seq = "0" + ep_seq
+            season_num = self.parent.find("SequenceInfo", assertcurrent=True)
+            ep_num = f"{season_num}{ep_seq}"
+            searchterm = ep_num   
+        elif self.mediatype == MediaTypes.SEASON:
+            season_seq = self.find("SequenceInfo", assertcurrent=True)
+            searchterm = f"SEASON{season_seq}"
+        elif self.mediatype == MediaTypes.SERIES:
+            searchterm = self.find("title", assertcurrent=True)
+        else:
             return []
 
-        ep_seq = self.find("SequenceInfo", assertcurrent=True)
-        if self.parent is None:
-            raise RuntimeError(f"Unable to locate parent Media in episode {ep_seq}")
-        if len(ep_seq) < 2:
-            ep_seq = "0" + ep_seq
-        season_num = self.parent.find("SequenceInfo", assertcurrent=True)
-        ep_num = f"{season_num}{ep_seq}"       
-
-        allfiles = []
+        allresources: list[Resource] = []
         for item in self.resourcedir.iterdir():
             if item.is_file() and item.suffix.lower() != ".xml":
-                if f"_{ep_num}_" in item.name:
-                    allfiles.append(item)
-        return allfiles
+                if f"_{searchterm}_" in item.name:
+                    allresources.append(Resource(item))
+        return allresources
