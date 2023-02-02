@@ -6,7 +6,10 @@
         "AssociatedOrg": {
             "organizationID": "amazonkids",
             "role": "licensor"
-        }
+        },
+        "av_exts": [".mov"],
+        "sub_exts": [".itt"],
+        "art_exts": [".png"]
     },
     "series": {
         "mediatype": "series",

@@ -77,7 +77,7 @@ class Delivery:
     def _build_mmc(self) -> MMC:
         if self._mecs is None:
             self._mecs = self._build_mecs()
-        mmc = MMC(self._mecs, self.resourcedir)
+        mmc = MMC(self._mecs, self.rootdir)
         if self.worktype != WorkTypes.EPISODIC:
             raise NotImplementedError("Only episodic workflows are currently supported")
         mmc.episodic()
@@ -111,7 +111,13 @@ class Delivery:
                 allmec.append(ep_mec)
                 allepisodes_mec.append(ep_mec)
 
-        return MECEpisodic(allmec, series_mec, allseasons_mec, allepisodes_mec)
+        return MECEpisodic(
+            worktype=WorkTypes.EPISODIC,
+            all=allmec,
+            series=series_mec,
+            seasons=allseasons_mec,
+            episodes=allepisodes_mec
+        )
 
     def _scandir(self) -> dict:
         datadir = self.rootdir / "data"

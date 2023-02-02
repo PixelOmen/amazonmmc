@@ -10,6 +10,7 @@ if TYPE_CHECKING:
 
 @dataclass
 class MECGroup:
+    worktype: int
     all: list["MEC"]
 
 @dataclass

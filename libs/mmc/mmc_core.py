@@ -7,10 +7,13 @@ from ..mec import MECGroup, MECEpisodic
 from ..enums import WorkTypes, MediaTypes
 from ..xmlhelpers import newroot, newelement, key_to_element, str_to_element
 
+from .inventory import Inventory
+
 class MMC:
-    def __init__(self, mecs: MECGroup, resourcedir: Path) -> None:
+    def __init__(self, mecs: MECGroup, rootdir: Path) -> None:
         self.mecs = mecs
-        self.resourcedir = resourcedir
+        self.rootdir = rootdir
+        self.resourcedir = rootdir / "resources"
         self.worktype = WorkTypes.UNKNOWN
         self.root = newroot("manifest", "MediaManifest")
         self._validate_resources()
