@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 from xml.etree import ElementTree as ET
 
 from .mmc import MMC
@@ -17,14 +17,14 @@ class Delivery:
         self.resourcedir = self.rootdir / "resources"
         self.data: dict = self._scandir()
         self.worktype = WorkTypes.UNKNOWN
-        self._mecs: "MECGroup" | None = None
+        self._mecgroup: "MECGroup" | None = None
         self._mmc: MMC | None = None
 
     @property
     def mecs(self) -> list[MEC]:
-        if self._mecs is None:
-            self._mecs = self._build_mecs()
-        return self._mecs.all
+        if self._mecgroup is None:
+            self._mecgroup = self._build_mecs()
+        return self._mecgroup.all
 
     @property
     def mmc(self) -> MMC:
@@ -75,13 +75,18 @@ class Delivery:
         return self._episodic()
 
     def _build_mmc(self) -> MMC:
-        if self._mecs is None:
-            self._mecs = self._build_mecs()
-        mmc = MMC(self._mecs, self.rootdir)
-        if self.worktype != WorkTypes.EPISODIC:
+        if self._mecgroup is None:
+            self._mecgroup = self._build_mecs()
+        if self.worktype == WorkTypes.EPISODIC:
+            if isinstance(self._mecgroup, MECEpisodic):
+                mecgroup = cast(MECEpisodic, self._mecgroup)
+            else:
+                raise RuntimeError(f"Delivery worktype is episodic but MECGroup is of type: {type(self._mecgroup)}")
+            mmc = MMC(self.rootdir)
+            mmc.episodic(mecgroup)
+            return mmc
+        else:
             raise NotImplementedError("Only episodic workflows are currently supported")
-        mmc.episodic()
-        return mmc
 
     def _episodic(self) -> MECEpisodic:
         general_data: dict = self._assertexists(self.data, "general")
@@ -92,7 +97,7 @@ class Delivery:
         series_mec.episodic()
 
         allmec: list[MEC] = [series_mec]
-        allseasons_mec: list[MEC] = []
+        allseasons_mec: dict[MEC, list[MEC]] = {}
         allepisodes_mec: list[MEC] = []
 
         season_data: list[dict] = self._assertexists(series_data, "seasons")
@@ -101,7 +106,7 @@ class Delivery:
             season_mec = MEC(season_media)
             season_mec.episodic()
             allmec.append(season_mec)
-            allseasons_mec.append(season_mec)
+            allseasons_mec[season_mec] = []
 
             episode_data = self._assertexists(season, "episodes")
             for ep in episode_data:
@@ -109,6 +114,7 @@ class Delivery:
                 ep_mec = MEC(ep_media)
                 ep_mec.episodic()
                 allmec.append(ep_mec)
+                allseasons_mec[season_mec].append(ep_mec)
                 allepisodes_mec.append(ep_mec)
 
         return MECEpisodic(

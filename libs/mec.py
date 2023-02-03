@@ -16,7 +16,7 @@ class MECGroup:
 @dataclass
 class MECEpisodic(MECGroup):
     series: "MEC"
-    seasons: list["MEC"]
+    seasons: dict["MEC", list["MEC"]]
     episodes: list["MEC"]
 
 class MEC:

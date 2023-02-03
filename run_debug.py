@@ -5,5 +5,5 @@ from libs.delivery import Delivery
 HERE = Path(__file__).parent
 TESTDIR = HERE / "testfiles" / "testdir"
 
-test = Delivery(TESTDIR)
-test.write_mmc()
+deliv = Delivery(TESTDIR)
+deliv.write_mmc()

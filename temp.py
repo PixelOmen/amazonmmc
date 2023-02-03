@@ -1,9 +1,9 @@
-from pathlib import Path
+class Myclass:
+    pass
 
-from libs.delivery import Delivery
+inst = Myclass()
 
-HERE = Path(__file__).parent
-TESTDIR = HERE / "testfiles" / "testdir"
+somedict = {inst: 3}
 
-deliv = Delivery(TESTDIR)
-mmc = deliv.mmc
+
+print(somedict[inst])
