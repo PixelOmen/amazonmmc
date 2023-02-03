@@ -6,4 +6,4 @@ HERE = Path(__file__).parent
 TESTDIR = HERE / "testfiles" / "testdir"
 
 deliv = Delivery(TESTDIR)
-deliv.write_mmc()
+mmc = deliv.mmc

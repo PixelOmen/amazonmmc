@@ -7,12 +7,14 @@ from ..xmlhelpers import newelement, key_to_element, str_to_element
 
 def episodic(mecgroup: MECEpisodic) -> ET.Element:
     root = newelement("manifest", "Inventory")
-    if mecgroup.worktype != WorkTypes.EPISODIC:
-        worktype = WorkTypes.get_str(mecgroup.worktype)
-        msg = f"MMC.episodic called on MECGroup.worktype: {worktype}"
-        raise RuntimeError(msg)
+    for season in mecgroup.seasons:
+        print(season.outputname)
+        for res in season.media.resources:
+            print(res.name)
     for ep in mecgroup.episodes:
-        pass
+        print(ep.outputname)
+        for res in ep.media.resources:
+            print(res.name)
     return root
 
 # def _audio() -> ET.Element:

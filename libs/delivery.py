@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, cast
 from xml.etree import ElementTree as ET
+from typing import TYPE_CHECKING, Any, cast
 
 from .mmc import MMC
 from .media import Media
@@ -24,6 +24,7 @@ class Delivery:
     def mecs(self) -> list[MEC]:
         if self._mecgroup is None:
             self._mecgroup = self._build_mecs()
+            self._mecgroup.generate()
         return self._mecgroup.all
 
     @property
@@ -69,10 +70,11 @@ class Delivery:
         general: dict = self._assertexists(self.data, "general")
         worktype_str: str = self._assertexists(general, "worktype")
         worktype = WorkTypes.get_int(worktype_str)
-        if worktype != WorkTypes.EPISODIC:
+        if worktype == WorkTypes.EPISODIC:
+            self.worktype = WorkTypes.EPISODIC
+            return self._episodic()
+        else:
             raise NotImplementedError("Only episodic workflows are currently supported")
-        self.worktype = WorkTypes.EPISODIC
-        return self._episodic()
 
     def _build_mmc(self) -> MMC:
         if self._mecgroup is None:
@@ -94,7 +96,6 @@ class Delivery:
         general_media = Media(self.resourcedir, general_data)
         series_media = Media(self.resourcedir, series_data, general_media)
         series_mec = MEC(series_media)
-        series_mec.episodic()
 
         allmec: list[MEC] = [series_mec]
         allseasons_mec: dict[MEC, list[MEC]] = {}
@@ -104,7 +105,6 @@ class Delivery:
         for season in season_data:
             season_media = Media(self.resourcedir, season, series_media)
             season_mec = MEC(season_media)
-            season_mec.episodic()
             allmec.append(season_mec)
             allseasons_mec[season_mec] = []
 
@@ -112,7 +112,6 @@ class Delivery:
             for ep in episode_data:
                 ep_media = Media(self.resourcedir, ep, season_media)
                 ep_mec = MEC(ep_media)
-                ep_mec.episodic()
                 allmec.append(ep_mec)
                 allseasons_mec[season_mec].append(ep_mec)
                 allepisodes_mec.append(ep_mec)

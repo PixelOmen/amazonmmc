@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
 
@@ -8,16 +8,29 @@ from .xmlhelpers import newroot, newelement, key_to_element, str_to_element
 if TYPE_CHECKING:
     from .media import Media
 
-@dataclass
-class MECGroup:
-    worktype: int
-    all: list["MEC"]
+class MECGroup(ABC):
+    def __init__(self, worktype: int, all: list["MEC"]) -> None:
+        self.worktype = worktype
+        self.all = all
+        self.generated = False
 
-@dataclass
+    @abstractmethod
+    def generate(self) -> None:...
+
 class MECEpisodic(MECGroup):
-    series: "MEC"
-    seasons: dict["MEC", list["MEC"]]
-    episodes: list["MEC"]
+    def __init__(self, worktype: int, all: list["MEC"], series: "MEC",
+                seasons: dict["MEC", list["MEC"]], episodes: list["MEC"]) -> None:
+        super().__init__(worktype, all)
+        self.series = series
+        self.seasons = seasons
+        self.episodes = episodes
+
+    def generate(self) -> None:
+        if self.generated:
+            return
+        for mec in self.all:
+            mec.episodic()
+        self.generated = True
 
 class MEC:
     def __init__(self, media: "Media") -> None:
