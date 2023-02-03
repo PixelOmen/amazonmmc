@@ -118,6 +118,7 @@ class Delivery:
 
         return MECEpisodic(
             worktype=WorkTypes.EPISODIC,
+            generalmedia=general_media,
             all=allmec,
             series=series_mec,
             seasons=allseasons_mec,

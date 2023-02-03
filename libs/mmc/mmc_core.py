@@ -1,3 +1,4 @@
+from abc import ABC
 from pathlib import Path
 from typing import Any, TYPE_CHECKING
 from xml.etree import ElementTree as ET
@@ -7,9 +8,31 @@ from ..enums import WorkTypes, MediaTypes
 from ..xmlhelpers import newroot, newelement, key_to_element, str_to_element
 
 from . import inventory
+from .inventory import Audio, Video, Subtitle
 
 if TYPE_CHECKING:
-    from ..mec import MECGroup, MECEpisodic
+    from ..mec import MEC, MECGroup, MECEpisodic
+
+class MMCEntity(ABC):
+    def __init__(self, mec: "MEC") -> None:
+        self.mec = mec
+
+class Episode(MMCEntity):
+    def __init__(self, mec: "MEC") -> None:
+        super().__init__(mec)
+        self.audio = [Audio(mec, res) for res in self.mec.media.resources]
+
+class Season(MMCEntity):
+    def __init__(self, mec: "MEC", episodes: list["MEC"]) -> None:
+        super().__init__(mec)
+        self.episodes = [Episode(ep) for ep in episodes]
+
+class Series(MMCEntity):
+    def __init__(self, mecgroup: "MECEpisodic") -> None:
+        super().__init__(mecgroup.series)
+        self.mecgroup = mecgroup
+        self.seasons = [Season(s, ep) for s, ep in mecgroup.seasons.items()]
+
 
 class MMC:
     def __init__(self, rootdir: Path) -> None:
@@ -52,7 +75,7 @@ class MMC:
             found = False
             for mec in mecgroup.all:
                 for res in mec.media.resources:
-                    if res.name == item.name:
+                    if res.fullpath.name == item.name:
                         found = True
                         break
                 if found:

@@ -8,9 +8,11 @@ from .xmlhelpers import newroot, newelement, key_to_element, str_to_element
 if TYPE_CHECKING:
     from .media import Media
 
+
 class MECGroup(ABC):
-    def __init__(self, worktype: int, all: list["MEC"]) -> None:
+    def __init__(self, worktype: int, generalmedia: "Media", all: list["MEC"]) -> None:
         self.worktype = worktype
+        self.generalmedia = generalmedia
         self.all = all
         self.generated = False
 
@@ -18,9 +20,9 @@ class MECGroup(ABC):
     def generate(self) -> None:...
 
 class MECEpisodic(MECGroup):
-    def __init__(self, worktype: int, all: list["MEC"], series: "MEC",
+    def __init__(self, worktype: int, generalmedia: "Media", all: list["MEC"], series: "MEC",
                 seasons: dict["MEC", list["MEC"]], episodes: list["MEC"]) -> None:
-        super().__init__(worktype, all)
+        super().__init__(worktype, generalmedia, all)
         self.series = series
         self.seasons = seasons
         self.episodes = episodes
@@ -32,11 +34,13 @@ class MECEpisodic(MECGroup):
             mec.episodic()
         self.generated = True
 
+
 class MEC:
     def __init__(self, media: "Media") -> None:
         self.media = media
         self.root = newroot("mdmec", "CoreMetadata")
-        self.outputname = f'{self.search_media("id", assertcurrent=True)}_metadata.xml'
+        self.outputname = f'{self.media.id}_metadata.xml'
+        self.contentid = self._contentid()
 
     def episodic(self) -> ET.Element:
         self.root.append(self._basic())
@@ -57,8 +61,18 @@ class MEC:
             raise KeyError(f"Unable to locate '{key}' in {self.media.mediatype}")
         return value
 
+    def _contentid(self) -> str:
+        if self.media.mediatype == MediaTypes.GENERAL:
+            return "GENERAL"
+        orgprefix: str = self.search_media("orgprefix")
+        org: dict[str, str] = self.search_media("AssociatedOrg")
+        orgid: str = org["organizationID"]
+        id = self.media.id
+        return f"{orgprefix}{orgid}:{id}"
+
     def _basic(self) -> ET.Element:
         basicroot = newelement("mdmec", "Basic")
+        basicroot.set("ContentID", self.contentid)
 
         localizedinfo = self._localized()
         for info in localizedinfo:

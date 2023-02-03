@@ -2,7 +2,7 @@ from . import errors
 from pathlib import Path
 from .enums import MediaTypes
 from typing import Any, Union
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 IMPLEMENTED = [
     MediaTypes.GENERAL,
@@ -13,13 +13,8 @@ IMPLEMENTED = [
 
 @dataclass
 class Resource:
+    mediatype: int
     fullpath: Path
-    dir: Path=field(init=False)
-    name: str=field(init=False)
-
-    def __post_init__(self) -> None:
-        self.dir = self.fullpath.parent
-        self.name = self.fullpath.name
 
 class Media:
     def __init__(self, resourcedir: str|Path, data: dict, parent: Union["Media", None]=None) -> None:
@@ -77,5 +72,5 @@ class Media:
         for item in self.resourcedir.iterdir():
             if item.is_file() and item.suffix.lower() != ".xml":
                 if f"_{searchterm}_" in item.name:
-                    allresources.append(Resource(item))
+                    allresources.append(Resource(self.mediatype, item))
         return allresources
