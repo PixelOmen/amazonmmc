@@ -38,13 +38,15 @@ class Audio:
         self.region: str
         self.location: str
         self._parse_resource()
+        self._hash()
 
     def _parse_resource(self) -> None:
-        mecid = self.mec.contentid
+        mecid = self.mec.id
         split_name = self.resource.fullpath.name.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
-            self.language = split_name[4].lower()
-            pass
+            self.language = split_name[4]
+            self.dubbed = True if split_name[-1].lower() == "dubbed" else False
+            self.region = split_name[5]
         elif self.resource.mediatype == MediaTypes.SEASON:
             pass
         elif self.resource.mediatype == MediaTypes.SERIES:

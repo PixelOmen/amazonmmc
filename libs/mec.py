@@ -38,9 +38,9 @@ class MECEpisodic(MECGroup):
 class MEC:
     def __init__(self, media: "Media") -> None:
         self.media = media
+        self.id = self.media.id
         self.root = newroot("mdmec", "CoreMetadata")
         self.outputname = f'{self.media.id}_metadata.xml'
-        self.contentid = self._contentid()
 
     def episodic(self) -> ET.Element:
         self.root.append(self._basic())
@@ -61,18 +61,9 @@ class MEC:
             raise KeyError(f"Unable to locate '{key}' in {self.media.mediatype}")
         return value
 
-    def _contentid(self) -> str:
-        if self.media.mediatype == MediaTypes.GENERAL:
-            return "GENERAL"
-        orgprefix: str = self.search_media("orgprefix")
-        org: dict[str, str] = self.search_media("AssociatedOrg")
-        orgid: str = org["organizationID"]
-        id = self.media.id
-        return f"{orgprefix}{orgid}:{id}"
-
     def _basic(self) -> ET.Element:
         basicroot = newelement("mdmec", "Basic")
-        basicroot.set("ContentID", self.contentid)
+        basicroot.set("ContentID", self._contentid())
 
         localizedinfo = self._localized()
         for info in localizedinfo:
@@ -119,6 +110,13 @@ class MEC:
                 basicroot.append(elem)
 
         return basicroot
+
+    def _contentid(self) -> str:
+        if self.media.mediatype == MediaTypes.GENERAL:
+            return "GENERAL"
+        org: dict[str, str] = self.search_media("AssociatedOrg")
+        orgid: str = org["organizationID"]
+        return f"md:cid:org:{orgid}:{self.id}"
 
     def _companycredits(self) -> list[ET.Element]:
         allelem: list[ET.Element] = []
