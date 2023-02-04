@@ -127,7 +127,7 @@ class MEC:
             lang = self._get_value("language", cred)
             credit = self._get_value("DisplayString", cred)
             root = newelement("mdmec", "CompanyDisplayCredit")
-            displaystr_root = str_to_element("mdmec", "DisplayString", credit)
+            displaystr_root = str_to_element("md", "DisplayString", credit)
             displaystr_root.set("language", lang)
             root.append(displaystr_root)
             allelem.append(root)

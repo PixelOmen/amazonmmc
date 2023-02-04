@@ -40,10 +40,10 @@ class Audio:
         self._parse_resource()
 
     def _parse_resource(self) -> None:
-        orgprefix: str = self.mec.media.find("orgprefix")
-        org: dict[str, str] = self.mec.media.find("AssociatedOrg")
-        orgid = org["organizationID"]
+        mecid = self.mec.contentid
+        split_name = self.resource.fullpath.name.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
+            self.language = split_name[4].lower()
             pass
         elif self.resource.mediatype == MediaTypes.SEASON:
             pass
