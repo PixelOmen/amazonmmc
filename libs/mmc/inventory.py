@@ -27,10 +27,11 @@ if TYPE_CHECKING:
 
 class Audio:
     def __init__(self, mec: "MEC", resource: "Resource") -> None:
+        self.rootelem = newelement("manifest", "Audio")
         self.mec = mec
         self.resource = resource
         self.type = "primary"
-        self.encoding = "PCM"
+        self.codec = "PCM"
         self.hash = self._hash()
         self.id: str
         self.language: str
@@ -42,11 +43,16 @@ class Audio:
 
     def _parse_resource(self) -> None:
         mecid = self.mec.id
+        org = self.mec.search_media("AssociatedOrg")
+        orgid = org["organizationID"]
         split_name = self.resource.fullpath.name.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
             self.language = split_name[4]
             self.dubbed = True if split_name[-1].lower() == "dubbed" else False
             self.region = split_name[5]
+            self.location = f"file://resources/{self.resource.fullpath.name}"
+            seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
+            self.id = f"md:audtrackid:org:{orgid}:{mecid}:episode.{seq}.{self.language}"
         elif self.resource.mediatype == MediaTypes.SEASON:
             pass
         elif self.resource.mediatype == MediaTypes.SERIES:
@@ -58,10 +64,38 @@ class Audio:
             )
 
     def _hash(self) -> str:
-        return ""
+        return "Still working on this"
+
+    def generate(self) -> ET.Element:
+        self.rootelem.set("AudioTrackID", self.id)
+
+        self.rootelem.append(str_to_element("md", "Type", self.type))
+
+        encoding = newelement("md", "Encoding")
+        encoding.append(str_to_element("md", "Codec", self.codec))
+        self.rootelem.append(encoding)
+
+        language = str_to_element("md", "Language", self.language)
+        if self.dubbed:
+            language.set("dubbed", "true")
+        else:
+            language.set("dubbed", "false")
+        self.rootelem.append(language)
+
+        self.rootelem.append(str_to_element("md", "Region", self.region))
+
+        container_root = newelement("manifest", "ContainerReference")
+        container_root.append(str_to_element("manifest", "ContainerLocation", self.location))
+        hash_root = str_to_element("manifest", "Hash", self.hash)
+        hash_root.set("method", "MD5")
+        container_root.append(hash_root)
+        self.rootelem.append(container_root)
+        
+        return self.rootelem
 
 class Video:
-    pass
+    def __init__(self, mec: "MEC", resource: "Resource") -> None:
+        pass
 
 class Subtitle:
     pass
@@ -70,23 +104,6 @@ class Subtitle:
 def episodic(mecgroup: "MECEpisodic") -> ET.Element:
     root = newelement("manifest", "Inventory")
     return root
-
-# def _episodic_factory(mecgroup: "MECEpisodic") -> Series:
-#     av_exts: list[str] = mecgroup.generalmedia.find("av_exts")
-#     sub_exts: list[str] = mecgroup.generalmedia.find("sub_exts")
-#     av_res: list["Resource"] = []
-#     sub_res: list["Resource"] = []
-#     for ep in mecgroup.episodes:
-#         for res in ep.media.resources:
-#             suffix = res.fullpath.suffix.lower()
-#             if suffix in av_exts and res not in av_res:
-#                 av_res.append(res)
-#             elif suffix in sub_exts and res not in sub_res:
-#                 sub_res.append(res)
-#     return av_res, sub_res
-
-# def _audio(audio: Audio) -> ET.Element:
-#     pass
 
 # def _video() -> ET.Element:
 #     pass

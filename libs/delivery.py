@@ -36,11 +36,11 @@ class Delivery:
     def write_mecs(self) -> None:
         for m in self.mecs:
             fullpath = self.resourcedir / m.outputname
-            self.write_xml(m.root, fullpath)
+            self.write_xml(m.rootelem, fullpath)
 
     def write_mmc(self) -> None:
         fullpath = self.rootdir / self.mmc.outputname
-        self.write_xml(self.mmc.root, fullpath)
+        self.write_xml(self.mmc.rootelem, fullpath)
 
     def indent(self, elem: ET.Element, level: int=0, spaces: int=4) -> None:
         '''

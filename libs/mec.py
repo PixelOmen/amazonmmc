@@ -39,15 +39,15 @@ class MEC:
     def __init__(self, media: "Media") -> None:
         self.media = media
         self.id = self.media.id
-        self.root = newroot("mdmec", "CoreMetadata")
+        self.rootelem = newroot("mdmec", "CoreMetadata")
         self.outputname = f'{self.media.id}_metadata.xml'
 
     def episodic(self) -> ET.Element:
-        self.root.append(self._basic())
+        self.rootelem.append(self._basic())
         companycredits = self._companycredits()
         for credit in companycredits:
-            self.root.append(credit)
-        return self.root
+            self.rootelem.append(credit)
+        return self.rootelem
 
     def search_media(self, key: str, assertcurrent: bool=False, assertexists: bool=True) -> Any:
         value = self.media.find(key, assertcurrent)

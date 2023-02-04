@@ -7,31 +7,46 @@ from .. import errors
 from ..enums import WorkTypes, MediaTypes
 from ..xmlhelpers import newroot, newelement, key_to_element, str_to_element
 
-from . import inventory
 from .inventory import Audio, Video, Subtitle
 
 if TYPE_CHECKING:
     from ..mec import MEC, MECGroup, MECEpisodic
 
-class MMCEntity(ABC):
+class Extensions:
     def __init__(self, mec: "MEC") -> None:
+        self.av_exts = mec.search_media("av_exts")
+        self.sub_exts = mec.search_media("sub_exts")
+        self.art_exts = mec.search_media("art_exts")
+
+class MMCEntity(ABC):
+    def __init__(self, mec: "MEC", ext: Extensions) -> None:
         self.mec = mec
+        self.extensions = ext
 
 class Episode(MMCEntity):
-    def __init__(self, mec: "MEC") -> None:
-        super().__init__(mec)
-        self.audio = [Audio(mec, res) for res in self.mec.media.resources]
+    def __init__(self, mec: "MEC", ext: Extensions) -> None:
+        super().__init__(mec, ext)
+        self.audio: list[Audio] = []
+        self.video: list[Video] = []
+        self._parse_resources()
+
+    def _parse_resources(self) -> None:
+        for res in self.mec.media.resources:
+            if res.fullpath.suffix.lower() in self.extensions.av_exts:
+                self.audio.append(Audio(self.mec, res))
+                self.video.append(Video(self.mec, res))
 
 class Season(MMCEntity):
-    def __init__(self, mec: "MEC", episodes: list["MEC"]) -> None:
-        super().__init__(mec)
-        self.episodes = [Episode(ep) for ep in episodes]
+    def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions) -> None:
+        super().__init__(mec, ext)
+        self.episodes = [Episode(ep, ext) for ep in episodes]
 
-class Series(MMCEntity):
+class Series:
     def __init__(self, mecgroup: "MECEpisodic") -> None:
-        super().__init__(mecgroup.series)
         self.mecgroup = mecgroup
-        self.seasons = [Season(s, ep) for s, ep in mecgroup.seasons.items()]
+        self.mec = mecgroup.series
+        self.extensions = Extensions(self.mec)
+        self.seasons = [Season(s, ep, self.extensions) for s, ep in mecgroup.seasons.items()]
 
 
 class MMC:
@@ -39,7 +54,7 @@ class MMC:
         self.rootdir = rootdir
         self.resourcedir = rootdir / "resources"
         self.worktype = WorkTypes.UNKNOWN
-        self.root = newroot("manifest", "MediaManifest")
+        self.rootelem = newroot("manifest", "MediaManifest")
         self._outputname = ""
 
     @property
@@ -55,9 +70,15 @@ class MMC:
         self.worktype = WorkTypes.EPISODIC
         seriesid = mecgroup.series.search_media("id", assertcurrent=True)
         self._outputname = f"{seriesid}_MMC.xml"
-        self.root.append(self._compatibility())
-        self.root.append(inventory.episodic(mecgroup))
-        return self.root
+        self.rootelem.append(self._compatibility())
+        inventory_root = newelement("manifest", "Inventory")
+        series = Series(mecgroup)
+        for season in series.seasons:
+            for ep in season.episodes:
+                for audio in ep.audio:
+                    inventory_root.append(audio.generate())
+        self.rootelem.append(inventory_root)
+        return self.rootelem
 
     def _get_value(self, key: str, datadict: dict) -> Any:
         value = datadict.get(key)

@@ -1,8 +1,81 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.10/manifest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd">
+<manifest:MediaManifest xmlns:manifest="http://www.movielabs.com/schema/manifest/v1.10/manifest" xmlns:md="http://www.movielabs.com/schema/md/v2.9/md" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.movielabs.com/schema/mdmec/v2.9 mdmec-v2.9.xsd">
     <manifest:Compatibility>
         <manifest:SpecVersion>1.5</manifest:SpecVersion>
         <manifest:Profile>MMC-1</manifest:Profile>
     </manifest:Compatibility>
-    <manifest:Inventory />
+    <manifest:Inventory>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+        <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PCM</md:Codec>
+            </md:Encoding>
+            <md:Language dubbed="false">EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Audio>
+    </manifest:Inventory>
 </manifest:MediaManifest>
