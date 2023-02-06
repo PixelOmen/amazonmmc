@@ -8,7 +8,7 @@ from ..mec import MECEpisodic
 from ..enums import WorkTypes, MediaTypes
 from ..xmlhelpers import newroot, newelement, key_to_element, str_to_element
 
-from .inventory import Audio, Video, Subtitle
+from .inventory import Audio, Metadata, Video, Subtitle
 
 if TYPE_CHECKING:
     from ..mec import MEC, MECGroup
@@ -30,6 +30,7 @@ class Episode(MMCEntity):
         self.audio: list[Audio] = []
         self.video: list[Video] = []
         self.subtitle: list[Subtitle] = []
+        self.metadata = Metadata(mec)
         self._parse_resources()
 
     def _parse_resources(self) -> None:
@@ -62,6 +63,7 @@ class Series:
                     inventoryelems.append(audio.generate())
                 for sub in ep.subtitle:
                     inventoryelems.append(sub.generate())
+                inventoryelems.append(ep.metadata.generate())
         return inventoryelems
 
 

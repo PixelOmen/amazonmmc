@@ -46,6 +46,12 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_101_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -87,6 +93,12 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_102_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -128,6 +140,12 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_103_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -169,6 +187,12 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_104_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -210,6 +234,12 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_105_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -251,5 +281,11 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_106_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
     </manifest:Inventory>
 </manifest:MediaManifest>

@@ -14,11 +14,14 @@ if TYPE_CHECKING:
 # Sub -        AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_FULL_SUBTITLE_25.itt
 
 class InventoryElem(ABC):
-    def __init__(self, mec: "MEC", resource: "Resource", roottag: str) -> None:
+    def __init__(self, mec: "MEC", roottag: str, resource: "Resource"=...) -> None:
         self.rootelem = newelement("manifest", roottag)
         self.mec = mec
         self.resource = resource
-        self.location = f"file://resources/{self.resource.fullpath.name}"
+        if resource is ...:
+            self.location = f"file://resources/{self.mec.outputname}"
+        else:
+            self.location = f"file://resources/{self.resource.fullpath.name}"
         self.id: str
         self.hash: str
 
@@ -29,29 +32,35 @@ class InventoryElem(ABC):
         mecid = self.mec.id
         org = self.mec.search_media("AssociatedOrg")
         orgid = org["organizationID"]
-        if self.resource.mediatype == MediaTypes.EPISODE:
+        if self.resource is ...:
+            mediatype = self.mec.media.mediatype
+            resname = self.mec.outputname
+        else:
+            mediatype = self.resource.mediatype
+            resname = self.resource.fullpath.name
+        if mediatype == MediaTypes.EPISODE:
             seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
             trackid = f"md:{tracktype}:org:{orgid}:{mecid}:episode.{seq}"
             if language is not ...:
                 trackid += f".{language}"
             return trackid
-        elif self.resource.mediatype == MediaTypes.SEASON:
+        elif mediatype == MediaTypes.SEASON:
             raise NotImplementedError(
                 f"Unable to generate trackid for tracktype: {tracktype}. "
-                f"Mediatype '{self.resource.mediatype}' not implemented yet "
-                f"for resource: {self.resource.fullpath.name}"
+                f"Mediatype '{mediatype}' not implemented yet "
+                f"for resource: {resname}"
             )
-        elif self.resource.mediatype == MediaTypes.SERIES:
+        elif mediatype == MediaTypes.SERIES:
             raise NotImplementedError(
                 f"Unable to generate trackid for tracktype: {tracktype}. "
-                f"Mediatype '{self.resource.mediatype}' not implemented yet "
-                f"for resource: {self.resource.fullpath.name}"
+                f"Mediatype '{mediatype}' not implemented yet "
+                f"for resource: {resname}"
             )
         else:
             raise NotImplementedError(
                 f"Unable to generate trackid for tracktype: {tracktype}. "
-                f"Mediatype '{self.resource.mediatype}' not supported "
-                f"for resource: {self.resource.fullpath.name}"
+                f"Mediatype '{mediatype}' not supported "
+                f"for resource: {resname}"
             )
 
     @abstractmethod
@@ -63,7 +72,7 @@ class InventoryElem(ABC):
 
 class Audio(InventoryElem):
     def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        super().__init__(mec, resource, "Audio")
+        super().__init__(mec, "Audio", resource)
         self.type = "primary"
         self.codec = "PCM"
         self.language: str
@@ -112,7 +121,7 @@ class Audio(InventoryElem):
 
 class Video(InventoryElem):
     def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        super().__init__(mec, resource, "Video")
+        super().__init__(mec, "Video", resource)
         self.type = "primary"
         self.language: str
         self.region: str
@@ -167,7 +176,7 @@ class Video(InventoryElem):
 
 class Subtitle(InventoryElem):
     def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        super().__init__(mec, resource, "Subtitle")
+        super().__init__(mec, "Subtitle", resource)
         self.type = "SDH"
         self.language: str
         self.region: str
@@ -216,5 +225,23 @@ class Subtitle(InventoryElem):
         self.rootelem.append(container)
         return self.rootelem
 
-class Metadata:
-    pass
+class Metadata(InventoryElem):
+    def __init__(self, mec: "MEC") -> None:
+        super().__init__(mec, "Metadata")
+        self.type = "common"
+        self.id: str
+        self._parse_resource()
+        self.hash = self._hash()
+
+    def _parse_resource(self) -> None:
+        self.id = self._trackid("cid")
+
+    def generate(self) -> ET.Element:
+        self.rootelem.set("ContentID", self.id)
+        container = newelement("manifest", "ContainerReference")
+        container.append(str_to_element("manifest", "ContainerLocation", self.location))
+        hash = str_to_element("manifest", "Hash", self.hash)
+        hash.set("method", "MD5")
+        container.append(hash)
+        self.rootelem.append(container)
+        return self.rootelem
