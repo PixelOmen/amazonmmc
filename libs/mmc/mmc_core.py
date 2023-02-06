@@ -48,6 +48,14 @@ class Series:
         self.extensions = Extensions(self.mec)
         self.seasons = [Season(s, ep, self.extensions) for s, ep in mecgroup.seasons.items()]
 
+    def inventory(self) -> list[ET.Element]:
+        audioelem: list[ET.Element] = []
+        for season in self.seasons:
+            for ep in season.episodes:
+                for audio in ep.audio:
+                    audioelem.append(audio.generate())
+        return audioelem
+
 
 class MMC:
     def __init__(self, rootdir: Path) -> None:
@@ -73,10 +81,8 @@ class MMC:
         self.rootelem.append(self._compatibility())
         inventory_root = newelement("manifest", "Inventory")
         series = Series(mecgroup)
-        for season in series.seasons:
-            for ep in season.episodes:
-                for audio in ep.audio:
-                    inventory_root.append(audio.generate())
+        for elem in series.inventory():
+            inventory_root.append(elem)
         self.rootelem.append(inventory_root)
         return self.rootelem
 

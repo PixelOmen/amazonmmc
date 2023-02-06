@@ -45,7 +45,7 @@ class Audio:
         mecid = self.mec.id
         org = self.mec.search_media("AssociatedOrg")
         orgid = org["organizationID"]
-        split_name = self.resource.fullpath.name.split("_")
+        split_name = self.resource.fullpath.stem.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
             self.language = split_name[4]
             self.dubbed = True if split_name[-1].lower() == "dubbed" else False
