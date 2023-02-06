@@ -1,74 +1,110 @@
 from typing import TYPE_CHECKING
+from abc import ABC, abstractmethod
 from xml.etree import ElementTree as ET
 
 from ..enums import MediaTypes
-from ..xmlhelpers import newelement, key_to_element, str_to_element
+from ..xmlhelpers import newelement, str_to_element
 
 if TYPE_CHECKING:
+    from ..mec import MEC
     from ..media import Resource
-    from ..mec import MEC, MECEpisodic
 
-# MOV naming - AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov
-# Dubbed -     AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178_dubbed.mov
+# MOV naming - AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov
+# Dubbed -     AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178_dubbed.mov
 """
-<manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.audio.en">
+<manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.video.en">
     <md:Type>primary</md:Type>
     <md:Encoding>
-        <md:Codec>PCM</md:Codec>
+        <md:Codec>PRORESHQ</md:Codec>
     </md:Encoding>
-    <md:Language dubbed="false">en-US</md:Language>
+    <md:Picture>
+        <md:AspectRatio>16:9</md:AspectRatio>
+        <md:WidthPixels>1920</md:WidthPixels>
+        <md:HeightPixels>1080</md:HeightPixels>
+    </md:Picture>
+    <md:Language>en-US</md:Language>
     <md:Region>ja-JP</md:Region>
     <manifest:ContainerReference>
         <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
         <manifest:Hash method="MD5">ac4dcac3d366c1a5b009fa2a2120222c</manifest:Hash>
     </manifest:ContainerReference>
-</manifest:Audio>
+</manifest:Video>
 """
 
-class Audio:
-    def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        self.rootelem = newelement("manifest", "Audio")
+class InventoryElem(ABC):
+    def __init__(self, mec: "MEC", resource: "Resource", roottag: str) -> None:
+        self.rootelem = newelement("manifest", roottag)
         self.mec = mec
         self.resource = resource
-        self.type = "primary"
-        self.codec = "PCM"
-        self.hash = self._hash()
+        self.location = f"file://resources/{self.resource.fullpath.name}"
         self.id: str
-        self.language: str
-        self.dubbed: bool
-        self.region: str
-        self.location: str
-        self._parse_resource()
-        self._hash()
+        self.hash: str
 
-    def _parse_resource(self) -> None:
+    def _hash(self) -> str:
+        return "Still working on this"
+
+    def _trackid(self, tracktype: str, language: str=...) -> str:
         mecid = self.mec.id
         org = self.mec.search_media("AssociatedOrg")
         orgid = org["organizationID"]
+        if self.resource.mediatype == MediaTypes.EPISODE:
+            seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
+            trackid = f"md:{tracktype}:org:{orgid}:{mecid}:episode.{seq}"
+            if language is not ...:
+                trackid += f".{language}"
+            return trackid
+        elif self.resource.mediatype == MediaTypes.SEASON:
+            raise NotImplementedError(
+                f"Unable to generate trackid for tracktype: {tracktype}. "
+                f"Mediatype '{self.resource.mediatype}' not implemented yet "
+                f"for resource: {self.resource.fullpath.name}"
+            )
+        elif self.resource.mediatype == MediaTypes.SERIES:
+            raise NotImplementedError(
+                f"Unable to generate trackid for tracktype: {tracktype}. "
+                f"Mediatype '{self.resource.mediatype}' not implemented yet "
+                f"for resource: {self.resource.fullpath.name}"
+            )
+        else:
+            raise NotImplementedError(
+                f"Unable to generate trackid for tracktype: {tracktype}. "
+                f"Mediatype '{self.resource.mediatype}' not supported "
+                f"for resource: {self.resource.fullpath.name}"
+            )
+
+    @abstractmethod
+    def _parse_resource(self) -> None:...
+
+    @abstractmethod
+    def generate(self) -> ET.Element:...
+
+
+class Audio(InventoryElem):
+    def __init__(self, mec: "MEC", resource: "Resource") -> None:
+        super().__init__(mec, resource, "Audio")
+        self.type = "primary"
+        self.codec = "PCM"
+        self.language: str
+        self.dubbed: bool
+        self.region: str
+        self._parse_resource()
+        self.hash = self._hash()
+
+    def _parse_resource(self) -> None:
         split_name = self.resource.fullpath.stem.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
             self.language = split_name[4]
             self.dubbed = True if split_name[-1].lower() == "dubbed" else False
             self.region = split_name[5]
-            self.location = f"file://resources/{self.resource.fullpath.name}"
-            seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
-            self.id = f"md:audtrackid:org:{orgid}:{mecid}:episode.{seq}.{self.language}"
-        elif self.resource.mediatype == MediaTypes.SEASON:
-            pass
-        elif self.resource.mediatype == MediaTypes.SERIES:
-            pass
+            self.id = self._trackid("audtrackid", self.language)
         else:
             raise NotImplementedError(
-                f"Mediatype '{self.resource.mediatype}' not supported "
+                f"(AUDIO) Mediatype '{self.resource.mediatype}' not supported "
                 f"for resource: {self.resource.fullpath.name}"
             )
 
-    def _hash(self) -> str:
-        return "Still working on this"
-
     def generate(self) -> ET.Element:
         self.rootelem.set("AudioTrackID", self.id)
-
         self.rootelem.append(str_to_element("md", "Type", self.type))
 
         encoding = newelement("md", "Encoding")
@@ -90,26 +126,65 @@ class Audio:
         hash_root.set("method", "MD5")
         container_root.append(hash_root)
         self.rootelem.append(container_root)
-        
         return self.rootelem
 
-class Video:
+class Video(InventoryElem):
     def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        pass
+        super().__init__(mec, resource, "Video")
+        self.type = "primary"
+        self.language: str
+        self.region: str
+        self.codec: str
+        self.width: str
+        self.height: str
+        self.aspect: str
+        self._parse_resource()
+        self.hash = self._hash()
+
+    def _parse_resource(self) -> None:
+        split_name = self.resource.fullpath.stem.split("_")
+        if self.resource.mediatype == MediaTypes.EPISODE:
+            self.language = split_name[4]
+            self.region = split_name[5]
+            self.codec = split_name[6]
+            resolution = split_name[9].lower().split("x")
+            self.width = resolution[0]
+            self.height = resolution[1]
+            self.aspect = split_name[10].lower().replace("x", ":")
+            self.id = self._trackid("vidtrackid", self.language)
+        else:
+            raise NotImplementedError(
+                f"(VIDEO) Mediatype '{self.resource.mediatype}' not supported "
+                f"for resource: {self.resource.fullpath.name}"
+            )
+
+    def generate(self) -> ET.Element:
+        self.rootelem.set("VideoTrackID", self.id)
+        self.rootelem.append(str_to_element("md", "Type", self.type))
+        
+        encoding = newelement("md", "Encoding")
+        encoding.append(str_to_element("md", "Codec", self.codec))
+        self.rootelem.append(encoding)
+
+        picture = newelement("md", "Picture")
+        picture.append(str_to_element("md", "AspectRatio", self.aspect))
+        picture.append(str_to_element("md", "WidthPixels", self.width))
+        picture.append(str_to_element("md", "HeightPixels", self.height))
+        self.rootelem.append(picture)
+
+        self.rootelem.append(str_to_element("md", "Language", self.language))
+        self.rootelem.append(str_to_element("md", "Region", self.region))
+
+        container = newelement("manifest", "ContainerReference")
+        container.append(str_to_element("manifest", "ContainerLocation", self.location))
+        hash = str_to_element("manifest", "Hash", self.hash)
+        hash.set("method", "MD5")
+        container.append(hash)
+        self.rootelem.append(container)
+        return self.rootelem
 
 class Subtitle:
     pass
 
-
-def episodic(mecgroup: "MECEpisodic") -> ET.Element:
-    root = newelement("manifest", "Inventory")
-    return root
-
-# def _video() -> ET.Element:
-#     pass
-
-# def _subtitle() -> ET.Element:
-#     pass
-
-# def _metadata() -> ET.Element:
-#     pass
+class Metadata:
+    pass

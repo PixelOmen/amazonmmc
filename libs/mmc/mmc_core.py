@@ -1,7 +1,7 @@
 from abc import ABC
 from pathlib import Path
-from typing import Any, TYPE_CHECKING, cast
 from xml.etree import ElementTree as ET
+from typing import Any, TYPE_CHECKING, cast
 
 from .. import errors
 from ..mec import MECEpisodic
@@ -50,12 +50,14 @@ class Series:
         self.seasons = [Season(s, ep, self.extensions) for s, ep in mecgroup.seasons.items()]
 
     def inventory(self) -> list[ET.Element]:
-        audioelem: list[ET.Element] = []
+        inventoryelems: list[ET.Element] = []
         for season in self.seasons:
             for ep in season.episodes:
+                for video in ep.video:
+                    inventoryelems.append(video.generate())
                 for audio in ep.audio:
-                    audioelem.append(audio.generate())
-        return audioelem
+                    inventoryelems.append(audio.generate())
+        return inventoryelems
 
 
 class MMC:

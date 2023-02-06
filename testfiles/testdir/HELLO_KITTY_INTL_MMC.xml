@@ -5,6 +5,23 @@
         <manifest:Profile>MMC-1</manifest:Profile>
     </manifest:Compatibility>
     <manifest:Inventory>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -13,10 +30,27 @@
             <md:Language dubbed="false">EN-US</md:Language>
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
-                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -25,10 +59,27 @@
             <md:Language dubbed="false">EN-US</md:Language>
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
-                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -37,10 +88,27 @@
             <md:Language dubbed="false">EN-US</md:Language>
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
-                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -49,10 +117,27 @@
             <md:Language dubbed="false">EN-US</md:Language>
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
-                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -61,10 +146,27 @@
             <md:Language dubbed="false">EN-US</md:Language>
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
-                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
+            <md:Type>primary</md:Type>
+            <md:Encoding>
+                <md:Codec>PRORESHQ</md:Codec>
+            </md:Encoding>
+            <md:Picture>
+                <md:AspectRatio>16:9</md:AspectRatio>
+                <md:WidthPixels>1920</md:WidthPixels>
+                <md:HeightPixels>1080</md:HeightPixels>
+            </md:Picture>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -73,7 +175,7 @@
             <md:Language dubbed="false">EN-US</md:Language>
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
-                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
