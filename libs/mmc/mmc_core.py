@@ -29,6 +29,7 @@ class Episode(MMCEntity):
         super().__init__(mec, ext)
         self.audio: list[Audio] = []
         self.video: list[Video] = []
+        self.subtitle: list[Subtitle] = []
         self._parse_resources()
 
     def _parse_resources(self) -> None:
@@ -36,6 +37,8 @@ class Episode(MMCEntity):
             if res.fullpath.suffix.lower() in self.extensions.av_exts:
                 self.audio.append(Audio(self.mec, res))
                 self.video.append(Video(self.mec, res))
+            elif res.fullpath.suffix.lower() in self.extensions.sub_exts:
+                self.subtitle.append(Subtitle(self.mec, res))
 
 class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions) -> None:
@@ -57,6 +60,8 @@ class Series:
                     inventoryelems.append(video.generate())
                 for audio in ep.audio:
                     inventoryelems.append(audio.generate())
+                for sub in ep.subtitle:
+                    inventoryelems.append(sub.generate())
         return inventoryelems
 
 

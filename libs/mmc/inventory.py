@@ -11,25 +11,7 @@ if TYPE_CHECKING:
 
 # MOV naming - AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov
 # Dubbed -     AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178_dubbed.mov
-"""
-<manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.video.en">
-    <md:Type>primary</md:Type>
-    <md:Encoding>
-        <md:Codec>PRORESHQ</md:Codec>
-    </md:Encoding>
-    <md:Picture>
-        <md:AspectRatio>16:9</md:AspectRatio>
-        <md:WidthPixels>1920</md:WidthPixels>
-        <md:HeightPixels>1080</md:HeightPixels>
-    </md:Picture>
-    <md:Language>en-US</md:Language>
-    <md:Region>ja-JP</md:Region>
-    <manifest:ContainerReference>
-        <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-        <manifest:Hash method="MD5">ac4dcac3d366c1a5b009fa2a2120222c</manifest:Hash>
-    </manifest:ContainerReference>
-</manifest:Video>
-"""
+# Sub -        AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_FULL_SUBTITLE_25.itt
 
 class InventoryElem(ABC):
     def __init__(self, mec: "MEC", resource: "Resource", roottag: str) -> None:
@@ -183,8 +165,56 @@ class Video(InventoryElem):
         self.rootelem.append(container)
         return self.rootelem
 
-class Subtitle:
-    pass
+class Subtitle(InventoryElem):
+    def __init__(self, mec: "MEC", resource: "Resource") -> None:
+        super().__init__(mec, resource, "Subtitle")
+        self.type = "SDH"
+        self.language: str
+        self.region: str
+        self.multiplier: str
+        self.fps: str
+        self._parse_resource()
+        self.hash = self._hash()
+
+    def _parse_resource(self) -> None:
+        split_name = self.resource.fullpath.stem.split("_")
+        if self.resource.mediatype == MediaTypes.EPISODE:
+            self.language = split_name[4]
+            self.region = split_name[5]
+            fps = split_name[8]
+            if len(fps) == 4:
+                self.multiplier = "1/1001"
+                self.fps = str(round(int(fps)))
+            else:
+                self.multiplier = "1/1"
+                self.fps = fps
+            self.id = self._trackid("subtrackid", self.language)
+        else:
+            raise NotImplementedError(
+                f"(SUBTITLE) Mediatype '{self.resource.mediatype}' not supported "
+                f"for resource: {self.resource.fullpath.name}"
+            )
+
+    def generate(self) -> ET.Element:
+        self.rootelem.set("SubtitleTrackID", self.id)
+        self.rootelem.append(str_to_element("md", "Type", self.type))
+
+        self.rootelem.append(str_to_element("md", "Language", self.language))
+        self.rootelem.append(str_to_element("md", "Region", self.region))
+        
+        encoding = newelement("md", "Encoding")
+        fps = str_to_element("md", "FrameRate", self.fps)
+        fps.set("multiplier", self.multiplier)
+        encoding.append(fps)
+        self.rootelem.append(encoding)
+
+        container = newelement("manifest", "ContainerReference")
+        container.append(str_to_element("manifest", "ContainerLocation", self.location))
+        hash = str_to_element("manifest", "Hash", self.hash)
+        hash.set("method", "MD5")
+        container.append(hash)
+        self.rootelem.append(container)
+        return self.rootelem
 
 class Metadata:
     pass

@@ -34,6 +34,18 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -63,6 +75,18 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -92,6 +116,18 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -121,6 +157,18 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -150,6 +198,18 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
             <md:Type>primary</md:Type>
             <md:Encoding>
@@ -179,5 +239,17 @@
                 <manifest:Hash method="MD5">Still working on this</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
+        <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
+            <md:Type>SDH</md:Type>
+            <md:Language>EN-US</md:Language>
+            <md:Region>ja-JP</md:Region>
+            <md:Encoding>
+                <md:FrameRate multiplier="1/1">25</md:FrameRate>
+            </md:Encoding>
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Subtitle>
     </manifest:Inventory>
 </manifest:MediaManifest>
