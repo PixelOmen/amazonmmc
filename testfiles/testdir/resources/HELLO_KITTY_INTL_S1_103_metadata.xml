@@ -180,6 +180,6 @@
         </md:Parent>
     </mdmec:Basic>
     <mdmec:CompanyDisplayCredit>
-        <mdmec:DisplayString language="en-US">Watch Next Media</mdmec:DisplayString>
+        <md:DisplayString language="en-US">Watch Next Media</md:DisplayString>
     </mdmec:CompanyDisplayCredit>
 </mdmec:CoreMetadata>

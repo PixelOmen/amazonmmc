@@ -1,16 +1,17 @@
 from abc import ABC
 from pathlib import Path
-from typing import Any, TYPE_CHECKING
+from typing import Any, TYPE_CHECKING, cast
 from xml.etree import ElementTree as ET
 
 from .. import errors
+from ..mec import MECEpisodic
 from ..enums import WorkTypes, MediaTypes
 from ..xmlhelpers import newroot, newelement, key_to_element, str_to_element
 
 from .inventory import Audio, Video, Subtitle
 
 if TYPE_CHECKING:
-    from ..mec import MEC, MECGroup, MECEpisodic
+    from ..mec import MEC, MECGroup
 
 class Extensions:
     def __init__(self, mec: "MEC") -> None:
@@ -58,12 +59,14 @@ class Series:
 
 
 class MMC:
-    def __init__(self, rootdir: Path) -> None:
+    def __init__(self, worktype: int, rootdir: Path, mecgroup: "MECGroup") -> None:
         self.rootdir = rootdir
         self.resourcedir = rootdir / "resources"
-        self.worktype = WorkTypes.UNKNOWN
+        self.worktype = worktype
+        self.mecgroup = mecgroup
         self.rootelem = newroot("manifest", "MediaManifest")
         self._outputname = ""
+        self.generated = False
 
     @property
     def outputname(self) -> str:
@@ -73,7 +76,22 @@ class MMC:
             raise AttributeError("MMC must be generated before output name can be generated")
         return self._outputname
 
-    def episodic(self, mecgroup: "MECEpisodic") -> ET.Element:
+    def generate(self) -> ET.Element:
+        if self.generated:
+            return self.rootelem
+        if self.worktype == WorkTypes.EPISODIC:
+            if isinstance(self.mecgroup, MECEpisodic):
+                mecgroup = cast(MECEpisodic, self.mecgroup)
+            else:
+                raise RuntimeError(f"Delivery worktype is episodic but MECGroup is of type: {type(self.mecgroup)}")
+            self.episodic(mecgroup)
+            self.generated =True
+            return self.rootelem
+        else:
+            raise NotImplementedError("Only episodic workflows are currently supported")
+
+    def episodic(self, mecgroup: MECEpisodic) -> ET.Element:
+        mecgroup.generate()
         self._validate_resources(mecgroup)
         self.worktype = WorkTypes.EPISODIC
         seriesid = mecgroup.series.search_media("id", assertcurrent=True)

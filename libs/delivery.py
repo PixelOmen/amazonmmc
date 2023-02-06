@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
-from typing import TYPE_CHECKING, Any, cast
 
 from .mmc import MMC
 from .media import Media
@@ -21,11 +21,10 @@ class Delivery:
         self._mmc: MMC | None = None
 
     @property
-    def mecs(self) -> list[MEC]:
+    def mecs(self) -> "MECGroup":
         if self._mecgroup is None:
             self._mecgroup = self._build_mecs()
-            self._mecgroup.generate()
-        return self._mecgroup.all
+        return self._mecgroup
 
     @property
     def mmc(self) -> MMC:
@@ -34,11 +33,13 @@ class Delivery:
         return self._mmc
 
     def write_mecs(self) -> None:
-        for m in self.mecs:
+        self.mecs.generate()
+        for m in self.mecs.all:
             fullpath = self.resourcedir / m.outputname
             self.write_xml(m.rootelem, fullpath)
 
     def write_mmc(self) -> None:
+        self.mmc.generate()
         fullpath = self.rootdir / self.mmc.outputname
         self.write_xml(self.mmc.rootelem, fullpath)
 
@@ -72,7 +73,7 @@ class Delivery:
         worktype = WorkTypes.get_int(worktype_str)
         if worktype == WorkTypes.EPISODIC:
             self.worktype = WorkTypes.EPISODIC
-            return self._episodic()
+            return self._mec_episodic()
         else:
             raise NotImplementedError("Only episodic workflows are currently supported")
 
@@ -80,17 +81,12 @@ class Delivery:
         if self._mecgroup is None:
             self._mecgroup = self._build_mecs()
         if self.worktype == WorkTypes.EPISODIC:
-            if isinstance(self._mecgroup, MECEpisodic):
-                mecgroup = cast(MECEpisodic, self._mecgroup)
-            else:
-                raise RuntimeError(f"Delivery worktype is episodic but MECGroup is of type: {type(self._mecgroup)}")
-            mmc = MMC(self.rootdir)
-            mmc.episodic(mecgroup)
+            mmc = MMC(self.worktype, self.rootdir, self._mecgroup)
             return mmc
         else:
             raise NotImplementedError("Only episodic workflows are currently supported")
 
-    def _episodic(self) -> MECEpisodic:
+    def _mec_episodic(self) -> MECEpisodic:
         general_data: dict = self._assertexists(self.data, "general")
         series_data: dict = self._assertexists(self.data, "series")
         general_media = Media(self.resourcedir, general_data)
