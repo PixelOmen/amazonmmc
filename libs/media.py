@@ -27,13 +27,21 @@ class Media:
         self.id = self._id()
         self.resources = self._resources()
 
-    def find(self, key: str, assertcurrent: bool=False) -> Any:
+    def find(self, key: str, assertcurrent: bool=False, assertexists: bool=True) -> Any:
         value = self.data.get(key)
         if value is None:
             if assertcurrent:
+                if not assertexists:
+                    return None
                 mediatype = MediaTypes.get_str(self.mediatype)
                 raise KeyError(f"Unable to locate '{key}' in {mediatype}")
-            if self.parent is not None:
+            if self.parent is None:
+                if assertexists:
+                    mediatype = MediaTypes.get_str(self.mediatype)
+                    raise KeyError(f"Unable to locate '{key}' in {mediatype}")
+                else:
+                    return None
+            else:
                 return self.parent.find(key)
         return value
 

@@ -128,6 +128,9 @@ class Delivery:
         datapath = datadir / "data.json"
         if not datapath.is_file():
             raise FileNotFoundError("Unable to locate data.json")
+        checksums = datadir / "checksums.md5"
+        if not checksums.is_file():
+            raise FileNotFoundError("Unable to locate checksums.md5 in datadir")
         if not self.resourcedir.is_dir():
             raise FileNotFoundError("Unable to locate resources folder")
         with open(datapath, "rb") as fp:

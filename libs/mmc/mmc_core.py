@@ -5,10 +5,11 @@ from typing import Any, TYPE_CHECKING, cast
 
 from .. import errors
 from ..mec import MECEpisodic
-from ..enums import WorkTypes, MediaTypes
-from ..xmlhelpers import newroot, newelement, key_to_element, str_to_element
+from ..enums import WorkTypes
+from ..xmlhelpers import newroot, newelement, str_to_element
 
-from .inventory import Audio, Metadata, Video, Subtitle
+from .presentations import EpPresentation
+from .inventory import Audio, Video, Subtitle, Metadata
 
 if TYPE_CHECKING:
     from ..mec import MEC, MECGroup
@@ -24,15 +25,22 @@ class MMCEntity(ABC):
         self.mec = mec
         self.extensions = ext
         self.checksums = checksums
+        self.video: list[Video] = []
+        self.audio: list[Audio] = []
+        self.subtitle: list[Subtitle] = []
+        self.metadata = Metadata(mec, checksums)
 
 class Episode(MMCEntity):
     def __init__(self, mec: "MEC", ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
-        self.audio: list[Audio] = []
-        self.video: list[Video] = []
-        self.subtitle: list[Subtitle] = []
-        self.metadata = Metadata(mec, checksums)
         self._parse_resources()
+        self._presentations: list[EpPresentation] = []
+
+    @property
+    def presentations(self) -> list[EpPresentation]:
+        if not self._presentations:
+            self._presentations = self._gen_presentations()
+        return self._presentations
 
     def _parse_resources(self) -> None:
         for res in self.mec.media.resources:
@@ -42,36 +50,55 @@ class Episode(MMCEntity):
             elif res.fullpath.suffix.lower() in self.extensions.sub_exts:
                 self.subtitle.append(Subtitle(self.mec, self.checksums, res))
 
+    def _gen_presentations(self) -> list[EpPresentation]:
+        """
+        Can be extended to support custom groupings of video/audio/sub languages.
+        For now, it has to have exactly 1 video/audio/sub in 1 language.
+        """
+        presentations: list[list[str]] | None = self.mec.search_media("presentations", assertcurrent=True, assertexists=False)
+        if presentations:
+            raise NotImplementedError("Custom presentations not implemented yet")
+        if (len(self.video) != 1 or
+            len(self.audio) != 1 or
+            len(self.subtitle) != 1):
+            raise NotImplementedError(f"Currently only supports exactly 1 video/audio/subtitle file")
+        return [EpPresentation(self.mec, self.audio[0], self.video[0], self.subtitle[0])]
+
+
 class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
         self.episodes = [Episode(ep, ext, checksums) for ep in episodes]
-        self.metadata = Metadata(mec, checksums)
 
-class Series:
+class Series(MMCEntity):
     def __init__(self, rootdir: Path, mecgroup: "MECEpisodic") -> None:
         self.rootdir = rootdir
         self.mecgroup = mecgroup
-        self.mec = mecgroup.series
-        self.extensions = Extensions(self.mec)
-        self.checksums = self._readmd5()
-        self.metadata = Metadata(self.mec, self.checksums)
+        super().__init__(mecgroup.series, Extensions(mecgroup.series), self._readmd5())
         self.seasons = [Season(s, ep, self.extensions, self.checksums) for s, ep in mecgroup.seasons.items()]
 
-    def inventory(self) -> list[ET.Element]:
-        inventoryelems: list[ET.Element] = []
+    def inventory(self) -> ET.Element:
+        inventory_root = newelement("manifest", "Inventory")
         for season in self.seasons:
             for ep in season.episodes:
                 for video in ep.video:
-                    inventoryelems.append(video.generate())
+                    inventory_root.append(video.generate())
                 for audio in ep.audio:
-                    inventoryelems.append(audio.generate())
+                    inventory_root.append(audio.generate())
                 for sub in ep.subtitle:
-                    inventoryelems.append(sub.generate())
-                inventoryelems.append(ep.metadata.generate())
-            inventoryelems.append(season.metadata.generate())
-        inventoryelems.append(self.metadata.generate())
-        return inventoryelems
+                    inventory_root.append(sub.generate())
+                inventory_root.append(ep.metadata.generate())
+            inventory_root.append(season.metadata.generate())
+        inventory_root.append(self.metadata.generate())
+        return inventory_root
+
+    def presentations(self) -> ET.Element:
+        presentations_root = newelement("manifest", "Presentations")
+        for season in self.seasons:
+            for ep in season.episodes:
+                for pres in ep.presentations:
+                    presentations_root.append(pres.generate())
+        return presentations_root
 
     def _readmd5(self) -> list[str]:
         checksums = self.rootdir / "data" / "checksums.md5"
@@ -121,11 +148,9 @@ class MMC:
         seriesid = mecgroup.series.search_media("id", assertcurrent=True)
         self._outputname = f"{seriesid}_MMC.xml"
         self.rootelem.append(self._compatibility())
-        inventory_root = newelement("manifest", "Inventory")
         series = Series(self.rootdir, mecgroup)
-        for elem in series.inventory():
-            inventory_root.append(elem)
-        self.rootelem.append(inventory_root)
+        self.rootelem.append(series.inventory())
+        self.rootelem.append(series.presentations())
         return self.rootelem
 
     def _get_value(self, key: str, datadict: dict) -> Any:

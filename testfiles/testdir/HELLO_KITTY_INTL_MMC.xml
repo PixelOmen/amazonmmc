@@ -300,4 +300,90 @@
             </manifest:ContainerReference>
         </manifest:Metadata>
     </manifest:Inventory>
+    <manifest:Presentations>
+        <manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+        <manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
+            <manifest:TrackMetadata>
+                <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
+                <manifest:VideoTrackReference>
+                    <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US</manifest:VideoTrackID>
+                </manifest:VideoTrackReference>
+                <manifest:AudioTrackReference>
+                    <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US</manifest:AudioTrackID>
+                </manifest:AudioTrackReference>
+                <manifest:SubtitleTrackReference>
+                    <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US</manifest:SubtitleTrackID>
+                </manifest:SubtitleTrackReference>
+            </manifest:TrackMetadata>
+        </manifest:Presentation>
+    </manifest:Presentations>
 </manifest:MediaManifest>

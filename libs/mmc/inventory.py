@@ -65,7 +65,7 @@ class InventoryElem(ABC):
             )
 
     @abstractmethod
-    def _parse_resource(self) -> None:...
+    def _initialize(self) -> None:...
 
     @abstractmethod
     def generate(self) -> ET.Element:...
@@ -79,10 +79,10 @@ class Audio(InventoryElem):
         self.language: str
         self.dubbed: bool
         self.region: str
-        self._parse_resource()
+        self._initialize()
         self.hash = self._hash()
 
-    def _parse_resource(self) -> None:
+    def _initialize(self) -> None:
         split_name = self.resource.fullpath.stem.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
             self.language = split_name[4]
@@ -130,10 +130,10 @@ class Video(InventoryElem):
         self.width: str
         self.height: str
         self.aspect: str
-        self._parse_resource()
+        self._initialize()
         self.hash = self._hash()
 
-    def _parse_resource(self) -> None:
+    def _initialize(self) -> None:
         split_name = self.resource.fullpath.stem.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
             self.language = split_name[4]
@@ -183,10 +183,10 @@ class Subtitle(InventoryElem):
         self.region: str
         self.multiplier: str
         self.fps: str
-        self._parse_resource()
+        self._initialize()
         self.hash = self._hash()
 
-    def _parse_resource(self) -> None:
+    def _initialize(self) -> None:
         split_name = self.resource.fullpath.stem.split("_")
         if self.resource.mediatype == MediaTypes.EPISODE:
             self.language = split_name[4]
@@ -231,10 +231,10 @@ class Metadata(InventoryElem):
         super().__init__(mec, "Metadata", checksums)
         self.type = "common"
         self.id: str
-        self._parse_resource()
+        self._initialize()
         self.hash = self._hash()
 
-    def _parse_resource(self) -> None:
+    def _initialize(self) -> None:
         self.id = self._trackid("cid")
 
     def generate(self) -> ET.Element:

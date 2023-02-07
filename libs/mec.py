@@ -50,7 +50,7 @@ class MEC:
         return self.rootelem
 
     def search_media(self, key: str, assertcurrent: bool=False, assertexists: bool=True) -> Any:
-        value = self.media.find(key, assertcurrent)
+        value = self.media.find(key, assertcurrent, assertexists)
         if value is None and assertexists:
             raise KeyError(f"Unable to locate '{key}' in {self.media.mediatype}")
         return value
