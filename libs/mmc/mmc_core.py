@@ -1,6 +1,5 @@
 from abc import ABC
 from pathlib import Path
-from xml.etree import ElementTree as ET
 from typing import Any, TYPE_CHECKING, cast
 
 from .. import errors
@@ -9,10 +8,12 @@ from ..enums import WorkTypes
 from ..xmlhelpers import newroot, newelement, str_to_element
 
 from .presentations import EpPresentation
+from .experiences import EpisodeExperience
 from .inventory import Audio, Video, Subtitle, Metadata
 
 if TYPE_CHECKING:
     from ..mec import MEC, MECGroup
+    from xml.etree import ElementTree as ET
 
 class Extensions:
     def __init__(self, mec: "MEC") -> None:
@@ -36,12 +37,19 @@ class Episode(MMCEntity):
         self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
         self._parse_resources()
         self._presentations: list[EpPresentation] = []
+        self._experiences: list[EpisodeExperience] = []
 
     @property
     def presentations(self) -> list[EpPresentation]:
         if not self._presentations:
             self._presentations = self._gen_presentations()
         return self._presentations
+
+    @property
+    def experiences(self) -> list[EpisodeExperience]:
+        if not self._experiences:
+            self._experiences = self._gen_experiences()
+        return self._experiences
 
     def _parse_resources(self) -> None:
         for res in self.mec.media.resources:
@@ -55,6 +63,7 @@ class Episode(MMCEntity):
         """
         Can be extended to support custom groupings of video/audio/sub languages.
         For now, it has to have exactly 1 video/audio/sub in 1 language.
+        Language is currently being pulled from video language.
         """
         presentations: list[list[str]] | None = self.mec.search_media("presentations", assertcurrent=True, assertexists=False)
         if presentations:
@@ -63,8 +72,10 @@ class Episode(MMCEntity):
             len(self.audio) != 1 or
             len(self.subtitle) != 1):
             raise NotImplementedError(f"Currently only supports exactly 1 video/audio/subtitle file")
-        return [EpPresentation(self.mec, self.audio[0], self.video[0], self.subtitle[0])]
+        return [EpPresentation(self.mec, self.audio[0], self.video[0], self.subtitle[0], self.video[0].language)]
 
+    def _gen_experiences(self) -> list[EpisodeExperience]:
+        return [EpisodeExperience(pres, self.metadata) for pres in self.presentations]
 
 class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
@@ -79,7 +90,7 @@ class Series(MMCEntity):
         super().__init__(mecgroup.series, Extensions(mecgroup.series), self._readmd5())
         self.seasons = [Season(s, ep, self.extensions, self.checksums) for s, ep in mecgroup.seasons.items()]
 
-    def inventory(self) -> ET.Element:
+    def inventory(self) -> "ET.Element":
         inventory_root = newelement("manifest", "Inventory")
         for season in self.seasons:
             for ep in season.episodes:
@@ -94,13 +105,21 @@ class Series(MMCEntity):
         inventory_root.append(self.metadata.generate())
         return inventory_root
 
-    def presentations(self) -> ET.Element:
+    def presentations(self) -> "ET.Element":
         presentations_root = newelement("manifest", "Presentations")
         for season in self.seasons:
             for ep in season.episodes:
                 for pres in ep.presentations:
                     presentations_root.append(pres.generate())
         return presentations_root
+
+    def experiences(self) -> "ET.Element":
+        exp_root = newelement("manifest", "Experiences")
+        for season in self.seasons:
+            for ep in season.episodes:
+                for exp in ep.experiences:
+                    exp_root.append(exp.generate())
+        return exp_root
 
     def _readmd5(self) -> list[str]:
         checksums = self.rootdir / "data" / "checksums.md5"
@@ -129,7 +148,7 @@ class MMC:
             raise AttributeError("MMC must be generated before output name can be generated")
         return self._outputname
 
-    def generate(self) -> ET.Element:
+    def generate(self) -> "ET.Element":
         if self.generated:
             return self.rootelem
         if self.worktype == WorkTypes.EPISODIC:
@@ -143,7 +162,7 @@ class MMC:
         else:
             raise NotImplementedError("Only episodic workflows are currently supported")
 
-    def episodic(self, mecgroup: MECEpisodic) -> ET.Element:
+    def episodic(self, mecgroup: MECEpisodic) -> "ET.Element":
         self._validate_resources(mecgroup)
         self.worktype = WorkTypes.EPISODIC
         seriesid = mecgroup.series.search_media("id", assertcurrent=True)
@@ -152,6 +171,7 @@ class MMC:
         series = Series(self.rootdir, mecgroup)
         self.rootelem.append(series.inventory())
         self.rootelem.append(series.presentations())
+        self.rootelem.append(series.experiences())
         return self.rootelem
 
     def _get_value(self, key: str, datadict: dict) -> Any:
@@ -180,7 +200,7 @@ class MMC:
         if unknowns:
             raise errors.ResourceError(unknowns)
 
-    def _compatibility(self) -> ET.Element:
+    def _compatibility(self) -> "ET.Element":
         compat_root = newelement("manifest", "Compatibility")
         specver = str_to_element("manifest", "SpecVersion", "1.5")
         profile = str_to_element("manifest", "Profile", "MMC-1")

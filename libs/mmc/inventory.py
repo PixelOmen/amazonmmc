@@ -1,6 +1,5 @@
 from typing import TYPE_CHECKING
 from abc import ABC, abstractmethod
-from xml.etree import ElementTree as ET
 
 from ..enums import MediaTypes
 from ..xmlhelpers import newelement, str_to_element
@@ -8,6 +7,7 @@ from ..xmlhelpers import newelement, str_to_element
 if TYPE_CHECKING:
     from ..mec import MEC
     from ..media import Resource
+    from xml.etree import ElementTree as ET
 
 # MOV naming - AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov
 # Dubbed -     AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178_dubbed.mov
@@ -67,7 +67,7 @@ class InventoryElem(ABC):
     def _initialize(self) -> None:...
 
     @abstractmethod
-    def generate(self) -> ET.Element:...
+    def generate(self) -> "ET.Element":...
 
 
 class Audio(InventoryElem):
@@ -94,7 +94,7 @@ class Audio(InventoryElem):
                 f"for resource: {self.resource.fullpath.name}"
             )
 
-    def generate(self) -> ET.Element:
+    def generate(self) -> "ET.Element":
         self.rootelem.set("AudioTrackID", self.id)
         self.rootelem.append(str_to_element("md", "Type", self.type))
 
@@ -149,7 +149,7 @@ class Video(InventoryElem):
                 f"for resource: {self.resource.fullpath.name}"
             )
 
-    def generate(self) -> ET.Element:
+    def generate(self) -> "ET.Element":
         self.rootelem.set("VideoTrackID", self.id)
         self.rootelem.append(str_to_element("md", "Type", self.type))
         
@@ -204,7 +204,7 @@ class Subtitle(InventoryElem):
                 f"for resource: {self.resource.fullpath.name}"
             )
 
-    def generate(self) -> ET.Element:
+    def generate(self) -> "ET.Element":
         self.rootelem.set("SubtitleTrackID", self.id)
         self.rootelem.append(str_to_element("md", "Type", self.type))
 
@@ -236,7 +236,7 @@ class Metadata(InventoryElem):
     def _initialize(self) -> None:
         self.id = self._trackid("cid")
 
-    def generate(self) -> ET.Element:
+    def generate(self) -> "ET.Element":
         self.rootelem.set("ContentID", self.id)
         container = newelement("manifest", "ContainerReference")
         container.append(str_to_element("manifest", "ContainerLocation", self.location))
