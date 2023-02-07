@@ -14,19 +14,27 @@ if TYPE_CHECKING:
 # Sub -        AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_FULL_SUBTITLE_25.itt
 
 class InventoryElem(ABC):
-    def __init__(self, mec: "MEC", roottag: str, resource: "Resource"=...) -> None:
+    def __init__(self, mec: "MEC", roottag: str, checksums: list[str], resource: "Resource"=...) -> None:
         self.rootelem = newelement("manifest", roottag)
         self.mec = mec
+        self.checksums = checksums
         self.resource = resource
         if resource is ...:
-            self.location = f"file://resources/{self.mec.outputname}"
+            self.filepath = self.mec.outputname
         else:
-            self.location = f"file://resources/{self.resource.fullpath.name}"
+            self.filepath = self.resource.fullpath.name
+        self.location = f"file://resources/{self.filepath}"
         self.id: str
         self.hash: str
 
     def _hash(self) -> str:
-        return "Still working on this"
+        if not self.checksums:
+            raise LookupError("MD5 Checksum file is empty")
+        for md5 in self.checksums:
+            splitline = md5.split("  ")
+            if splitline[1].lower() == self.filepath.lower():
+                return splitline[0]
+        raise LookupError(f"Unable to locate hash for {self.filepath}")
 
     def _trackid(self, tracktype: str, language: str=...) -> str:
         mecid = self.mec.id
@@ -71,8 +79,8 @@ class InventoryElem(ABC):
 
 
 class Audio(InventoryElem):
-    def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        super().__init__(mec, "Audio", resource)
+    def __init__(self, mec: "MEC", checksums: list[str], resource: "Resource") -> None:
+        super().__init__(mec, "Audio", checksums, resource)
         self.type = "primary"
         self.codec = "PCM"
         self.language: str
@@ -120,8 +128,8 @@ class Audio(InventoryElem):
         return self.rootelem
 
 class Video(InventoryElem):
-    def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        super().__init__(mec, "Video", resource)
+    def __init__(self, mec: "MEC", checksums: list[str], resource: "Resource") -> None:
+        super().__init__(mec, "Video", checksums, resource)
         self.type = "primary"
         self.language: str
         self.region: str
@@ -175,8 +183,8 @@ class Video(InventoryElem):
         return self.rootelem
 
 class Subtitle(InventoryElem):
-    def __init__(self, mec: "MEC", resource: "Resource") -> None:
-        super().__init__(mec, "Subtitle", resource)
+    def __init__(self, mec: "MEC", checksums: list[str], resource: "Resource") -> None:
+        super().__init__(mec, "Subtitle", checksums, resource)
         self.type = "SDH"
         self.language: str
         self.region: str
@@ -226,8 +234,8 @@ class Subtitle(InventoryElem):
         return self.rootelem
 
 class Metadata(InventoryElem):
-    def __init__(self, mec: "MEC") -> None:
-        super().__init__(mec, "Metadata")
+    def __init__(self, mec: "MEC", checksums: list[str]) -> None:
+        super().__init__(mec, "Metadata", checksums)
         self.type = "common"
         self.id: str
         self._parse_resource()

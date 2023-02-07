@@ -20,38 +20,41 @@ class Extensions:
         self.art_exts = mec.search_media("art_exts")
 
 class MMCEntity(ABC):
-    def __init__(self, mec: "MEC", ext: Extensions) -> None:
+    def __init__(self, mec: "MEC", ext: Extensions, checksums: list[str]) -> None:
         self.mec = mec
         self.extensions = ext
+        self.checksums = checksums
 
 class Episode(MMCEntity):
-    def __init__(self, mec: "MEC", ext: Extensions) -> None:
-        super().__init__(mec, ext)
+    def __init__(self, mec: "MEC", ext: Extensions, checksums: list[str]) -> None:
+        super().__init__(mec, ext, checksums)
         self.audio: list[Audio] = []
         self.video: list[Video] = []
         self.subtitle: list[Subtitle] = []
-        self.metadata = Metadata(mec)
+        self.metadata = Metadata(mec, checksums)
         self._parse_resources()
 
     def _parse_resources(self) -> None:
         for res in self.mec.media.resources:
             if res.fullpath.suffix.lower() in self.extensions.av_exts:
-                self.audio.append(Audio(self.mec, res))
-                self.video.append(Video(self.mec, res))
+                self.audio.append(Audio(self.mec, self.checksums, res))
+                self.video.append(Video(self.mec, self.checksums, res))
             elif res.fullpath.suffix.lower() in self.extensions.sub_exts:
-                self.subtitle.append(Subtitle(self.mec, res))
+                self.subtitle.append(Subtitle(self.mec, self.checksums, res))
 
 class Season(MMCEntity):
-    def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions) -> None:
-        super().__init__(mec, ext)
-        self.episodes = [Episode(ep, ext) for ep in episodes]
+    def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
+        super().__init__(mec, ext, checksums)
+        self.episodes = [Episode(ep, ext, checksums) for ep in episodes]
 
 class Series:
-    def __init__(self, mecgroup: "MECEpisodic") -> None:
+    def __init__(self, rootdir: Path, mecgroup: "MECEpisodic") -> None:
+        self.rootdir = rootdir
         self.mecgroup = mecgroup
         self.mec = mecgroup.series
         self.extensions = Extensions(self.mec)
-        self.seasons = [Season(s, ep, self.extensions) for s, ep in mecgroup.seasons.items()]
+        self.checksums = self._readmd5()
+        self.seasons = [Season(s, ep, self.extensions, self.checksums) for s, ep in mecgroup.seasons.items()]
 
     def inventory(self) -> list[ET.Element]:
         inventoryelems: list[ET.Element] = []
@@ -65,6 +68,14 @@ class Series:
                     inventoryelems.append(sub.generate())
                 inventoryelems.append(ep.metadata.generate())
         return inventoryelems
+
+    def _readmd5(self) -> list[str]:
+        checksums = self.rootdir / "data" / "checksums.md5"
+        lines = []
+        with open(checksums, "r", encoding="UTF-8") as fp:
+            for line in fp.readlines():
+                lines.append(line.strip())
+        return lines
 
 
 class MMC:
@@ -107,7 +118,7 @@ class MMC:
         self._outputname = f"{seriesid}_MMC.xml"
         self.rootelem.append(self._compatibility())
         inventory_root = newelement("manifest", "Inventory")
-        series = Series(mecgroup)
+        series = Series(self.rootdir, mecgroup)
         for elem in series.inventory():
             inventory_root.append(elem)
         self.rootelem.append(inventory_root)

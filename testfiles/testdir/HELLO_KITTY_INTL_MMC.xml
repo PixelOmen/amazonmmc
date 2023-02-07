@@ -19,7 +19,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
@@ -31,7 +31,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US">
@@ -43,13 +43,13 @@
             </md:Encoding>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_101_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1">
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_101_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">eac5ab44505b9a2406bddb7d5d147067</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
@@ -66,7 +66,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
@@ -78,7 +78,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US">
@@ -90,13 +90,13 @@
             </md:Encoding>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_102_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2">
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_102_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">83ab8123e1861df53d400255488cca5f</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
@@ -113,7 +113,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
@@ -125,7 +125,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US">
@@ -137,13 +137,13 @@
             </md:Encoding>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_103_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3">
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_103_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">585e351be56fc78a9ab748c99e5a7df1</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
@@ -160,7 +160,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
@@ -172,7 +172,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US">
@@ -184,13 +184,13 @@
             </md:Encoding>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_104_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4">
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_104_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">a40809ab2fe9d4a13948300f121b4989</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
@@ -207,7 +207,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
@@ -219,7 +219,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US">
@@ -231,13 +231,13 @@
             </md:Encoding>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_105_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5">
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_105_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">1f279e4306eef2b30284e0382a987dac</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Video VideoTrackID="md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
@@ -254,7 +254,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Video>
         <manifest:Audio AudioTrackID="md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
@@ -266,7 +266,7 @@
             <md:Region>ja-JP</md:Region>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_PRORESHQ_5120_25_1920x1080_16x9_HD_178.mov</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Audio>
         <manifest:Subtitle SubtitleTrackID="md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US">
@@ -278,13 +278,13 @@
             </md:Encoding>
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/AMAZONKIDS_HELLOKITTY_SEASON1_106_EN-US_ja-JP_FULL_SUBTITLE_25.itt</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">d41d8cd98f00b204e9800998ecf8427e</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6">
             <manifest:ContainerReference>
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_106_metadata.xml</manifest:ContainerLocation>
-                <manifest:Hash method="MD5">Still working on this</manifest:Hash>
+                <manifest:Hash method="MD5">422c62d09b45f1693da1779d8d64ffda</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
     </manifest:Inventory>
