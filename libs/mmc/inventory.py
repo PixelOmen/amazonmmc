@@ -239,6 +239,7 @@ class Metadata(InventoryElem):
     def generate(self) -> "ET.Element":
         self.rootelem.set("ContentID", self.id)
         container = newelement("manifest", "ContainerReference")
+        container.set("type", self.type)
         container.append(str_to_element("manifest", "ContainerLocation", self.location))
         hash = str_to_element("manifest", "Hash", self.hash)
         hash.set("method", "MD5")

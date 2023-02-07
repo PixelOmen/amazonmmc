@@ -174,12 +174,6 @@ class MMC:
         self.rootelem.append(series.experiences())
         return self.rootelem
 
-    def _get_value(self, key: str, datadict: dict) -> Any:
-        value = datadict.get(key)
-        if value is None:
-            raise KeyError(f"Unable to locate '{key}' in MMC")
-        return value
-
     def _validate_resources(self, mecgroup: "MECGroup") -> None:
         if not mecgroup.all:
             raise RuntimeError("MMC did not recieve any MECs")

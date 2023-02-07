@@ -47,7 +47,7 @@
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_101_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">eac5ab44505b9a2406bddb7d5d147067</manifest:Hash>
             </manifest:ContainerReference>
@@ -94,7 +94,7 @@
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_102_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">83ab8123e1861df53d400255488cca5f</manifest:Hash>
             </manifest:ContainerReference>
@@ -141,7 +141,7 @@
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_103_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">585e351be56fc78a9ab748c99e5a7df1</manifest:Hash>
             </manifest:ContainerReference>
@@ -188,7 +188,7 @@
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_104_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">a40809ab2fe9d4a13948300f121b4989</manifest:Hash>
             </manifest:ContainerReference>
@@ -235,7 +235,7 @@
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_105_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">1f279e4306eef2b30284e0382a987dac</manifest:Hash>
             </manifest:ContainerReference>
@@ -282,19 +282,19 @@
             </manifest:ContainerReference>
         </manifest:Subtitle>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_106_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">422c62d09b45f1693da1779d8d64ffda</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1:season.1">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">1a3b80e7ca630881c729891e32f51f4d</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
         <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL:series">
-            <manifest:ContainerReference>
+            <manifest:ContainerReference type="common">
                 <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_metadata.xml</manifest:ContainerLocation>
                 <manifest:Hash method="MD5">09e73b325acef9c2a3e8c12971cef9c2</manifest:Hash>
             </manifest:ContainerReference>
