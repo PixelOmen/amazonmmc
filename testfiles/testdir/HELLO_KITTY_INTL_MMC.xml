@@ -287,5 +287,17 @@
                 <manifest:Hash method="MD5">422c62d09b45f1693da1779d8d64ffda</manifest:Hash>
             </manifest:ContainerReference>
         </manifest:Metadata>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1:season.1">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_S1_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">1a3b80e7ca630881c729891e32f51f4d</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
+        <manifest:Metadata ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL:series">
+            <manifest:ContainerReference>
+                <manifest:ContainerLocation>file://resources/HELLO_KITTY_INTL_metadata.xml</manifest:ContainerLocation>
+                <manifest:Hash method="MD5">09e73b325acef9c2a3e8c12971cef9c2</manifest:Hash>
+            </manifest:ContainerReference>
+        </manifest:Metadata>
     </manifest:Inventory>
 </manifest:MediaManifest>

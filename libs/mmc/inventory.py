@@ -53,21 +53,14 @@ class InventoryElem(ABC):
                 trackid += f".{language}"
             return trackid
         elif mediatype == MediaTypes.SEASON:
-            raise NotImplementedError(
-                f"Unable to generate trackid for tracktype: {tracktype}. "
-                f"Mediatype '{mediatype}' not implemented yet "
-                f"for resource: {resname}"
-            )
+            seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
+            return f"md:{tracktype}:org:{orgid}:{mecid}:season.{seq}"
         elif mediatype == MediaTypes.SERIES:
-            raise NotImplementedError(
-                f"Unable to generate trackid for tracktype: {tracktype}. "
-                f"Mediatype '{mediatype}' not implemented yet "
-                f"for resource: {resname}"
-            )
+            return f"md:{tracktype}:org:{orgid}:{mecid}:series"
         else:
             raise NotImplementedError(
                 f"Unable to generate trackid for tracktype: {tracktype}. "
-                f"Mediatype '{mediatype}' not supported "
+                f"Mediatype '{MediaTypes.get_str(mediatype)}' not supported "
                 f"for resource: {resname}"
             )
 

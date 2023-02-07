@@ -46,6 +46,7 @@ class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
         self.episodes = [Episode(ep, ext, checksums) for ep in episodes]
+        self.metadata = Metadata(mec, checksums)
 
 class Series:
     def __init__(self, rootdir: Path, mecgroup: "MECEpisodic") -> None:
@@ -54,6 +55,7 @@ class Series:
         self.mec = mecgroup.series
         self.extensions = Extensions(self.mec)
         self.checksums = self._readmd5()
+        self.metadata = Metadata(self.mec, self.checksums)
         self.seasons = [Season(s, ep, self.extensions, self.checksums) for s, ep in mecgroup.seasons.items()]
 
     def inventory(self) -> list[ET.Element]:
@@ -67,6 +69,8 @@ class Series:
                 for sub in ep.subtitle:
                     inventoryelems.append(sub.generate())
                 inventoryelems.append(ep.metadata.generate())
+            inventoryelems.append(season.metadata.generate())
+        inventoryelems.append(self.metadata.generate())
         return inventoryelems
 
     def _readmd5(self) -> list[str]:
