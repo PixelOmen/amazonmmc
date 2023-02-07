@@ -389,7 +389,7 @@
     <manifest:Experiences>
         <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US" version="1.0">
             <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1</manifest:ContentID>
-            <manifest:Audiovisual ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_101:av.episode.1">
+            <manifest:Audiovisual ContentID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_101:av.episode.1.EN-US">
                 <manifest:Type>Main</manifest:Type>
                 <manifest:SubType>Episode</manifest:SubType>
                 <manifest:PresentationID>md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US</manifest:PresentationID>
@@ -404,7 +404,7 @@
         </manifest:Experience>
         <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US" version="1.0">
             <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2</manifest:ContentID>
-            <manifest:Audiovisual ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_102:av.episode.2">
+            <manifest:Audiovisual ContentID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_102:av.episode.2.EN-US">
                 <manifest:Type>Main</manifest:Type>
                 <manifest:SubType>Episode</manifest:SubType>
                 <manifest:PresentationID>md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US</manifest:PresentationID>
@@ -419,7 +419,7 @@
         </manifest:Experience>
         <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US" version="1.0">
             <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3</manifest:ContentID>
-            <manifest:Audiovisual ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_103:av.episode.3">
+            <manifest:Audiovisual ContentID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_103:av.episode.3.EN-US">
                 <manifest:Type>Main</manifest:Type>
                 <manifest:SubType>Episode</manifest:SubType>
                 <manifest:PresentationID>md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US</manifest:PresentationID>
@@ -434,7 +434,7 @@
         </manifest:Experience>
         <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US" version="1.0">
             <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4</manifest:ContentID>
-            <manifest:Audiovisual ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_104:av.episode.4">
+            <manifest:Audiovisual ContentID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_104:av.episode.4.EN-US">
                 <manifest:Type>Main</manifest:Type>
                 <manifest:SubType>Episode</manifest:SubType>
                 <manifest:PresentationID>md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US</manifest:PresentationID>
@@ -449,7 +449,7 @@
         </manifest:Experience>
         <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US" version="1.0">
             <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5</manifest:ContentID>
-            <manifest:Audiovisual ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_105:av.episode.5">
+            <manifest:Audiovisual ContentID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_105:av.episode.5.EN-US">
                 <manifest:Type>Main</manifest:Type>
                 <manifest:SubType>Episode</manifest:SubType>
                 <manifest:PresentationID>md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US</manifest:PresentationID>
@@ -464,11 +464,56 @@
         </manifest:Experience>
         <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US" version="1.0">
             <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6</manifest:ContentID>
-            <manifest:Audiovisual ContentID="md:cid:org:amazonkids:HELLO_KITTY_INTL_S1_106:av.episode.6">
+            <manifest:Audiovisual ContentID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_106:av.episode.6.EN-US">
                 <manifest:Type>Main</manifest:Type>
                 <manifest:SubType>Episode</manifest:SubType>
                 <manifest:PresentationID>md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US</manifest:PresentationID>
             </manifest:Audiovisual>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>6</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6.EN-US</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+        </manifest:Experience>
+        <manifest:Experience ExperienceID="md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1:season.1.EN-US">
+            <manifest:ContentID>md:cid:org:amazonkids:HELLO_KITTY_INTL_S1:season.1</manifest:ContentID>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>1</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.EN-US</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>2</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2.EN-US</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>3</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3.EN-US</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>4</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4.EN-US</manifest:ExperienceID>
+            </manifest:ExperienceChild>
+            <manifest:ExperienceChild>
+                <manifest:Relationship>isepisodeof</manifest:Relationship>
+                <manifest:SequenceInfo>
+                    <md:Number>5</md:Number>
+                </manifest:SequenceInfo>
+                <manifest:ExperienceID>md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5.EN-US</manifest:ExperienceID>
+            </manifest:ExperienceChild>
             <manifest:ExperienceChild>
                 <manifest:Relationship>isepisodeof</manifest:Relationship>
                 <manifest:SequenceInfo>
