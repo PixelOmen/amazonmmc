@@ -2,7 +2,6 @@
     "general": {
         "mediatype": "general",
         "worktype": "episodic",
-        "orgprefix": "md:cid:org:",
         "AssociatedOrg": {
             "organizationID": "amazonkids",
             "role": "licensor"

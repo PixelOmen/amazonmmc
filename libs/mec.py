@@ -39,6 +39,7 @@ class MEC:
     def __init__(self, media: "Media") -> None:
         self.media = media
         self.id = self.media.id
+        self.org = self.media.org
         self.rootelem = newroot("mdmec", "CoreMetadata")
         self.outputname = f'{self.media.id}_metadata.xml'
 

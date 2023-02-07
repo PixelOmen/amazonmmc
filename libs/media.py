@@ -25,6 +25,7 @@ class Media:
         if self.mediatype not in IMPLEMENTED:
             raise NotImplementedError(MediaTypes.get_str(self.mediatype))
         self.id = self._id()
+        self.org = self.find("AssociatedOrg")["organizationID"]
         self.resources = self._resources()
 
     def find(self, key: str, assertcurrent: bool=False, assertexists: bool=True) -> Any:

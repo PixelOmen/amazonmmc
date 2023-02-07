@@ -33,6 +33,7 @@ class MMCEntity(ABC):
 class Episode(MMCEntity):
     def __init__(self, mec: "MEC", ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
+        self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
         self._parse_resources()
         self._presentations: list[EpPresentation] = []
 
@@ -69,6 +70,7 @@ class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
         self.episodes = [Episode(ep, ext, checksums) for ep in episodes]
+        self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
 
 class Series(MMCEntity):
     def __init__(self, rootdir: Path, mecgroup: "MECEpisodic") -> None:
@@ -142,7 +144,6 @@ class MMC:
             raise NotImplementedError("Only episodic workflows are currently supported")
 
     def episodic(self, mecgroup: MECEpisodic) -> ET.Element:
-        mecgroup.generate()
         self._validate_resources(mecgroup)
         self.worktype = WorkTypes.EPISODIC
         seriesid = mecgroup.series.search_media("id", assertcurrent=True)

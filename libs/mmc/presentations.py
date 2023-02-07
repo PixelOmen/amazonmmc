@@ -8,23 +8,6 @@ if TYPE_CHECKING:
     from ..mec import MEC
     from .inventory import Audio, Video, Subtitle
 
-"""
-<manifest:Presentation PresentationID="md:presentationid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.en">
-    <manifest:TrackMetadata>
-        <manifest:TrackSelectionNumber>0</manifest:TrackSelectionNumber>
-        <manifest:VideoTrackReference>
-            <manifest:VideoTrackID>md:vidtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.video.en</manifest:VideoTrackID>
-        </manifest:VideoTrackReference>
-        <manifest:AudioTrackReference>
-            <manifest:AudioTrackID>md:audtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.audio.en</manifest:AudioTrackID>
-        </manifest:AudioTrackReference>
-        <manifest:SubtitleTrackReference>
-            <manifest:SubtitleTrackID>md:subtrackid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1.caption.en</manifest:SubtitleTrackID>
-        </manifest:SubtitleTrackReference>
-    </manifest:TrackMetadata>
-</manifest:Presentation>
-"""
-
 class Presentation(ABC):
     def __init__(self, mec: "MEC", audio: "Audio", video: "Video", subtitle: Union["Subtitle", None]) -> None:
         self.mec = mec
@@ -39,9 +22,7 @@ class Presentation(ABC):
         extended to allow for other lanuage id selections
         """
         mecid = self.mec.id
-        org = self.mec.search_media("AssociatedOrg")
-        orgid = org["organizationID"]
-        trackid = f"md:presentationid:org:{orgid}:{mecid}:{idtype}"
+        trackid = f"md:presentationid:org:{self.mec.org}:{mecid}:{idtype}"
         if seq is not ...:
             trackid += f".{seq}"
         trackid += f".{self.video.language}" # not ideal

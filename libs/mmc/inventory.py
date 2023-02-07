@@ -38,8 +38,7 @@ class InventoryElem(ABC):
 
     def _trackid(self, tracktype: str, language: str=...) -> str:
         mecid = self.mec.id
-        org = self.mec.search_media("AssociatedOrg")
-        orgid = org["organizationID"]
+        orgid = self.mec.org
         if self.resource is ...:
             mediatype = self.mec.media.mediatype
             resname = self.mec.outputname
