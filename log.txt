@@ -1,0 +1,23 @@
+2023-02-08 15:28:58.300 - ERROR - "Unable to locate 'orgprefix' in GENERAL"
+Traceback (most recent call last):
+  File "c:\Users\eacosta\Projects\python\amazonmmc\run_mmc.py", line 37, in main
+    deliv.write_mecs()
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\delivery.py", line 36, in write_mecs
+    self.mecs.generate()
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\mec.py", line 34, in generate
+    mec.episodic()
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\mec.py", line 47, in episodic
+    self.rootelem.append(self._basic())
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\mec.py", line 110, in _basic
+    for elem in self._seqinfo():
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\mec.py", line 251, in _seqinfo
+    prefix = self.search_media("orgprefix")
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\mec.py", line 54, in search_media
+    value = self.media.find(key, assertcurrent, assertexists)
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\media.py", line 46, in find
+    return self.parent.find(key)
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\media.py", line 46, in find
+    return self.parent.find(key)
+  File "c:\Users\eacosta\Projects\python\amazonmmc\libs\media.py", line 42, in find
+    raise KeyError(f"Unable to locate '{key}' in {mediatype}")
+KeyError: "Unable to locate 'orgprefix' in GENERAL"

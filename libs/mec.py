@@ -248,14 +248,11 @@ class MEC:
         parent_root = newelement("md", "Parent")
         parent_root.set("relationshipType", relationship)
 
-        prefix = self.search_media("orgprefix")
-        org = self.search_media("AssociatedOrg")
-        orgid = self._get_value("organizationID", org)
         currentid = self.search_media("id", assertcurrent=True)
         if self.media.parent is None:
             raise RuntimeError(f"MEC._eqinfo called with no parent media: {currentid}")
         parentid = self.media.parent.find("id", assertcurrent=True)
-        fullid = f"{prefix}{orgid}:{parentid}"
+        fullid = f"md:cid:org:{self.org}:{parentid}"
         parent_root.append(str_to_element("md", "ParentContentID", fullid))
 
         return [seq_root, parent_root]

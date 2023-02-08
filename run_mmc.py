@@ -34,9 +34,7 @@ def main():
             print("No directory selected")
             exit()
         deliv = Delivery(Path(rootdir))
-        deliv.write_mec()
-        input("MECs generated. Press enter to generate MMC once checksums are ready...")
-        deliv.write_()
+        deliv.write_mecs()
     except Exception as e:
         clear()
         name = type(e).__name__
