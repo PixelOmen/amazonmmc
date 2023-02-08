@@ -1,5 +1,5 @@
+from typing import TYPE_CHECKING
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Union
 
 from ..xmlhelpers import newelement, str_to_element
 

@@ -491,4 +491,34 @@
             </manifest:ExperienceChild>
         </manifest:Experience>
     </manifest:Experiences>
+    <manifest:ALIDExperienceMaps>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1_101</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_101:episode.1</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1_102</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_102:episode.2</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1_103</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_103:episode.3</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1_104</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_104:episode.4</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1_105</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_105:episode.5</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1_106</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1_106:episode.6</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+        <manifest:ALIDExperienceMap>
+            <manifest:ALID>md:alid:org:amazonkids:HELLO_KITTY_INTL_S1</manifest:ALID>
+            <manifest:ExperienceID condition="For-sale">md:experienceid:org:amazonkids:HELLO_KITTY_INTL_S1:season.1</manifest:ExperienceID>
+        </manifest:ALIDExperienceMap>
+    </manifest:ALIDExperienceMaps>
 </manifest:MediaManifest>

@@ -7,6 +7,7 @@ from ..mec import MECEpisodic
 from ..enums import WorkTypes
 from ..xmlhelpers import newroot, newelement, str_to_element
 
+from .alids import ALID
 from .presentations import EpPresentation
 from .inventory import Audio, Video, Subtitle, Metadata
 from .experiences import EpisodeExperience, SeasonExperience, SeriesExperience
@@ -38,6 +39,7 @@ class Episode(MMCEntity):
         self._parse_resources()
         self._presentation: EpPresentation | None = None
         self._experience: EpisodeExperience | None = None
+        self._alid: ALID | None = None
 
     @property
     def presentation(self) -> EpPresentation:
@@ -47,9 +49,15 @@ class Episode(MMCEntity):
 
     @property
     def experience(self) -> EpisodeExperience:
-        if not self._experience:
+        if self._experience is None:
             self._experience = self._gen_experience()
         return self._experience
+
+    @property
+    def alid(self) -> ALID:
+        if self._alid is None:
+            self._alid = self._gen_alid()
+        return self._alid
 
     def _parse_resources(self) -> None:
         videofound = False
@@ -70,12 +78,16 @@ class Episode(MMCEntity):
     def _gen_experience(self) -> EpisodeExperience:
         return EpisodeExperience(self.presentation, self.metadata)
 
+    def _gen_alid(self) -> ALID:
+        return ALID(self.experience, self.metadata)
+
 class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
         self.episodes = [Episode(ep, ext, checksums) for ep in episodes]
         self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
         self._experience: SeasonExperience | None = None
+        self._alid: ALID | None = None
 
     @property
     def experience(self) -> SeasonExperience:
@@ -83,8 +95,17 @@ class Season(MMCEntity):
             self._experience = self._gen_experience()
         return self._experience
 
+    @property
+    def alid(self) -> ALID:
+        if self._alid is None:
+            self._alid = self._gen_alid()
+        return self._alid
+
     def _gen_experience(self) -> SeasonExperience:
         return SeasonExperience(self)
+
+    def _gen_alid(self) -> ALID:
+        return ALID(self.experience, self.metadata)
 
 class Series(MMCEntity):
     def __init__(self, rootdir: Path, mecgroup: "MECEpisodic") -> None:
@@ -129,6 +150,14 @@ class Series(MMCEntity):
             exp_root.append(season.experience.generate())
         exp_root.append(self.experience.generate())
         return exp_root
+
+    def alids(self) -> "ET.Element":
+        alid_root = newelement("manifest", "ALIDExperienceMaps")
+        for season in self.seasons:
+            for ep in season.episodes:
+                alid_root.append(ep.alid.generate())
+            alid_root.append(season.alid.generate())
+        return alid_root
 
     def _readmd5(self) -> list[str]:
         checksums = self.rootdir / "data" / "checksums.md5"
@@ -184,6 +213,7 @@ class MMC:
         self.rootelem.append(series.inventory())
         self.rootelem.append(series.presentations())
         self.rootelem.append(series.experiences())
+        self.rootelem.append(series.alids())
         return self.rootelem
 
     def _validate_resources(self, mecgroup: "MECGroup") -> None:
