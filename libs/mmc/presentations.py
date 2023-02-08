@@ -9,13 +9,11 @@ if TYPE_CHECKING:
     from .inventory import Audio, Video, Subtitle
 
 class Presentation(ABC):
-    def __init__(self, mec: "MEC", audio: "Audio", video: "Video",
-                subtitle: Union["Subtitle", None], language: str) -> None:
+    def __init__(self, mec: "MEC", audio: list["Audio"], video: "Video", subtitles: list["Subtitle"]) -> None:
         self.mec = mec
         self.audio = audio
         self.video = video
-        self.subtitle = subtitle
-        self.language = language
+        self.subtitles = subtitles
         self.rootelem = newelement("manifest", "Presentation")
 
     def _id(self, idtype: str, seq: str=...) -> str:
@@ -23,16 +21,15 @@ class Presentation(ABC):
         trackid = f"md:presentationid:org:{self.mec.org}:{mecid}:{idtype}"
         if seq is not ...:
             trackid += f".{seq}"
-        trackid += f".{self.language}"
+        trackid += f".{self.video.language}"
         return trackid
 
     @abstractmethod
     def generate(self) -> "ET.Element":...
 
 class EpPresentation(Presentation):
-    def __init__(self, mec: "MEC", audio: "Audio", video: "Video",
-                subtitle: Union["Subtitle", None], language: str) -> None:
-        super().__init__(mec, audio, video, subtitle, language)
+    def __init__(self, mec: "MEC", audio: list["Audio"], video: "Video", subtitles: list["Subtitle"]) -> None:
+        super().__init__(mec, audio, video, subtitles)
         self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
         self.id = self._id("episode", self.seq)
 
@@ -45,13 +42,14 @@ class EpPresentation(Presentation):
         videotrack_root.append(str_to_element("manifest", "VideoTrackID", self.video.id))
         trackmeta_root.append(videotrack_root)
 
-        audiotrack_root = newelement("manifest", "AudioTrackReference")
-        audiotrack_root.append(str_to_element("manifest", "AudioTrackID", self.audio.id))
-        trackmeta_root.append(audiotrack_root)
+        for audio in self.audio:
+            audiotrack_root = newelement("manifest", "AudioTrackReference")
+            audiotrack_root.append(str_to_element("manifest", "AudioTrackID", audio.id))
+            trackmeta_root.append(audiotrack_root)
 
-        if self.subtitle is not None:
+        for sub in self.subtitles:
             subtrack_root = newelement("manifest", "SubtitleTrackReference")
-            subtrack_root.append(str_to_element("manifest", "SubtitleTrackID", self.subtitle.id))
+            subtrack_root.append(str_to_element("manifest", "SubtitleTrackID", sub.id))
             trackmeta_root.append(subtrack_root)
 
         self.rootelem.append(trackmeta_root)

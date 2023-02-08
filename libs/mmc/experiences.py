@@ -54,14 +54,13 @@ class EpisodeExperience(Experience):
         org = self.presentation.mec.org
         id = self.presentation.mec.id
         seq = self.presentation.seq
-        language = self.presentation.language
+        language = self.presentation
         av = "av." if is_av else ""
-        return f"md:experienceid:org:{org}:{id}:{av}episode.{seq}.{language}"
+        return f"md:experienceid:org:{org}:{id}:{av}episode.{seq}"
 
 class SeasonExperience(Experience):
-    def __init__(self, season: "Season", language: str) -> None:
+    def __init__(self, season: "Season") -> None:
         self.season = season
-        self.language = language
         super().__init__(season.metadata)
 
     def generate(self) -> "ET.Element":
@@ -76,11 +75,7 @@ class SeasonExperience(Experience):
             seq_root.append(str_to_element("md", "Number", ep.seq))
             expchild_root.append(seq_root)
 
-            try:
-                ep_exp_id = ep.experiences[self.language].id
-            except KeyError:
-                raise RuntimeError(f"Unable to locate language '{self.language}' for episode '{ep.mec.id}'")
-            expchild_root.append(str_to_element("manifest", "ExperienceID", ep_exp_id))
+            expchild_root.append(str_to_element("manifest", "ExperienceID", ep.experience.id))
             self.rootelem.append(expchild_root)
             
         return self.rootelem
@@ -90,7 +85,7 @@ class SeasonExperience(Experience):
         org = self.season.mec.org
         id = self.season.mec.id
         seq = self.season.seq
-        return f"md:experienceid:org:{org}:{id}:season.{seq}.{self.language}"
+        return f"md:experienceid:org:{org}:{id}:season.{seq}"
 
 class SeriesExperience(Experience):
     pass

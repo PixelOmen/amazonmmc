@@ -26,9 +26,9 @@ class MMCEntity(ABC):
         self.mec = mec
         self.extensions = ext
         self.checksums = checksums
-        self.video: list[Video] = []
+        self.video: Video
         self.audio: list[Audio] = []
-        self.subtitle: list[Subtitle] = []
+        self.subtitles: list[Subtitle] = []
         self.metadata = Metadata(mec, checksums)
 
 class Episode(MMCEntity):
@@ -36,77 +36,55 @@ class Episode(MMCEntity):
         super().__init__(mec, ext, checksums)
         self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
         self._parse_resources()
-        self._presentations: dict[str, EpPresentation] = {}
-        self._experiences: dict[str, EpisodeExperience] = {}
+        self._presentation: EpPresentation | None = None
+        self._experience: EpisodeExperience | None = None
 
     @property
-    def presentations(self) -> dict[str, EpPresentation]:
-        if not self._presentations:
-            self._presentations = self._gen_presentations()
-        return self._presentations
+    def presentation(self) -> EpPresentation:
+        if self._presentation is None:
+            self._presentation = self._gen_presentations()
+        return self._presentation
 
     @property
-    def experiences(self) -> dict[str, EpisodeExperience]:
-        if not self._experiences:
-            self._experiences = self._gen_experiences()
-        return self._experiences
+    def experience(self) -> EpisodeExperience:
+        if not self._experience:
+            self._experience = self._gen_experiences()
+        return self._experience
 
     def _parse_resources(self) -> None:
+        videofound = False
         for res in self.mec.media.resources:
             if res.fullpath.suffix.lower() in self.extensions.av_exts:
                 self.audio.append(Audio(self.mec, self.checksums, res))
-                self.video.append(Video(self.mec, self.checksums, res))
+                if not videofound:
+                    self.video = Video(self.mec, self.checksums, res)
+                    videofound = True
             elif res.fullpath.suffix.lower() in self.extensions.sub_exts:
-                self.subtitle.append(Subtitle(self.mec, self.checksums, res))
+                self.subtitles.append(Subtitle(self.mec, self.checksums, res))
+        if not videofound:
+            raise FileNotFoundError(f"Unable to locate video file for {self.mec.id}")
 
-    def _gen_presentations(self) -> dict[str, EpPresentation]:
-        """
-        Can be extended to support custom groupings of video/audio/sub languages.
-        For now, it has to have exactly 1 video/audio/sub in 1 language.
-        Language is currently being pulled from video language.
-        """
-        presentations: list[list[str]] | None = self.mec.search_media("presentations", assertcurrent=True, assertexists=False)
-        if presentations:
-            raise NotImplementedError("Custom presentations not implemented yet")
-        if (len(self.video) != 1 or
-            len(self.audio) != 1 or
-            len(self.subtitle) != 1):
-            raise NotImplementedError(f"Currently only supports exactly 1 video/audio/subtitle file")
-        pres_perlanguage: dict[str, EpPresentation] = {}
-        try:
-            sub = self.subtitle[0]
-        except KeyError:
-            sub = None
-        pres = EpPresentation(self.mec, self.audio[0], self.video[0], sub, self.video[0].language)
-        pres_perlanguage[self.video[0].language] = pres
-        return pres_perlanguage
+    def _gen_presentations(self) -> EpPresentation:
+        return EpPresentation(self.mec, self.audio, self.video, self.subtitles)
 
-    def _gen_experiences(self) -> dict[str, EpisodeExperience]:
-        exps: dict[str, EpisodeExperience] = {}
-        for k,v in self.presentations.items():
-            exps[k] = EpisodeExperience(v, self.metadata)
-        return exps
+    def _gen_experiences(self) -> EpisodeExperience:
+        return EpisodeExperience(self.presentation, self.metadata)
 
 class Season(MMCEntity):
     def __init__(self, mec: "MEC", episodes: list["MEC"], ext: Extensions, checksums: list[str]) -> None:
         super().__init__(mec, ext, checksums)
         self.episodes = [Episode(ep, ext, checksums) for ep in episodes]
         self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
-        self._experiences: list[SeasonExperience] = []
+        self._experience: SeasonExperience | None = None
 
     @property
-    def experiences(self) -> list[SeasonExperience]:
-        if not self._experiences:
-            self._experiences = self._gen_experiences()
-        return self._experiences
+    def experience(self) -> SeasonExperience:
+        if self._experience is None:
+            self._experience = self._gen_experiences()
+        return self._experience
 
-    def _gen_experiences(self) -> list[SeasonExperience]:
-        if len(self.episodes) < 1:
-            raise RuntimeError(f"Season '{self.mec.id}' has no Episodes")
-        exps: list[SeasonExperience] = []
-        for lang in self.episodes[0].presentations.keys():
-            exps.append(SeasonExperience(self, lang))
-        return exps
+    def _gen_experiences(self) -> SeasonExperience:
+        return SeasonExperience(self)
 
 class Series(MMCEntity):
     def __init__(self, rootdir: Path, mecgroup: "MECEpisodic") -> None:
@@ -119,11 +97,10 @@ class Series(MMCEntity):
         inventory_root = newelement("manifest", "Inventory")
         for season in self.seasons:
             for ep in season.episodes:
-                for video in ep.video:
-                    inventory_root.append(video.generate())
+                inventory_root.append(ep.video.generate())
                 for audio in ep.audio:
                     inventory_root.append(audio.generate())
-                for sub in ep.subtitle:
+                for sub in ep.subtitles:
                     inventory_root.append(sub.generate())
                 inventory_root.append(ep.metadata.generate())
             inventory_root.append(season.metadata.generate())
@@ -134,18 +111,15 @@ class Series(MMCEntity):
         presentations_root = newelement("manifest", "Presentations")
         for season in self.seasons:
             for ep in season.episodes:
-                for pres in ep.presentations.values():
-                    presentations_root.append(pres.generate())
+                presentations_root.append(ep.presentation.generate())
         return presentations_root
 
     def experiences(self) -> "ET.Element":
         exp_root = newelement("manifest", "Experiences")
         for season in self.seasons:
             for ep in season.episodes:
-                for exp in ep.experiences.values():
-                    exp_root.append(exp.generate())
-            for exp in season.experiences:
-                exp_root.append(exp.generate())
+                exp_root.append(ep.experience.generate())
+            exp_root.append(season.experience.generate())
         return exp_root
 
     def _readmd5(self) -> list[str]:

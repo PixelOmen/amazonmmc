@@ -1,74 +1,80 @@
 {
     "general": {
+        "mediatype": "general",
         "worktype": "episodic",
-        "orgprefix": "md:cid:org:",
-        "orgid": {
-            "id": "amazonkids",
+        "AssociatedOrg": {
+            "organizationID": "amazonkids",
             "role": "licensor"
-        }
+        },
+        "av_exts": [".mov"],
+        "sub_exts": [".itt"],
+        "art_exts": [".png"]
     },
     "series": {
         "mediatype": "series",
         "title": "HELLOKITTY",
         "id": "HELLO_KITTY_INTL",
-        "releaseyear": "2022",
-        "releasedate": "2022-12-30",
-        "countryorigin": "FR",
-        "originallanguage": "en-US",
-        "localizedinfo": [
+        "ReleaseYear": "2022",
+        "ReleaseDate": "2022-12-30",
+        "CountryOfOrigin": "FR",
+        "OriginalLanguage": "en-US",
+        "LocalizedInfo": [
             {
                 "language": "ja-JP",
-                "titleunlimited": "Hello Kitty: Super Style! (英語) [Amazon Kids+に含まれています]",
-                "summary190": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。",
-                "summary400": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。魔法のリボンの力を使って、シェフやスポーツ選手、探偵などに変身。困っているお友達を助けながら問題を解決、危機を乗り越えていきます。",
-                "copyright": "2022 Watch Next Media",
-                "genres": [
+                "TitleDisplayUnlimited": "Hello Kitty: Super Style! (英語) [Amazon Kids+に含まれています]",
+                "Summary190": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。",
+                "Summary400": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。魔法のリボンの力を使って、シェフやスポーツ選手、探偵などに変身。困っているお友達を助けながら問題を解決、危機を乗り越えていきます。",
+                "CopyrightLine": "2022 Watch Next Media",
+                "Genres": [
                     "av_genre_kids",
                     "av_subgenre_animation_adventure"
                 ],
-                "art": [
+                "ArtReference": [
                     {
                         "resolution": "1600x1200",
                         "purpose": "boxart",
-                        "Filename": "AMAZONKIDS_HELLOKITTY_SEASON1_BOX_4x3.png"
+                        "filename": "AMAZONKIDS_HELLOKITTY_SEASON1_BOX_4x3.png"
                     },
                     {
                         "resolution": "1920x1080",
                         "purpose": "cover",
-                        "Filename": "AMAZONKIDS_HELLOKITTY_SEASON1_COVER_16x9.png"
+                        "filename": "AMAZONKIDS_HELLOKITTY_SEASON1_COVER_16x9.png"
                     }
                 ]
             }
         ],
-        "releasehistory": {
-            "type": "original",
-            "territory": "US"
-        },
-        "altids": [
+        "ReleaseHistory": [
             {
-                "namespace": "ORG",
-                "identifier": "HELLO_KITTY_INTL"
+                "ReleaseType": "original",
+                "country": "US",
+                "Date": "2022-12-30"
+            }   
+        ],
+        "AltIdentifier": [
+            {
+                "Namespace": "ORG",
+                "Identifier": "HELLO_KITTY_INTL"
             }
         ],
-        "ratings" : [
+        "RatingSet" : [
             {
                 "country": "JP",
-                "system": "EIRIN",
-                "value": "G",
-                "reason": ""
+                "System": "EIRIN",
+                "Value": "G",
+                "Reason": ""
             }
         ],
-        "companycredits": [
+        "CompanyDisplayCredit": [
             {
                 "language": "en-US",
-                "credit": "Watch Next Media"
+                "DisplayString": "Watch Next Media"
             }
         ],
-        "people": [
+        "People": [
             [
                 {
-                    "job": "Director",
-                    "billingorder": "1",
+                    "JobFunction": "Director",
+                    "BillingBlockOrder": "1",
                     "names": [
                         {
                             "language": "en-US",
@@ -77,8 +83,8 @@
                     ]
                 },
                 {
-                    "job": "Director",
-                    "billingorder": "2",
+                    "JobFunction": "Director",
+                    "BillingBlockOrder": "2",
                     "names": [
                         {
                             "language": "en-US",
@@ -87,8 +93,8 @@
                     ]
                 },
                 {
-                    "job": "Producer",
-                    "billingorder": "3",
+                    "JobFunction": "Producer",
+                    "BillingBlockOrder": "3",
                     "names": [
                         {
                             "language": "en-US",
@@ -97,8 +103,8 @@
                     ]
                 },
                 {
-                    "job": "Producer",
-                    "billingorder": "4",
+                    "JobFunction": "Producer",
+                    "BillingBlockOrder": "4",
                     "names": [
                         {
                             "language": "en-US",
@@ -107,8 +113,8 @@
                     ]
                 },
                 {
-                    "job": "Producer",
-                    "billingorder": "5",
+                    "JobFunction": "Producer",
+                    "BillingBlockOrder": "5",
                     "names": [
                         {
                             "language": "en-US",
@@ -117,8 +123,8 @@
                     ]
                 },
                 {
-                    "job": "Writer",
-                    "billingorder": "6",
+                    "JobFunction": "Writer",
+                    "BillingBlockOrder": "6",
                     "names": [
                         {
                             "language": "en-US",
@@ -129,9 +135,9 @@
             ],
             [
                 {
-                    "job": "Actor",
-                    "billingorder": "1",
-                    "character": "Hello Kitty",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "1",
+                    "Character": "Hello Kitty",
                     "names": [
                         {
                             "language": "en-US",
@@ -140,9 +146,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "2",
-                    "character": "DinoBoss",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "2",
+                    "Character": "DinoBoss",
                     "names": [
                         {
                             "language": "en-US",
@@ -151,9 +157,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "3",
-                    "character": "Frido",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "3",
+                    "Character": "Frido",
                     "names": [
                         {
                             "language": "en-US",
@@ -162,9 +168,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "4",
-                    "character": "Badtz-Maru",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "4",
+                    "Character": "Badtz-Maru",
                     "names": [
                         {
                             "language": "en-US",
@@ -173,9 +179,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "5",
-                    "character": "Pinky",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "5",
+                    "Character": "Pinky",
                     "names": [
                         {
                             "language": "en-US",
@@ -184,9 +190,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "6",
-                    "character": "Zonty",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "6",
+                    "Character": "Zonty",
                     "names": [
                         {
                             "language": "en-US",
@@ -195,9 +201,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "7",
-                    "character": "Beaver Triplets",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "7",
+                    "Character": "Beaver Triplets",
                     "names": [
                         {
                             "language": "en-US",
@@ -206,9 +212,9 @@
                     ]
                 },
                 {
-                    "job": "Actor",
-                    "billingorder": "8",
-                    "character": "Keroppi",
+                    "JobFunction": "Actor",
+                    "BillingBlockOrder": "8",
+                    "Character": "Keroppi",
                     "names": [
                         {
                             "language": "en-US",
@@ -221,96 +227,187 @@
         "seasons": [
             {
                 "mediatype": "season",
-                "sequence": "1",
+                "SequenceInfo": "1",
                 "id": "HELLO_KITTY_INTL_S1",
-                "altids": [
+                "AltIdentifier": [
                     {
-                        "namespace": "ORG",
-                        "identifier": "HELLO_KITTY_INTL_S1"
+                        "Namespace": "ORG",
+                        "Identifier": "HELLO_KITTY_INTL_S1"
+                    }
+                ],
+                "LocalizedInfo": [
+                    {
+                        "language": "ja-JP",
+                        "TitleDisplayUnlimited": "Hello Kitty: Super Style! (英語) [Amazon Kids+に含まれています] - Season 1",
+                        "Summary190": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。",
+                        "Summary400": "「ハローキティ：　スーパースタイル！」が配信開始に！大人気キャラクター、ハローキティがCGアニメーションになって登場。スタイリッシュかつ優しくて勇敢な小さな町のヒーローとして大活躍します。魔法のリボンの力を使って、シェフやスポーツ選手、探偵などに変身。困っているお友達を助けながら問題を解決、危機を乗り越えていきます。",
+                        "CopyrightLine": "2022 Watch Next Media",
+                        "Genres": [
+                            "av_genre_kids",
+                            "av_subgenre_animation_adventure"
+                        ],
+                        "ArtReference": [
+                            {
+                                "resolution": "1600x1200",
+                                "purpose": "boxart",
+                                "filename": "AMAZONKIDS_HELLOKITTY_SEASON1_BOX_4x3.png"
+                            },
+                            {
+                                "resolution": "1920x1080",
+                                "purpose": "cover",
+                                "filename": "AMAZONKIDS_HELLOKITTY_SEASON1_COVER_16x9.png"
+                            }
+                        ]
                     }
                 ],
                 "episodes": [
                     {
                         "mediatype": "episode",
-                        "sequence": "1",
+                        "SequenceInfo": "1",
                         "id": "HELLO_KITTY_INTL_S1_101",
-                        "localizedinfo": [
+                        "LocalizedInfo": [
                             {
                                 "language": "ja-JP",
-                                "titleunlimited": "ローラースケート",
-                                "summary190": "",
-                                "summary400": "チェリータウンは、ブギウギローラースケートパーティーで大盛り上がり！しかしゾンティは、ローラースケートが怖いのでパーティに行くことを嫌がっています。ハローキティの助けを借りて、ゾンティは自信を持ってパーティを楽しむことができるようになるでしょうか？",
-                                "art": []
+                                "TitleDisplayUnlimited": "ローラースケート",
+                                "Summary190": "",
+                                "Summary400": "チェリータウンは、ブギウギローラースケートパーティーで大盛り上がり！しかしゾンティは、ローラースケートが怖いのでパーティに行くことを嫌がっています。ハローキティの助けを借りて、ゾンティは自信を持ってパーティを楽しむことができるようになるでしょうか？",
+                                "CopyrightLine": "2022 Watch Next Media",
+                                "Genres": [
+                                    "av_genre_kids",
+                                    "av_subgenre_animation_adventure"
+                                ],
+                                "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_101"
                             }
                         ]
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "2",
+                        "SequenceInfo": "2",
                         "id": "HELLO_KITTY_INTL_S1_102",
-                        "localizedinfo": [
+                        "LocalizedInfo": [
                             {
                                 "language": "ja-JP",
-                                "titleunlimited": "友情の日",
-                                "summary190": "",
-                                "summary400": "今日は、チェリータウンの「友情の日」です。でもフリードは彼女の大親友であるゾンティに贈るプレゼントを用意していませんでした。ゾンティはがっかりしてしまいます。そんなフリードを芸術家に扮したキティがお手伝い。フリードは大親友に彼女の気持ちをプレゼントで伝えることができるでしょうか、、。",
-                                "art": []
+                                "TitleDisplayUnlimited": "友情の日",
+                                "Summary190": "",
+                                "Summary400": "今日は、チェリータウンの「友情の日」です。でもフリードは彼女の大親友であるゾンティに贈るプレゼントを用意していませんでした。ゾンティはがっかりしてしまいます。そんなフリードを芸術家に扮したキティがお手伝い。フリードは大親友に彼女の気持ちをプレゼントで伝えることができるでしょうか、、。",
+                                "CopyrightLine": "2022 Watch Next Media",
+                                "Genres": [
+                                    "av_genre_kids",
+                                    "av_subgenre_animation_adventure"
+                                ],
+                                "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_102"
                             }
                         ]
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "3",
+                        "SequenceInfo": "3",
                         "id": "HELLO_KITTY_INTL_S1_103",
-                        "localizedinfo": [
+                        "LocalizedInfo": [
                             {
                                 "language": "ja-JP",
-                                "titleunlimited": "負けても大丈夫！",
-                                "summary190": "",
-                                "summary400": "ジンはチェリータウンで人気のスポーツ選手。何よりも勝つことが大好きです。ある日、大物有名スポーツ選手のバスタスが金メダルをかけて彼女に挑戦を挑んできました。でもジンは怖くなってしまって挑戦を受けることができません。スポーツ選手に扮したキティは、ジンを助けながらもスポーツは勝つことだけが大事なことではないことを伝えようとします。",
-                                "art": []
+                                "TitleDisplayUnlimited": "負けても大丈夫！",
+                                "Summary190": "",
+                                "Summary400": "ジンはチェリータウンで人気のスポーツ選手。何よりも勝つことが大好きです。ある日、大物有名スポーツ選手のバスタスが金メダルをかけて彼女に挑戦を挑んできました。でもジンは怖くなってしまって挑戦を受けることができません。スポーツ選手に扮したキティは、ジンを助けながらもスポーツは勝つことだけが大事なことではないことを伝えようとします。",
+                                "CopyrightLine": "2022 Watch Next Media",
+                                "Genres": [
+                                    "av_genre_kids",
+                                    "av_subgenre_animation_adventure"
+                                ],
+                                "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_103"
                             }
                         ]
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "4",
+                        "SequenceInfo": "4",
                         "id": "HELLO_KITTY_INTL_S1_104",
-                        "localizedinfo": [
+                        "LocalizedInfo": [
                             {
                                 "language": "ja-JP",
-                                "titleunlimited": "本当のたからもの",
-                                "summary190": "",
-                                "summary400": "ピーアイは古代とべない国王の王冠の場所が記された地図を見つけました。ばつ丸は早く宝物を手に入れたくて仕方ありません。しかしばつ丸は仲間を危険な目にあわせてしまいます。探検家のキティは、ばつ丸を助けながら、友情よりも価値のあるものはないことをおしえようとします。",
-                                "art": []
+                                "TitleDisplayUnlimited": "本当のたからもの",
+                                "Summary190": "",
+                                "Summary400": "ピーアイは古代とべない国王の王冠の場所が記された地図を見つけました。ばつ丸は早く宝物を手に入れたくて仕方ありません。しかしばつ丸は仲間を危険な目にあわせてしまいます。探検家のキティは、ばつ丸を助けながら、友情よりも価値のあるものはないことをおしえようとします。",
+                                "CopyrightLine": "2022 Watch Next Media",
+                                "Genres": [
+                                    "av_genre_kids",
+                                    "av_subgenre_animation_adventure"
+                                ],
+                                "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_104"
                             }
                         ]
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "5",
+                        "SequenceInfo": "5",
                         "id": "HELLO_KITTY_INTL_S1_105",
-                        "localizedinfo": [
+                        "LocalizedInfo": [
                             {
                                 "language": "ja-JP",
-                                "titleunlimited": "三つ子の架け橋",
-                                "summary190": "",
-                                "summary400": "チェリータウンの橋が壊れてしまった。ビーバーの三つ子たちはどうやって橋を元通りにすればいいのかわかりません。そこで三人はキティの助けを借りることに。",
-                                "art": []
+                                "TitleDisplayUnlimited": "三つ子の架け橋",
+                                "Summary190": "",
+                                "Summary400": "チェリータウンの橋が壊れてしまった。ビーバーの三つ子たちはどうやって橋を元通りにすればいいのかわかりません。そこで三人はキティの助けを借りることに。",
+                                "CopyrightLine": "2022 Watch Next Media",
+                                "Genres": [
+                                    "av_genre_kids",
+                                    "av_subgenre_animation_adventure"
+                                ],
+                                "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_105"
                             }
                         ]
                     },
                     {
                         "mediatype": "episode",
-                        "sequence": "6",
+                        "SequenceInfo": "6",
                         "id": "HELLO_KITTY_INTL_S1_106",
-                        "localizedinfo": [
+                        "LocalizedInfo": [
                             {
                                 "language": "ja-JP",
-                                "titleunlimited": "消えたけろっぴ",
-                                "summary190": "手品でけろっぴが消えてしまった。探偵に変身したキティは疑いを晴らすため、けろっぴを探し出すことに。",
-                                "summary400": "手品でけろっぴが消えてしまった。探偵に変身したキティは疑いを晴らすため、けろっぴを探し出すことに。",
-                                "art": []
+                                "TitleDisplayUnlimited": "消えたけろっぴ",
+                                "Summary190": "手品でけろっぴが消えてしまった。探偵に変身したキティは疑いを晴らすため、けろっぴを探し出すことに。",
+                                "Summary400": "手品でけろっぴが消えてしまった。探偵に変身したキティは疑いを晴らすため、けろっぴを探し出すことに。",
+                                "CopyrightLine": "2022 Watch Next Media",
+                                "Genres": [
+                                    "av_genre_kids",
+                                    "av_subgenre_animation_adventure"
+                                ],
+                                "ArtReference": []
+                            }
+                        ],
+                        "AltIdentifier": [
+                            {
+                                "Namespace": "ORG",
+                                "Identifier": "HELLO_KITTY_INTL_S1_106"
                             }
                         ]
                     }

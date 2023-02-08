@@ -234,7 +234,7 @@ class Metadata(InventoryElem):
         self.hash = self._hash()
 
     def _initialize(self) -> None:
-        self.id = self._trackid("cid")
+        self.id = self._trackid("metadataid")
 
     def generate(self) -> "ET.Element":
         self.rootelem.set("ContentID", self.id)
