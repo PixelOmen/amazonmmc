@@ -192,7 +192,7 @@ class Subtitle(InventoryElem):
             self.region = split_name[5]
             fps = split_name[8]
             if len(fps) == 4:
-                self.multiplier = "1/1001"
+                self.multiplier = "1000/1001"
                 self.fps = str(round(int(fps)))
             else:
                 self.multiplier = "1/1"
@@ -234,7 +234,7 @@ class Metadata(InventoryElem):
         self.hash = self._hash()
 
     def _initialize(self) -> None:
-        self.id = self._trackid("metadataid")
+        self.id = self._trackid("cid")
 
     def generate(self) -> "ET.Element":
         self.rootelem.set("ContentID", self.id)

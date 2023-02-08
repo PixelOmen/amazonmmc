@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from xml.etree import ElementTree as ET
 
     from .inventory import Metadata
-    from .mmc_core import Season, Episode
+    from .mmc_core import Season, Series
     from .presentations import EpPresentation
 
 class Experience(ABC):
@@ -30,23 +30,13 @@ class EpisodeExperience(Experience):
     def generate(self) -> "ET.Element":
         self.rootelem.set("ExperienceID", self.id)
         self.rootelem.set("version", "1.0")
-
         self.rootelem.append(str_to_element("manifest", "ContentID", self.metadata.id))
-
         av_root = newelement("manifest", "Audiovisual")
-        av_root.set("ContentID", self._exp_id(is_av=True))
+        av_root.set("ContentID", self.metadata.id)
         av_root.append(str_to_element("manifest", "Type", "Main"))
         av_root.append(str_to_element("manifest", "SubType", "Episode"))
         av_root.append(str_to_element("manifest", "PresentationID", self.presentation.id))
         self.rootelem.append(av_root)
-
-        expchild_root = newelement("manifest", "ExperienceChild")
-        expchild_root.append(str_to_element("manifest", "Relationship", "isepisodeof"))
-        seq_root = newelement("manifest", "SequenceInfo")
-        seq_root.append(str_to_element("md", "Number", self.presentation.seq))
-        expchild_root.append(seq_root)
-        expchild_root.append(str_to_element("manifest", "ExperienceID", self.id))
-        self.rootelem.append(expchild_root)
         return self.rootelem
     
     def _exp_id(self, is_av: bool=False) -> str:
@@ -54,7 +44,6 @@ class EpisodeExperience(Experience):
         org = self.presentation.mec.org
         id = self.presentation.mec.id
         seq = self.presentation.seq
-        language = self.presentation
         av = "av." if is_av else ""
         return f"md:experienceid:org:{org}:{id}:{av}episode.{seq}"
 
@@ -88,4 +77,28 @@ class SeasonExperience(Experience):
         return f"md:experienceid:org:{org}:{id}:season.{seq}"
 
 class SeriesExperience(Experience):
-    pass
+    def __init__(self, series: "Series") -> None:
+        self.series = series
+        super().__init__(series.metadata)
+
+    def generate(self) -> "ET.Element":
+        self.rootelem.set("ExperienceID", self.id)
+        self.rootelem.append(str_to_element("manifest", "ContentID", self.metadata.id))
+
+        for season in self.series.seasons:
+            expchild_root = newelement("manifest", "ExperienceChild")
+            expchild_root.append(str_to_element("manifest", "Relationship", "isseasonof"))
+
+            seq_root = newelement("manifest", "SequenceInfo")
+            seq_root.append(str_to_element("md", "Number", season.seq))
+            expchild_root.append(seq_root)
+
+            expchild_root.append(str_to_element("manifest", "ExperienceID", season.experience.id))
+            self.rootelem.append(expchild_root)   
+        return self.rootelem
+
+    def _exp_id(self) -> str:
+        # "md:experienceid:org:amazonkids:HELLO_KITTY_INTL:series"
+        org = self.series.mec.org
+        id = self.series.mec.id
+        return f"md:experienceid:org:{org}:{id}:series"

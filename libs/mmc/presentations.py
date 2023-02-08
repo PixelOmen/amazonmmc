@@ -21,7 +21,6 @@ class Presentation(ABC):
         trackid = f"md:presentationid:org:{self.mec.org}:{mecid}:{idtype}"
         if seq is not ...:
             trackid += f".{seq}"
-        trackid += f".{self.video.language}"
         return trackid
 
     @abstractmethod

@@ -9,7 +9,7 @@ from ..xmlhelpers import newroot, newelement, str_to_element
 
 from .presentations import EpPresentation
 from .inventory import Audio, Video, Subtitle, Metadata
-from .experiences import EpisodeExperience, SeasonExperience
+from .experiences import EpisodeExperience, SeasonExperience, SeriesExperience
 
 if TYPE_CHECKING:
     from ..mec import MEC, MECGroup
@@ -42,13 +42,13 @@ class Episode(MMCEntity):
     @property
     def presentation(self) -> EpPresentation:
         if self._presentation is None:
-            self._presentation = self._gen_presentations()
+            self._presentation = self._gen_presentation()
         return self._presentation
 
     @property
     def experience(self) -> EpisodeExperience:
         if not self._experience:
-            self._experience = self._gen_experiences()
+            self._experience = self._gen_experience()
         return self._experience
 
     def _parse_resources(self) -> None:
@@ -64,10 +64,10 @@ class Episode(MMCEntity):
         if not videofound:
             raise FileNotFoundError(f"Unable to locate video file for {self.mec.id}")
 
-    def _gen_presentations(self) -> EpPresentation:
+    def _gen_presentation(self) -> EpPresentation:
         return EpPresentation(self.mec, self.audio, self.video, self.subtitles)
 
-    def _gen_experiences(self) -> EpisodeExperience:
+    def _gen_experience(self) -> EpisodeExperience:
         return EpisodeExperience(self.presentation, self.metadata)
 
 class Season(MMCEntity):
@@ -80,10 +80,10 @@ class Season(MMCEntity):
     @property
     def experience(self) -> SeasonExperience:
         if self._experience is None:
-            self._experience = self._gen_experiences()
+            self._experience = self._gen_experience()
         return self._experience
 
-    def _gen_experiences(self) -> SeasonExperience:
+    def _gen_experience(self) -> SeasonExperience:
         return SeasonExperience(self)
 
 class Series(MMCEntity):
@@ -92,6 +92,13 @@ class Series(MMCEntity):
         self.mecgroup = mecgroup
         super().__init__(mecgroup.series, Extensions(mecgroup.series), self._readmd5())
         self.seasons = [Season(s, ep, self.extensions, self.checksums) for s, ep in mecgroup.seasons.items()]
+        self._experience: SeriesExperience | None = None
+
+    @property
+    def experience(self) -> SeriesExperience:
+        if self._experience is None:
+            self._experience = self._gen_experience()
+        return self._experience
 
     def inventory(self) -> "ET.Element":
         inventory_root = newelement("manifest", "Inventory")
@@ -120,6 +127,7 @@ class Series(MMCEntity):
             for ep in season.episodes:
                 exp_root.append(ep.experience.generate())
             exp_root.append(season.experience.generate())
+        exp_root.append(self.experience.generate())
         return exp_root
 
     def _readmd5(self) -> list[str]:
@@ -129,6 +137,9 @@ class Series(MMCEntity):
             for line in fp.readlines():
                 lines.append(line.strip())
         return lines
+
+    def _gen_experience(self) -> SeriesExperience:
+        return SeriesExperience(self)
 
 
 class MMC:
