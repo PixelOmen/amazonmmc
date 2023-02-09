@@ -27,7 +27,7 @@ class MMCEntity(ABC):
         self.mec = mec
         self.extensions = ext
         self.checksums = checksums
-        self.video: Video
+        self.video: list[Video] = []
         self.audio: list[Audio] = []
         self.subtitles: list[Subtitle] = []
         self.metadata = Metadata(mec, checksums)
@@ -65,7 +65,7 @@ class Episode(MMCEntity):
             if res.fullpath.suffix.lower() in self.extensions.av_exts:
                 self.audio.append(Audio(self.mec, self.checksums, res))
                 if not videofound:
-                    self.video = Video(self.mec, self.checksums, res)
+                    self.video.append(Video(self.mec, self.checksums, res))
                     videofound = True
             elif res.fullpath.suffix.lower() in self.extensions.sub_exts:
                 self.subtitles.append(Subtitle(self.mec, self.checksums, res))
@@ -125,7 +125,8 @@ class Series(MMCEntity):
         inventory_root = newelement("manifest", "Inventory")
         for season in self.seasons:
             for ep in season.episodes:
-                inventory_root.append(ep.video.generate())
+                for video in ep.video:
+                    inventory_root.append(video.generate())
                 for audio in ep.audio:
                     inventory_root.append(audio.generate())
                 for sub in ep.subtitles:

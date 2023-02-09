@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from .inventory import Audio, Video, Subtitle
 
 class Presentation(ABC):
-    def __init__(self, mec: "MEC", audio: list["Audio"], video: "Video", subtitles: list["Subtitle"]) -> None:
+    def __init__(self, mec: "MEC", audio: list["Audio"], video: list["Video"], subtitles: list["Subtitle"]) -> None:
         self.mec = mec
         self.audio = audio
         self.video = video
@@ -27,7 +27,7 @@ class Presentation(ABC):
     def generate(self) -> "ET.Element":...
 
 class EpPresentation(Presentation):
-    def __init__(self, mec: "MEC", audio: list["Audio"], video: "Video", subtitles: list["Subtitle"]) -> None:
+    def __init__(self, mec: "MEC", audio: list["Audio"], video: list["Video"], subtitles: list["Subtitle"]) -> None:
         super().__init__(mec, audio, video, subtitles)
         self.seq = self.mec.search_media("SequenceInfo", assertcurrent=True)
         self.id = self._id("episode", self.seq)
@@ -37,9 +37,10 @@ class EpPresentation(Presentation):
         trackmeta_root = newelement("manifest", "TrackMetadata")
         trackmeta_root.append(str_to_element("manifest", "TrackSelectionNumber", "0"))
 
-        videotrack_root = newelement("manifest", "VideoTrackReference")
-        videotrack_root.append(str_to_element("manifest", "VideoTrackID", self.video.id))
-        trackmeta_root.append(videotrack_root)
+        for video in self.video:
+            videotrack_root = newelement("manifest", "VideoTrackReference")
+            videotrack_root.append(str_to_element("manifest", "VideoTrackID", video.id))
+            trackmeta_root.append(videotrack_root)
 
         for audio in self.audio:
             audiotrack_root = newelement("manifest", "AudioTrackReference")
