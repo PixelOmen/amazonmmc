@@ -1,3 +1,4 @@
+import shutil
 import logging
 from pathlib import Path
 
@@ -12,7 +13,10 @@ def setlogging(rootdir: Path) -> None:
     )
 
 def copy_samples(rootdir: Path) -> None:
-    pass
+    sameplestart = Path(__file__).parent / "samples" / "dirStructure_example_start"
+    sameplecomplete = Path(__file__).parent / "samples" / "dirStructure_example_complete"
+    shutil.copytree(sameplestart, rootdir / sameplestart.name)
+    shutil.copytree(sameplecomplete, rootdir / sameplecomplete.name)
 
 def main():
     try:
@@ -24,11 +28,13 @@ def main():
             exit()
         if args.mec:
             deliv.write_mecs()
+            logging.info("MECs written successfully")
         if args.md5:
             deliv.checksums()
+            logging.info("Checksums created successfully")
         if args.mmc:
             deliv.write_mmc()
-        logging.info("Job completed successfully")
+            logging.info("MMC written successfully")
     except Exception as e:
         name = type(e).__name__
         print(f"{name}: {e}")
