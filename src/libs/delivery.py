@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
 
+from . import errors
 from .mmc import MMC
 from .media import Media
 from .checksums import MD5
@@ -34,6 +35,7 @@ class Delivery:
         return self._mmc
 
     def checksums(self) -> None:
+        self._mecs_exist(assertexist=True)
         hashes: dict[str, str] = MD5(self.rootdir).run()
         md5path = self.rootdir / "data" / "checksums.md5"
         with open(md5path, "w") as fp:
@@ -86,6 +88,7 @@ class Delivery:
             raise NotImplementedError("Only episodic workflows are currently supported")
 
     def _build_mmc(self) -> MMC:
+        self._md5exists(True)
         if self._mecgroup is None:
             self._mecgroup = self._build_mecs()
         if self.worktype == WorkTypes.EPISODIC:
@@ -147,8 +150,20 @@ class Delivery:
         checksums = datadir / "checksums.md5"
         exists = checksums.is_file()
         if not exists and assertexists:
-            raise FileNotFoundError("Unable to locate checksums.md5 in datadir")
+            raise FileNotFoundError("Unable to locate checksums.md5 in data directory")
         return exists
+
+    def _mecs_exist(self, assertexist: bool=False) -> bool:
+        missing: list[str] = []
+        for mec in self.mecs.all:
+            if not (self.resourcedir / mec.outputname).is_file():
+                if assertexist:
+                    missing.append(mec.outputname)
+                else:
+                    return False
+        if assertexist and missing:
+            raise errors.MD5Error(missingmecs=missing)
+        return True
 
     def _assertexists(self, somedict: dict, key: str, context: str=...) -> Any:
         value = somedict.get(key)

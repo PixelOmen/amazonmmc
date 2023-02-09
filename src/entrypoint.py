@@ -1,21 +1,34 @@
 import logging
-from typing import TYPE_CHECKING
+from pathlib import Path
 
 from .libs.args import parse_args
 from .libs.delivery import Delivery
 
-if TYPE_CHECKING:
-    from libs.args import MMCArgs
 
-logging.basicConfig(level=logging.INFO, filename="log.txt",
-    format='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S'
-)
+def setlogging(rootdir: Path) -> None:
+    logpath = rootdir / "log.txt"
+    logging.basicConfig(level=logging.INFO, filename=str(logpath),
+        format='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+def copy_samples(rootdir: Path) -> None:
+    pass
 
 def main():
     try:
         args = parse_args()
+        setlogging(args.rootdir)
         deliv = Delivery(args.rootdir)
-        deliv.write_mecs()
+        if args.sample:
+            copy_samples(args.rootdir)
+            exit()
+        if args.mec:
+            deliv.write_mecs()
+        if args.md5:
+            deliv.checksums()
+        if args.mmc:
+            deliv.write_mmc()
+        logging.info("Job completed successfully")
     except Exception as e:
         name = type(e).__name__
         print(f"{name}: {e}")

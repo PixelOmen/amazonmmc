@@ -16,3 +16,14 @@ class ResourceError(Exception):
         else:
             finalmsg = ""
         super().__init__(finalmsg)
+
+class MD5Error(Exception):
+    def __init__(self, msg: str=..., missingmecs: list[str]=...) -> None:
+        if missingmecs is not ...:
+            msg = "Unable to run checkums. Missing MECs:\n"
+            for mec in missingmecs:
+                msg += mec + "\n"
+        else:
+            if msg is ...:
+                msg = ""
+        super().__init__(msg)
