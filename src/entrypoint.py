@@ -1,8 +1,8 @@
 import logging
 from typing import TYPE_CHECKING
 
-from libs.args import parse_args
-from libs.delivery import Delivery
+from .libs.args import parse_args
+from .libs.delivery import Delivery
 
 if TYPE_CHECKING:
     from libs.args import MMCArgs

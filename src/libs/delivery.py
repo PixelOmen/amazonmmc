@@ -128,14 +128,19 @@ class Delivery:
         datapath = datadir / "data.json"
         if not datapath.is_file():
             raise FileNotFoundError("Unable to locate data.json")
-        checksums = datadir / "checksums.md5"
-        if not checksums.is_file():
-            raise FileNotFoundError("Unable to locate checksums.md5 in datadir")
         if not self.resourcedir.is_dir():
             raise FileNotFoundError("Unable to locate resources folder")
         with open(datapath, "rb") as fp:
             data = json.load(fp)
         return data
+    
+    def _md5exists(self, assertexists: bool=False) -> bool:
+        datadir = self.rootdir / "data"
+        checksums = datadir / "checksums.md5"
+        exists = checksums.is_file()
+        if not exists and assertexists:
+            raise FileNotFoundError("Unable to locate checksums.md5 in datadir")
+        return exists
 
     def _assertexists(self, somedict: dict, key: str, context: str=...) -> Any:
         value = somedict.get(key)

@@ -1,9 +1,9 @@
-class Myclass:
-    pass
+from pathlib import Path
 
-inst = Myclass()
+from src.libs.checksums import MD5
 
-somedict = {inst: 3}
+TESTDIR = Path(__file__).parent / "testfiles" / "testdir"
 
-
-print(somedict[inst])
+test = MD5(TESTDIR)
+result = test.run()
+print(result)
