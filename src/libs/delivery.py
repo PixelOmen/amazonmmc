@@ -5,6 +5,7 @@ from xml.etree import ElementTree as ET
 
 from .mmc import MMC
 from .media import Media
+from .checksums import MD5
 from .enums import WorkTypes
 from .mec import MEC, MECEpisodic
 
@@ -31,6 +32,13 @@ class Delivery:
         if self._mmc is None:
             self._mmc = self._build_mmc()
         return self._mmc
+
+    def checksums(self) -> None:
+        hashes: dict[str, str] = MD5(self.rootdir).run()
+        md5path = self.rootdir / "data" / "checksums.md5"
+        with open(md5path, "w") as fp:
+            for path, hash in hashes.items():
+                fp.write(f"{hash} {path}\n")
 
     def write_mecs(self) -> None:
         self.mecs.generate()

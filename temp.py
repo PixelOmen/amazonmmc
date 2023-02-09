@@ -1,9 +1,8 @@
 from pathlib import Path
 
-from src.libs.checksums import MD5
+from src.libs.delivery import Delivery
 
 TESTDIR = Path(__file__).parent / "testfiles" / "testdir"
 
-test = MD5(TESTDIR)
-result = test.run()
-print(result)
+test = Delivery(TESTDIR)
+test.checksums()

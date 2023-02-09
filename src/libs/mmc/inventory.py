@@ -31,7 +31,7 @@ class InventoryElem(ABC):
         if not self.checksums:
             raise LookupError("MD5 Checksum file is empty")
         for md5 in self.checksums:
-            splitline = md5.split("  ")
+            splitline = md5.split(" ")
             if splitline[1].lower() == self.filepath.lower():
                 return splitline[0]
         raise LookupError(f"Unable to locate hash for {self.filepath}")
