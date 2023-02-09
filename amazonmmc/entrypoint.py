@@ -22,10 +22,10 @@ def main():
     try:
         args = parse_args()
         setlogging(args.rootdir)
-        deliv = Delivery(args.rootdir)
         if args.sample:
             copy_samples(args.rootdir)
             exit()
+        deliv = Delivery(args.rootdir)
         if args.mec:
             deliv.write_mecs()
             logging.info("MECs written successfully")
