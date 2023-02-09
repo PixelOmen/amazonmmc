@@ -8,7 +8,7 @@ setup(
     package_data={"amazonmmc": ["samples"]},
     entry_points={
         'console_scripts': [
-            'amazonmmc = src:main',
+            'amazonmmc = amazonmmc:main',
         ]
     }
 )
