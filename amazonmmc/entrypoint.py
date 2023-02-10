@@ -7,6 +7,9 @@ from .libs.delivery import Delivery
 
 
 def setlogging(rootdir: Path) -> None:
+    if not rootdir.is_dir():
+        print(f"Not a valid directory: {rootdir}")
+        exit()
     logpath = rootdir / "log.txt"
     logging.basicConfig(level=logging.INFO, filename=str(logpath),
         format='%(asctime)s.%(msecs)03d - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S'

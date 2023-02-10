@@ -15,7 +15,7 @@ sample_paths(SAMPLEDIR, sample_files)
 
 setup(
     name='amazonmmc',
-    version='0.0.5',
+    version='0.0.6',
     packages=find_packages(),
     include_package_data=True,
     package_data={"amazonmmc": sample_files},
