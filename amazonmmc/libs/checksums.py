@@ -13,7 +13,7 @@ class MD5:
         resourcedir = self.rootdir / "resources"
         files: list[Path] = []
         for item in resourcedir.iterdir():
-            if not item.is_file():
+            if not item.is_file() or item.name[0] == ".":
                 continue
             files.append(item)
         output: list[tuple[str, str]] = []

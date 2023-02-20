@@ -222,7 +222,7 @@ class MMC:
             raise RuntimeError("MMC did not recieve any MECs")
         unknowns: list[str] = []
         for item in self.resourcedir.iterdir():
-            if not item.is_file() or item.suffix.lower() == ".xml":
+            if not item.is_file() or item.suffix.lower() == ".xml" or item.name[0] == ".":
                 continue
             found = False
             for mec in mecgroup.all:
