@@ -79,6 +79,8 @@ class Media:
 
         allresources: list[Resource] = []
         for item in self.resourcedir.iterdir():
+            if not item.is_file() or item.name[0] == ".":
+                continue
             if item.is_file() and item.suffix.lower() != ".xml":
                 if f"_{searchterm}_" in item.name:
                     allresources.append(Resource(self.mediatype, item))

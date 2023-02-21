@@ -32,7 +32,7 @@ def parse_args() -> MMCArgs:
     parser.add_argument("-s", "--sample", default=False, action="store_true", help="""
         (Optional) Create completed and starting sample directories
     """)
-    parser.add_argument("-version", "--version", action="version", version="v0.0.8")
+    parser.add_argument("-version", "--version", action="version", version="v0.0.9")
 
     args = parser.parse_args()
     return MMCArgs(
