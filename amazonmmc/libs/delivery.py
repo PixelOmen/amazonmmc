@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, Union
 from xml.etree import ElementTree as ET
 
 from . import errors
@@ -19,7 +19,7 @@ class Delivery:
         self.resourcedir = self.rootdir / "resources"
         self.data: dict = self._scandir()
         self.worktype = WorkTypes.UNKNOWN
-        self._mecgroup: "MECGroup" | None = None
+        self._mecgroup: Union["MECGroup", None] = None
         self._mmc: MMC | None = None
 
     @property
@@ -165,11 +165,11 @@ class Delivery:
             raise errors.MD5Error(missingmecs=missing)
         return True
 
-    def _assertexists(self, somedict: dict, key: str, context: str=...) -> Any:
+    def _assertexists(self, somedict: dict, key: str, context: str | None = None) -> Any:
         value = somedict.get(key)
         if value is None:
             msg = f"Missing key '{key}'"
-            if context is not ...:
+            if context is not None:
                 msg += f" in {context}"
             raise LookupError(msg)
         return value
