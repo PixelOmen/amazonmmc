@@ -3,7 +3,7 @@
 
 ## Overview
 
-**AmazonMMC** is a command-line interface (CLI) tool designed to facilitate the creation of Amazon Media Entertainment Core (MEC) and Media Manifest Core (MMC) XML files. Additionally, it provides functionality to generate MD5 checksums and sample directories for Amazon deliveries.
+**AmazonMMC** is a CLI tool designed to facilitate the creation of Amazon Media Entertainment Core (MEC) and Media Manifest Core (MMC) XML files. Also provides functionality to generate MD5 checksums and sample directories for Amazon deliveries.
 
 ## Prerequisites
 
