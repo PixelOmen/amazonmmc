@@ -62,7 +62,7 @@ The AmazonMMC tool accepts several arguments to specify the operations to be per
 
 You can combine multiple options in a single command. For example, to create both MEC and MMC XML files and generate MD5 checksums, run:
 ```bash
-python amazonmmc.py -r /path/to/rootdir --mec --mmc --md5
+amazonmmc -r /path/to/rootdir --mec --mmc --md5
 ```
 
 ## Contributing
