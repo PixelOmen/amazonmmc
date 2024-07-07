@@ -35,27 +35,27 @@ The AmazonMMC tool accepts several arguments to specify the operations to be per
 
 1. Create MEC XML files:
     ```bash
-    python amazonmmc.py -r /path/to/rootdir --mec
+    amazonmmc -r /path/to/rootdir --mec
     ```
 
 2. Create MMC XML files:
     ```bash
-    python amazonmmc.py -r /path/to/rootdir --mmc
+    amazonmmc -r /path/to/rootdir --mmc
     ```
 
 3. Generate MD5 checksums:
     ```bash
-    python amazonmmc.py -r /path/to/rootdir --md5
+    amazonmmc -r /path/to/rootdir --md5
     ```
 
 4. Create sample directories:
     ```bash
-    python amazonmmc.py -r /path/to/rootdir --sample
+    amazonmmc -r /path/to/rootdir --sample
     ```
 
 5. Display the tool's version:
     ```bash
-    python amazonmmc.py --version
+    amazonmmc --version
     ```
 
 ### Combining Options
