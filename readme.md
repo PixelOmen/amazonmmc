@@ -12,7 +12,7 @@
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/amazonmmc.git
+git clone https://github.com/pixelomen/amazonmmc.git
 cd amazonmmc
 pip install .
 ```
@@ -72,7 +72,3 @@ I welcome contributions to improve the tool. Please fork the repository and subm
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contact
-
-For any questions or issues, please open an issue on the GitHub repository or contact [pixelomen@gmail.com](pixelomen@gmail.com).
